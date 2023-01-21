@@ -1,0 +1,93 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            app:showAsAction="always"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Edit Profile">
+
+            <menu>
+
+            <item
+                android:id="@+id/one"
+                android:icon="@drawable/ic_edit_profile"
+                android:title="Edit Profile"
+                app:showAsAction="never"
+                />
+
+            <item
+                android:id="@+id/two"
+                android:icon="@drawable/ic_result"
+                android:title="Result"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/three"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout"
+                app:showAsAction="never"/>
+
+            </menu>
+
+        </item>
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Show activities">
+
+        <menu>
+
+            <item
+                android:id="@+id/one1"
+                android:icon="@drawable/ic_edit_profile"
+                android:title="Edit Profile"
+                app:showAsAction="never"
+                />
+
+            <item
+                android:id="@+id/two1"
+                android:icon="@drawable/ic_result"
+                android:title="Result"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/three1"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Account setting">
+
+        <menu>
+
+            <item
+                android:id="@+id/one2"
+                android:icon="@drawable/ic_edit_profile"
+                android:title="Edit Profile"
+                app:showAsAction="never"
+                />
+
+            <item
+                android:id="@+id/two2"
+                android:icon="@drawable/ic_result"
+                android:title="Result"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/three2"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+        
+
+</menu>

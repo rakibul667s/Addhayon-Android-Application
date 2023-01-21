@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Addhayon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_map_key">AIzaSyCtDyymFq76qYeEwklMt4qIOiyOVy7t-bA</string>
+</resources>

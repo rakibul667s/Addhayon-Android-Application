@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "294585879206",
+    "project_id": "addhayon",
+    "storage_bucket": "addhayon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294585879206:android:de4a394de644a1a5880267",
+        "android_client_info": {
+          "package_name": "com.example.addhayon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294585879206-cboi998tpr14na7bv32o2i3rm2ul2vl9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.addhayon",
+            "certificate_hash": "7681f8127240b74c90abd5630cb91f62eb829653"
+          }
+        },
+        {
+          "client_id": "294585879206-bjv8dkbhqsdpb2brois4fqqh46covet7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG2OC2PZqOJKb-jMOCv-36MXqVKOg6Fb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294585879206-bjv8dkbhqsdpb2brois4fqqh46covet7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
