@@ -5,51 +5,43 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link examDashboardFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class examDashboardFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-
-    public static examDashboardFragment newInstance(String param1, String param2) {
-        examDashboardFragment fragment = new examDashboardFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     public examDashboardFragment() {
         // Required empty public constructor
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private GridView catView;
+    private List<CategoryModel> catList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exam_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_exam_dashboard, container, false);
+
+        catView = view.findViewById(R.id.cat_grid);
+        loadCategories();
+        CategoryAdapter adapter = new CategoryAdapter(catList);
+        catView.setAdapter(adapter);
+
+        return view;
+    }
+
+    private void loadCategories(){
+        catList.clear();
+        catList.add(new CategoryModel("1","GK", 20));
+        catList.add(new CategoryModel("2","HISTORY", 30));
+        catList.add(new CategoryModel("3","ENGLISH", 10));
+        catList.add(new CategoryModel("4","MATH", 25));
+        catList.add(new CategoryModel("5","ICT", 10));
+
+
     }
 }

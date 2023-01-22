@@ -14,6 +14,7 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class ExamDashborad extends AppCompatActivity {
+    private Fragment frame;
     private MeowBottomNavigation btm;
     private Button btnID;
 
@@ -21,6 +22,7 @@ public class ExamDashborad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_dashborad);
+
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
@@ -31,7 +33,7 @@ public class ExamDashborad extends AppCompatActivity {
 
 
         btm.show(2, true);
-       replace(new com.example.addhayon.examDashboardFragment());
+      // replace(new com.example.addhayon.examDashboardFragment());
         btm.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
@@ -40,7 +42,7 @@ public class ExamDashborad extends AppCompatActivity {
                         openDashboard();
                         break;
                     case 2:
-                        replace(new examDashboardFragment());
+                        openExamCat();
                         break;
                     case 3:
                         openCalendar();
@@ -62,6 +64,10 @@ public class ExamDashborad extends AppCompatActivity {
             FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame,fragment);
             transaction.commit();
+        }
+        public void openExamCat(){
+            Intent intent = new Intent(this, AllExamCatActivity.class);
+            startActivity(intent);
         }
         public void openDashboard(){
              Intent intent = new Intent(this, dashboard.class);

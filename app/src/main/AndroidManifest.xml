@@ -35,6 +35,9 @@
         android:theme="@style/Theme.addhayon"
         tools:targetApi="31">
         <activity
+            android:name=".AllExamCatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExamTestActivity"
             android:exported="false" />
         <activity
