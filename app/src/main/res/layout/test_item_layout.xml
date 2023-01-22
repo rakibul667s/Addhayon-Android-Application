@@ -35,7 +35,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/scoretext"
+            android:id="@+id/scoreText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/gradient2StartColor"
