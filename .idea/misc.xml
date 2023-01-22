@@ -14,6 +14,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/ic_baseline_local_school.xml" value="0.1195" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/ic_baseline_search_25.xml" value="0.1205" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.122" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/ic_fogotpass.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/ic_loginbro.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/round_border.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/drawable/rounded_border2.xml" value="0.1205" />
@@ -39,7 +40,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/exam_view.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_calender.xml" value="0.184375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_exam_dashboard.xml" value="0.2" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_home.xml" value="0.16494845360824742" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_mapping.xml" value="0.10729166666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/fragment_profile.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/layout/test_item_layout.xml" value="0.14266304347826086" />
