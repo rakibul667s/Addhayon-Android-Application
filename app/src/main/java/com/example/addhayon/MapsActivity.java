@@ -126,7 +126,7 @@ public class MapsActivity extends FragmentActivity implements
         startActivity(intent);
     }
     public void openExam(){
-        Intent intent = new Intent(this, ExamDashborad.class);
+        Intent intent = new Intent(this, AllExamCatActivity.class);
         startActivity(intent);
     }
 

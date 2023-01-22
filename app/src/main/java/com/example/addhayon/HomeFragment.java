@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         exam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,ExamDashborad.class);
+                Intent intent = new Intent(context,AllExamCatActivity.class);
                 startActivity(intent);
             }
         });

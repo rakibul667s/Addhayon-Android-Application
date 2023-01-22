@@ -111,7 +111,7 @@ public class userProfile extends AppCompatActivity {
         startActivity(intent);
     }
     public void openExam(){
-        Intent intent = new Intent(this, ExamDashborad.class);
+        Intent intent = new Intent(this, AllExamCatActivity.class);
         startActivity(intent);
     }
     public void dashBorad(){

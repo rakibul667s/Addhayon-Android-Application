@@ -60,16 +60,20 @@
                         android:layout_height="47dp"
                         android:src="@drawable/nagad" />
 
-                    <TextView
-                        android:layout_width="166dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="80dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/gradient3"
-                        android:gravity="center"
-                        android:text="Purchase now"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="166dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="80dp"
+                            android:background="@drawable/gradient3"
+                            android:gravity="center"
+                            android:text="Purchase now"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -713,7 +717,7 @@
                     android:layout_height="47dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="100dp"
                     android:background="@drawable/gets_started"
                     android:gravity="center"
                     android:text="See More"
