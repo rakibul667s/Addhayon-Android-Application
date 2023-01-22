@@ -1,5 +1,6 @@
 package com.example.addhayon;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
        View myView;
 
        if(view == null){
@@ -40,6 +41,14 @@ public class CategoryAdapter extends BaseAdapter {
        }else{
            myView = view;
        }
+       myView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(view.getContext(),TestActivity.class);
+               intent.putExtra("CAT_INDEX",i);
+               view.getContext().startActivity(intent);
+           }
+       });
         TextView catName = myView.findViewById(R.id.catName);
         TextView noOfTests  = myView.findViewById(R.id.no_of_tests);
         catName.setText(cat_list.get(i).getName());

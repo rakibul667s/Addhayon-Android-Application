@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -34,7 +35,7 @@
                 android:text="25 Tests"
                 android:layout_marginTop="8dp"
                 android:textAlignment="center"
-                android:textColor="@color/teal_200"/>
+                android:textColor="@color/gradient2StartColor"/>
 
 
         </LinearLayout>

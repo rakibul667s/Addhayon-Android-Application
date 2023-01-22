@@ -30,13 +30,14 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public  void run(){
                 try {
-                    sleep(1500);
+                    sleep(1200);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
                 if(mAuth.getCurrentUser() != null){
                     Intent intent = new Intent(LoadingPage.this, dashboard.class);
                     startActivity(intent);
+
 
                 }else{
                     Intent intent = new Intent(LoadingPage.this, sign_in_page.class);

@@ -49,12 +49,19 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/mipmap-anydpi-v26/addhayon_round.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/addhayon/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout-v11/test_item_layout.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_all_exam_cat.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_calender.xml" value="0.17401215805471124" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_exam_dashborad.xml" value="0.15185185185185185" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_test.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/activity_user_profile.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/cat_item.xml" value="0.25" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/class_view.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/exam_view.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/fragment_exam_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/fragment_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/Addhayon-Android-Application/app/src/main/res/layout/test_item_layout.xml" value="0.22" />
       </map>
     </option>
   </component>

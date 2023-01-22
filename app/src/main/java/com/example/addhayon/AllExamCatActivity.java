@@ -19,7 +19,7 @@ import kotlin.jvm.functions.Function1;
 public class AllExamCatActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
     private GridView catView;
-    private List<CategoryModel> catList = new ArrayList<>();
+    public static List<CategoryModel> catList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
