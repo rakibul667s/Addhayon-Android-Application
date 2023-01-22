@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.addhayon"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -30,6 +30,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+}
+configurations {
+    implementation.exclude module:'guava-jdk5'
+    all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 
 dependencies {
@@ -71,6 +75,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation 'com.google.guava:guava:31.1-android'
 
 
 }
