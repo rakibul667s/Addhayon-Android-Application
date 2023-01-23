@@ -109,7 +109,19 @@ public class sign_in_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            openDashboradPage();
+                            DBQurey.loadCategories(new MyCompleteListener(){
+                                @Override
+                                public void onSuccess(){
+                                    Intent intent = new Intent(sign_in_page.this,dashboard.class);
+                                    startActivity(intent);
+                                    sign_in_page.this.finish();
+                                }
+                                @Override
+                                public void onFailure(){
+                                    Toast.makeText(sign_in_page.this, "Something went wrong ! Please try Later.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else {
                             error_msg.setText("Please correct mail and password *");
                         }

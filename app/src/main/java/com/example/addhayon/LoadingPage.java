@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,13 +43,25 @@ public class LoadingPage extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(mAuth.getCurrentUser() != null){
-                    Intent intent = new Intent(LoadingPage.this, dashboard.class);
-                    startActivity(intent);
+                    DBQurey.loadCategories(new MyCompleteListener(){
+                        @Override
+                        public void onSuccess(){
+                            Intent intent = new Intent(LoadingPage.this,dashboard.class);
+                            startActivity(intent);
+                            LoadingPage.this.finish();
+                        }
+                        @Override
+                        public void onFailure(){
+                            Toast.makeText(LoadingPage.this, "Something went wrong ! Please try Later.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
                 }else{
                     Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
                     startActivity(intent);
+                    LoadingPage.this.finish();
                }
 
 
@@ -58,5 +71,6 @@ public class LoadingPage extends AppCompatActivity {
     public void openSignPage(){
         Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
         startActivity(intent);
+        LoadingPage.this.finish();
     }
 }

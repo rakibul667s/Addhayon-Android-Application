@@ -18,7 +18,7 @@ import kotlin.jvm.functions.Function1;
 public class AllExamCatActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
     private GridView catView;
-    public static List<CategoryModel> catList = new ArrayList<>();
+    //public static List<CategoryModel> catList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class AllExamCatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_exam_cat);
 
         catView = findViewById(R.id.cat_grid);
-        loadCategories();
-        CategoryAdapter adapter = new CategoryAdapter(catList);
+        //loadCategories();
+        CategoryAdapter adapter = new CategoryAdapter(DBQurey.g_catList);
         catView.setAdapter(adapter);
 
         btm = findViewById(R.id.bottom_nav);
@@ -65,17 +65,17 @@ public class AllExamCatActivity extends AppCompatActivity {
             }
         });
     }
-    private void loadCategories(){
-        catList.clear();
-        catList.add(new CategoryModel("1","Bangla", 20));
-        catList.add(new CategoryModel("2","HISTORY", 30));
-        catList.add(new CategoryModel("3","ENGLISH", 10));
-        catList.add(new CategoryModel("4","MATH", 25));
-        catList.add(new CategoryModel("5","ICT", 10));
-        catList.add(new CategoryModel("6","GC", 10));
-
-
-    }
+//    private void loadCategories(){
+//        catList.clear();
+//        catList.add(new CategoryModel("1","Bangla", 20));
+//        catList.add(new CategoryModel("2","HISTORY", 30));
+//        catList.add(new CategoryModel("3","ENGLISH", 10));
+//        catList.add(new CategoryModel("4","MATH", 25));
+//        catList.add(new CategoryModel("5","ICT", 10));
+//        catList.add(new CategoryModel("6","GC", 10));
+//
+//
+//    }
     private  void  replace(Fragment fragment){
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame,fragment);

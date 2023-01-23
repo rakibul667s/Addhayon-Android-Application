@@ -30,7 +30,7 @@ public class TestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         int cat_index = getIntent().getIntExtra("CAT_INDEX",0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(AllExamCatActivity.catList.get(cat_index).getName());
+        getSupportActionBar().setTitle(DBQurey.g_catList.get(cat_index).getName());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
