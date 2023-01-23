@@ -47,19 +47,23 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
             testNo =itemView.findViewById(R.id.testNo);
             topScore = itemView.findViewById(R.id.scoreText);
             progressBar =itemView.findViewById(R.id.testProgressbar);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(),QuestionsActivity.class);
-                    itemView.getContext().startActivity(intent);
-                }
-            });
+
         }
         private void setData(int pos, int progress){
             testNo.setText("Test No :" +String.valueOf(pos + 1));
             topScore.setText(String.valueOf(progress)+" %");
 
             progressBar.setProgress(progress);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    DBQurey.g_selected_test_index = pos;
+
+                    Intent intent = new Intent(itemView.getContext(),StartTestActivity.class);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
