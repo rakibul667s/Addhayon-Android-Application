@@ -31,14 +31,16 @@
         app:civ_border_width="5dp"
         app:civ_border_color="#FFFFFF">
     </de.hdodenhof.circleimageview.CircleImageView>
+
     <TextView
+        android:id="@+id/name"
         android:layout_marginTop="275dp"
         android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="Rakibul Islam"
+        android:text="Addhayon"
         android:textColor="@color/gradient2StartColor"
         android:textSize="26sp"
         android:textStyle="bold" />

@@ -43,7 +43,7 @@ public class LoadingPage extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(mAuth.getCurrentUser() != null){
-                    DBQurey.loadCategories(new MyCompleteListener(){
+                    DBQurey.loadData(new MyCompleteListener(){
                         @Override
                         public void onSuccess(){
                             Intent intent = new Intent(LoadingPage.this,dashboard.class);

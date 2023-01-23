@@ -109,7 +109,7 @@ public class sign_in_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            DBQurey.loadCategories(new MyCompleteListener(){
+                            DBQurey.loadData(new MyCompleteListener(){
                                 @Override
                                 public void onSuccess(){
                                     Intent intent = new Intent(sign_in_page.this,dashboard.class);

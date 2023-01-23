@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -23,6 +24,9 @@ import java.util.Map;
 public class DBQurey {
     public static FirebaseFirestore g_firestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
+    public static int g_selected_cat_index =0;
+    public static List<TestModel> g_testList = new ArrayList<>();
+    public static ProfileModel myProfile = new ProfileModel("NA", "null");
 
 
     //------------------------Data set-----------------------------------------
@@ -57,7 +61,7 @@ public class DBQurey {
     }
 
 
-    //--------------------load Categories from firebase-------------------
+    //--------------------load Exam Categories from firebase-------------------
     public static void loadCategories(final MyCompleteListener completeListener){
         g_catList.clear();
         g_firestore.collection("QUIZ").get()
@@ -70,7 +74,7 @@ public class DBQurey {
                             docList.put(doc.getId(),doc);
                         }
                         QueryDocumentSnapshot catListDooc = docList.get("Categories");
-                        long catCount = catListDooc.getLong("Count");
+                        long catCount = catListDooc.getLong("COUNT");
                         for(int i=1; i<=catCount; i++){
                             String catID =catListDooc.getString("CAT"+String.valueOf(i) + "_ID");
                             QueryDocumentSnapshot catDoc = docList.get(catID);
@@ -89,6 +93,69 @@ public class DBQurey {
                     }
                 });
 
+    }
+
+    //--------------------load Test Categories from firebase-------------------
+    public static void loadTestData(MyCompleteListener completeListener){
+        g_testList.clear();
+        g_firestore.collection("QUIZ").document(g_catList.get(g_selected_cat_index).getDocID())
+                .collection("TESTS_LIST").document("TESTS_INFO")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        int noOfTests = g_catList.get(g_selected_cat_index).getNoOfTests();
+                        for(int i=1; i<=noOfTests; i++){
+                            g_testList.add(new TestModel(
+                                    documentSnapshot.getString("TEST"+ String.valueOf(i) + "_ID"),
+                                    0,
+                                    documentSnapshot.getLong("TEST" + String.valueOf(i)+ "_TIME").intValue()
+                            ));
+                        }
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+
+    //------------------------Profile data load--------------------------------
+    public static void getUserData(final MyCompleteListener completeListener){
+        g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        myProfile.setName(documentSnapshot.getString("NAME"));
+                        myProfile.setEmail(documentSnapshot.getString("EMAIL_ID"));
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    public static void loadData(MyCompleteListener completeListener){
+        loadCategories(new MyCompleteListener(){
+            @Override
+            public void onSuccess(){
+                getUserData(completeListener);
+            }
+            @Override
+            public void onFailure(){
+                completeListener.onFailure();
+
+            }
+        });
     }
 
 }

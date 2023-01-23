@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.List;
 public class TestActivity extends AppCompatActivity {
     private RecyclerView textView;
     private Toolbar toolbar;
-    private List<TestModel> testList;
+    private TestAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,29 +30,41 @@ public class TestActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        int cat_index = getIntent().getIntExtra("CAT_INDEX",0);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(DBQurey.g_catList.get(cat_index).getName());
+        getSupportActionBar().setTitle(DBQurey.g_catList.get(DBQurey.g_selected_cat_index).getName());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
 
         textView.setLayoutManager(layoutManager);
 
-        loadTestData();
-        TestAdapter adapter = new TestAdapter(testList);
-        textView.setAdapter(adapter);
+        DBQurey.loadTestData(new MyCompleteListener(){
+            @Override
+            public void onSuccess(){
+                adapter = new TestAdapter(DBQurey.g_testList);
+                textView.setAdapter(adapter);
+            }
+            @Override
+            public void onFailure(){
+                Toast.makeText(TestActivity.this, "Something went wrong ! Please try Later.",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
 
     }
-    private void loadTestData(){
-        testList = new ArrayList<>();
-        testList.add(new TestModel("1",50,20));
-        testList.add(new TestModel("2",60,20));
-        testList.add(new TestModel("3",50,20));
-        testList.add(new TestModel("4",10,20));
-
-    }
+//    private void loadTestData(){
+//        testList = new ArrayList<>();
+//        testList.add(new TestModel("1",50,20));
+//        testList.add(new TestModel("2",60,20));
+//        testList.add(new TestModel("3",50,20));
+//        testList.add(new TestModel("4",10,20));
+//
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

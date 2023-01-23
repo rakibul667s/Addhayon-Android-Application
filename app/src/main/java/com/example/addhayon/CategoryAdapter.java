@@ -41,11 +41,14 @@ public class CategoryAdapter extends BaseAdapter {
        }else{
            myView = view;
        }
+
        myView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               DBQurey.g_selected_cat_index = i;
+
                Intent intent = new Intent(view.getContext(),TestActivity.class);
-               intent.putExtra("CAT_INDEX",i);
+
                view.getContext().startActivity(intent);
            }
        });

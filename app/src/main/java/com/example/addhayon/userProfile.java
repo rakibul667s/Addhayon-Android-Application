@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.PopupMenu;
@@ -29,6 +30,10 @@ public class userProfile extends AppCompatActivity {
     private ImageView button1;
     private MeowBottomNavigation btm;
     private FirebaseAuth mAuth;
+    private TextView name;
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -36,6 +41,11 @@ public class userProfile extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        //-------------------set Profile----------------------
+        String pName = DBQurey.myProfile.getName();
+        name = findViewById(R.id.name);
+        name.setText(pName);
 
 
 
