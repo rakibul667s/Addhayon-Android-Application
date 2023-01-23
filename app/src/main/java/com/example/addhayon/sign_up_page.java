@@ -114,12 +114,29 @@ public class sign_up_page extends AppCompatActivity {
     public void signupNewUser(){
         mAuth.createUserWithEmailAndPassword(emailStr, passStr)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            openSignUpPage();
+
                             Toast.makeText(sign_up_page.this,"sign up Successfull", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            DBQurey.createUserData(emailStr,nameStr, new MyCompleteListener(){
+                                @Override
+                                public void onSuccess(){
+                                    //-------call Sign in page--------------
+                                    openSignUpPage();
+                                }
+                                @Override
+                                public void onFailure(){
+                                    Toast.makeText(sign_up_page.this, "Something went wrong ! Please try Later.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
                         } else {
 
                             Toast.makeText(sign_up_page.this, "Authentication failed.",

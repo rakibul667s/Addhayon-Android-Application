@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoadingPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -26,6 +27,12 @@ public class LoadingPage extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
+
+        //-------------firebase add-----------------
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DBQurey.g_firestore = FirebaseFirestore.getInstance();
+
+        //------------------Splash Screen--------------------
         new Thread(){
             @Override
             public  void run(){
