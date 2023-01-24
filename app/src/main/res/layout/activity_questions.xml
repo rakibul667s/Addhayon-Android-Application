@@ -20,6 +20,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
+            android:id="@+id/tv_quesID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1/25"
@@ -30,6 +31,7 @@
 
             />
         <TextView
+            android:id="@+id/tv_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="25 : 15 min"
@@ -40,6 +42,7 @@
             />
 
         <Button
+            android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:text="Submit "
@@ -51,6 +54,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="12dp"
@@ -60,20 +64,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar">
         <TextView
+            android:id="@+id/qa_catName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
-            android:text="GK"
+            android:text="Bangla"
             android:textColor="@color/white"
             android:textSize="18sp"
             />
         <ImageView
+            android:id="@+id/qa_bookmark"
             android:layout_weight=".8"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/baseline_bookmarks_24"
             />
         <ImageView
+            android:id="@+id/ques_list_gridB"
             android:layout_weight=".8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,7 +89,10 @@
 
 
 
+
+
     <LinearLayout
+        android:id="@+id/ll3"
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -94,6 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
+            android:id="@+id/prev_quesB"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="2dp"
             android:layout_width="50dp"
@@ -101,12 +112,14 @@
             android:src="@drawable/baseline_arrow_left_24"/>
 
         <Button
+            android:id="@+id/clear_selB"
             android:layout_width="130dp"
             android:layout_height="34dp"
             android:background="@color/teal_700"
             android:textColor="@color/white"
             android:text="Clear Option"/>
         <Button
+            android:id="@+id/markB"
             android:layout_width="130dp"
             android:layout_height="34dp"
             android:layout_marginLeft="8dp"
@@ -115,6 +128,7 @@
             android:text="Mark Review"/>
 
         <ImageView
+            android:id="@+id/next_quesB"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="2dp"
             android:layout_width="50dp"
@@ -123,6 +137,19 @@
 
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/questions_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/ll3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll4"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -146,7 +146,8 @@ public class DBQurey {
                                     doc.getString("B"),
                                     doc.getString("C"),
                                     doc.getString("D"),
-                                    doc.getLong("ANSWER").intValue()
+                                    doc.getLong("ANSWER").intValue(),
+                                    -1
 
                             ));
                         }

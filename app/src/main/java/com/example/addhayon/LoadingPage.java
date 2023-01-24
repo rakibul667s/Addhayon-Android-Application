@@ -38,7 +38,7 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public  void run(){
                 try {
-                    sleep(1100);
+                    sleep(1000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -69,8 +69,27 @@ public class LoadingPage extends AppCompatActivity {
         }.start();
     }
     public void openSignPage(){
-        Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
-        startActivity(intent);
-        LoadingPage.this.finish();
+
+        if(mAuth.getCurrentUser() != null){
+            DBQurey.loadData(new MyCompleteListener(){
+                @Override
+                public void onSuccess(){
+                    Intent intent = new Intent(LoadingPage.this,dashboard.class);
+                    startActivity(intent);
+                    LoadingPage.this.finish();
+                }
+                @Override
+                public void onFailure(){
+                    Toast.makeText(LoadingPage.this, "Something went wrong ! Please try Later.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        }else{
+            Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
+            startActivity(intent);
+            LoadingPage.this.finish();
+        }
     }
 }

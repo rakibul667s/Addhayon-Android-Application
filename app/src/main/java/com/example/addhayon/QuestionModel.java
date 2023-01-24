@@ -9,18 +9,30 @@ public class QuestionModel {
 
     private int correctAns;
 
+    private int selectedAns;
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, int correctAns) {
+
+
+    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, int correctAns, int selectedAns) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
         this.correctAns = correctAns;
+        this.selectedAns = selectedAns;
     }
 
     public String getQuestion() {
         return question;
+    }
+
+    public int getSelectedAns(int option_num) {
+        return selectedAns;
+    }
+
+    public void setSelectedAns(int selectedAns) {
+        this.selectedAns = selectedAns;
     }
 
     public void setQuestion(String question) {
