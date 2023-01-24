@@ -58,7 +58,7 @@
         android:layout_marginTop="64dp"
         android:textColor="@color/gradient2StartColor"
         android:textSize="16sp"
-        android:text="UnANswer"
+        android:text="UnAnswer"
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +81,7 @@
         android:layout_marginTop="16dp"
         android:textColor="#BFBCBC"
         android:gravity="center"
-        android:text="Blank Answer"
+        android:text="Blank"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
