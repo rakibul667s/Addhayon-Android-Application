@@ -31,7 +31,7 @@ public class TestActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(DBQurey.g_catList.get(DBQurey.g_selected_cat_index).getName());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
