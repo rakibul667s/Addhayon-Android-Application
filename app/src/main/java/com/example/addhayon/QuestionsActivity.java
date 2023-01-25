@@ -36,7 +36,9 @@ import java.util.concurrent.TimeUnit;
 public class QuestionsActivity extends AppCompatActivity {
     private RecyclerView questionView;
     private TextView tvQuesID, timerTV, catNameTV;
-    private Button submitB, markB, clearSelB;
+    private Button submitB, clearSelB;
+
+    private ImageView  markB;
     private ImageView prevQuesB, nextQuesB;
     private ImageView quesListB;
     private int quesID;

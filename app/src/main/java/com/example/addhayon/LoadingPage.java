@@ -38,7 +38,7 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public  void run(){
                 try {
-                    sleep(1000);
+                    sleep(0);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
