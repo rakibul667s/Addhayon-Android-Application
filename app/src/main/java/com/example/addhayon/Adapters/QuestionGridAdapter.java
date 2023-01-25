@@ -1,4 +1,4 @@
-package com.example.addhayon;
+package com.example.addhayon.Adapters;
 
 import static com.example.addhayon.DBQurey.ANSWERED;
 import static com.example.addhayon.DBQurey.NOT_VIDITED;
@@ -16,6 +16,10 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+
+import com.example.addhayon.DBQurey;
+import com.example.addhayon.QuestionsActivity;
+import com.example.addhayon.R;
 
 public class QuestionGridAdapter extends BaseAdapter {
     private int numOfQues;

@@ -1,4 +1,4 @@
-package com.example.addhayon;
+package com.example.addhayon.Adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,6 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.addhayon.DBQurey;
+import com.example.addhayon.Models.CategoryModel;
+import com.example.addhayon.R;
+import com.example.addhayon.TestActivity;
 
 import java.util.List;
 
@@ -47,7 +52,7 @@ public class CategoryAdapter extends BaseAdapter {
            public void onClick(View view) {
                DBQurey.g_selected_cat_index = i;
 
-               Intent intent = new Intent(view.getContext(),TestActivity.class);
+               Intent intent = new Intent(view.getContext(), TestActivity.class);
 
                view.getContext().startActivity(intent);
            }

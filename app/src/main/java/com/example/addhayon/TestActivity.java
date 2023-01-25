@@ -8,11 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.addhayon.Adapters.TestAdapter;
 
 public class TestActivity extends AppCompatActivity {
     private RecyclerView textView;

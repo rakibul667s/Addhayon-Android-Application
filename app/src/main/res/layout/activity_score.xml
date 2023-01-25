@@ -6,35 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".ScoreActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        app:titleTextColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white"
-        android:background="@color/gradient2StartColor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/st_back2"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="-5dp"
+        android:src="@drawable/baseline_home_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/st_back2">
 
         <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_height="150dp"
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
             android:elevation="5dp"
             android:padding="10dp"
             android:orientation="vertical"
-            android:background="@drawable/gradient3"
+            android:background="@drawable/gradient4"
             android:backgroundTint="@color/white">
             <TextView
                 android:layout_width="match_parent"
@@ -56,6 +57,43 @@
                 android:textSize="24sp"
                 android:padding="16dp"
                 android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="40dp"
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <Button
+                android:id="@+id/reattamB"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Re-Attempt"
+                android:textSize="16sp"
+                android:elevation="5dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient4"/>
+            <View
+                android:id="@+id/divider"
+                android:background="@color/white"
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/view_answerB"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="View Answes"
+                android:textSize="16sp"
+                android:elevation="5dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient4"/>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -248,7 +286,7 @@
         <Button
             android:id="@+id/leaderB"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="46dp"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20dp"
             android:text="See your Ranking"
@@ -258,37 +296,7 @@
             android:background="@drawable/gradient3"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginBottom="40dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <Button
-            android:id="@+id/reattamB"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Re-Attempt"
-            android:textSize="16sp"
-            android:elevation="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:background="@drawable/gradient3"/>
-        <Button
-            android:id="@+id/view_answerB"
-            android:layout_marginLeft="20dp"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="View Answes"
-            android:textSize="16sp"
-            android:elevation="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:background="@drawable/gradient3"/>
-    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

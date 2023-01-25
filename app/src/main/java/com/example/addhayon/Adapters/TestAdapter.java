@@ -1,4 +1,4 @@
-package com.example.addhayon;
+package com.example.addhayon.Adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.addhayon.DBQurey;
+import com.example.addhayon.Models.TestModel;
+import com.example.addhayon.R;
+import com.example.addhayon.StartTestActivity;
 
 import java.util.List;
 
@@ -60,7 +65,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
 
                     DBQurey.g_selected_test_index = pos;
 
-                    Intent intent = new Intent(itemView.getContext(),StartTestActivity.class);
+                    Intent intent = new Intent(itemView.getContext(), StartTestActivity.class);
                     itemView.getContext().startActivity(intent);
                 }
             });

@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.example.addhayon.Adapters.CategoryAdapter;
+import com.example.addhayon.Models.CategoryModel;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.addhayon;
+package com.example.addhayon.Models;
 
 public class QuestionModel {
     private String question;

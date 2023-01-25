@@ -1,4 +1,4 @@
-package com.example.addhayon;
+package com.example.addhayon.Adapters;
 
 import static com.example.addhayon.DBQurey.ANSWERED;
 import static com.example.addhayon.DBQurey.REVIEW;
@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.addhayon.DBQurey;
+import com.example.addhayon.Models.QuestionModel;
+import com.example.addhayon.R;
 
 import java.util.List;
 

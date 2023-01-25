@@ -6,6 +6,11 @@ import android.util.ArrayMap;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.example.addhayon.Models.CategoryModel;
+import com.example.addhayon.Models.ProfileModel;
+import com.example.addhayon.Models.QuestionModel;
+import com.example.addhayon.Models.RankModel;
+import com.example.addhayon.Models.TestModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,15 +29,12 @@ import java.util.Map;
 public class DBQurey {
     public static FirebaseFirestore g_firestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
-
     public static int g_selected_cat_index =0;
     public static List<TestModel> g_testList = new ArrayList<>();
-
     public static int g_selected_test_index = 0;
-
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-
     public static ProfileModel myProfile = new ProfileModel("NA", "null");
+    public static RankModel myPerformance = new RankModel(0,-1);
 
     public static final int NOT_VIDITED = 0;
     public static final int UNANSWERED = 1;
@@ -73,6 +75,38 @@ public class DBQurey {
                 });
     }
 
+    //------------------------Save Result-----------------------------
+    public static void saveResult(int score, MyCompleteListener completeListener){
+            WriteBatch batch = g_firestore.batch();
+            DocumentReference userDoc = g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getUid());
+            batch.update(userDoc, "TOTAL_SCORE", score);
+
+            if(score > g_testList.get(g_selected_test_index).getTopScore()){
+                DocumentReference scoreDoc = userDoc.collection("USER_DATA").document("MY_SCORE");
+                batch.update(scoreDoc,g_testList.get(g_selected_test_index).getTextID(),score);
+
+            }
+            batch.commit()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            if(score > g_testList.get(g_selected_test_index).getTopScore()){
+                                g_testList.get(g_selected_test_index).setTopScore(score);
+
+                                myPerformance.setScore(score);
+                                completeListener.onSuccess();
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            completeListener.onFailure();
+
+                        }
+                    });
+
+    }
 
     //--------------------load Exam Categories from firebase-------------------
     public static void loadCategories(final MyCompleteListener completeListener){
@@ -180,6 +214,7 @@ public class DBQurey {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         myProfile.setName(documentSnapshot.getString("NAME"));
                         myProfile.setEmail(documentSnapshot.getString("EMAIL_ID"));
+                        myPerformance.setScore(documentSnapshot.getLong("TOTAL_SCORE").intValue());
                         completeListener.onSuccess();
                     }
                 })

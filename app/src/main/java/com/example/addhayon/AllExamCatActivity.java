@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.addhayon.Adapters.CategoryAdapter;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
