@@ -34,6 +34,13 @@ public class DBQurey {
 
     public static ProfileModel myProfile = new ProfileModel("NA", "null");
 
+    public static final int NOT_VIDITED = 0;
+    public static final int UNANSWERED = 1;
+    public static final int ANSWERED = 2;
+    public static final int REVIEW = 3;
+
+
+
 
     //------------------------Data set-----------------------------------------
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -147,7 +154,8 @@ public class DBQurey {
                                     doc.getString("C"),
                                     doc.getString("D"),
                                     doc.getLong("ANSWER").intValue(),
-                                    -1
+                                    -1,
+                                    NOT_VIDITED
 
                             ));
                         }

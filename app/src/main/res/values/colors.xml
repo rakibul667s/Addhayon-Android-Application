@@ -14,4 +14,9 @@
     <color name="loginEnd">#086F75</color>
     <color name="gradient2StartColor">#E60C0C</color>
     <color name="gradient2EndColor">#F52525</color>
+    <color name="Blank">#BFBCBC</color>
+    <color name="Answer">#1B9297</color>
+    <color name="Review">#166197</color>
+
+
 </resources>

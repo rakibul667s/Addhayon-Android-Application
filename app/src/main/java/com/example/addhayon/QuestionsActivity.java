@@ -1,5 +1,9 @@
 package com.example.addhayon;
 
+import static com.example.addhayon.DBQurey.ANSWERED;
+import static com.example.addhayon.DBQurey.NOT_VIDITED;
+import static com.example.addhayon.DBQurey.REVIEW;
+import static com.example.addhayon.DBQurey.UNANSWERED;
 import static com.example.addhayon.DBQurey.g_quesList;
 import static com.example.addhayon.DBQurey.g_catList;
 import static com.example.addhayon.DBQurey.g_selected_cat_index;
@@ -20,6 +24,7 @@ import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +43,12 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private ImageView drawerCloseB;
 
+    private GridView quesListGV;
+    private ImageView markImage;
+
+    private QuestionGridAdapter gridAdapter;
+
+
     QuestionsAdapter questionsAdapter;
 
     @Override
@@ -47,6 +58,9 @@ public class QuestionsActivity extends AppCompatActivity {
         init();
         questionsAdapter = new QuestionsAdapter(g_quesList);
         questionView.setAdapter(questionsAdapter);
+
+        gridAdapter = new QuestionGridAdapter(this,g_quesList.size());
+        quesListGV.setAdapter(gridAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -80,7 +94,8 @@ public class QuestionsActivity extends AppCompatActivity {
         quesListB = findViewById(R.id.ques_list_gridB);
         drawer = findViewById(R.id.drawer_layout);
         drawerCloseB =findViewById(R.id.drawableCloseB);
-
+        markImage = findViewById(R.id.mark_image);
+        quesListGV =findViewById(R.id.ques_list_gv);
         quesID = 0;
         tvQuesID.setText("1/" + String.valueOf(g_quesList.size()));
         catNameTV.setText(g_catList.get(g_selected_cat_index).getName());
@@ -97,6 +112,8 @@ public class QuestionsActivity extends AppCompatActivity {
                 super.onScrollStateChanged(recyclerView, newState);
                 View view = snapHelper.findSnapView(recyclerView.getLayoutManager());
                 quesID = recyclerView.getLayoutManager().getPosition(view);
+                if(g_quesList.get(quesID).getStatus() == NOT_VIDITED)
+                    g_quesList.get(quesID).setStatus(UNANSWERED);
                 tvQuesID.setText(String.valueOf(quesID + 1) + "/" +String.valueOf(g_quesList.size()));
             }
 
@@ -142,6 +159,7 @@ public class QuestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!drawer.isDrawerOpen(GravityCompat.END)){
+                    gridAdapter.notifyDataSetChanged();
                     drawer.openDrawer(GravityCompat.END);
                 }
             }
@@ -154,6 +172,29 @@ public class QuestionsActivity extends AppCompatActivity {
                 }
             }
         });
+        markB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(markImage.getVisibility() != View.VISIBLE){
+                    markImage.setVisibility(View.VISIBLE);
+                    g_quesList.get(quesID).setStatus(REVIEW);
+                }else{
+                    markImage.setVisibility(View.GONE);
+                    if(g_quesList.get(quesID).getSelectedAns() != -1){
+                        g_quesList.get(quesID).setStatus(ANSWERED);
+                    }else{
+                        g_quesList.get(quesID).setStatus(UNANSWERED);
+                    }
+                }
+            }
+        });
+    }
+
+    public void goToQuestion(int position){
+        questionView.smoothScrollToPosition(position);
+        if(drawer.isDrawerOpen(GravityCompat.END)){
+            drawer.closeDrawer(GravityCompat.END);
+        }
     }
 
 

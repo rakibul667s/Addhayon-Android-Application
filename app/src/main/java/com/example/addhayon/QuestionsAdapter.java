@@ -1,5 +1,10 @@
 package com.example.addhayon;
 
+import static com.example.addhayon.DBQurey.ANSWERED;
+import static com.example.addhayon.DBQurey.REVIEW;
+import static com.example.addhayon.DBQurey.UNANSWERED;
+import static com.example.addhayon.DBQurey.g_quesList;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,21 +81,21 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
             optionB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    selectOption(optionB, 1, pos);
+                    selectOption(optionB, 2, pos);
 
                 }
             });
             optionC.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    selectOption(optionC, 1, pos);
+                    selectOption(optionC, 3, pos);
 
                 }
             });
             optionD.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    selectOption(optionD, 1, pos);
+                    selectOption(optionD, 4, pos);
 
                 }
             });
@@ -100,22 +105,32 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
             if(prevSelectedB == null){
                 btn.setBackgroundResource(R.drawable.selected_btn);
                 DBQurey.g_quesList.get(quesID).getSelectedAns(option_num);
-
+                changeStatus(quesID, ANSWERED);
                 prevSelectedB =btn;
             }else{
                 if(prevSelectedB.getId() == btn.getId()){
                     btn.setBackgroundResource(R.drawable.unseleted_btn);
                     DBQurey.g_quesList.get(quesID).setSelectedAns(-1);
+                    changeStatus(quesID,UNANSWERED);
                     prevSelectedB = null;
                 }else{
                     prevSelectedB.setBackgroundResource(R.drawable.unseleted_btn);
                     btn.setBackgroundResource(R.drawable.selected_btn);
                     DBQurey.g_quesList.get(quesID).setSelectedAns(option_num);
+                    changeStatus(quesID,ANSWERED);
                     prevSelectedB =btn;
                 }
 
             }
         }
+
+        private void changeStatus(int id, int status){
+            if(g_quesList.get(id).getStatus() != REVIEW){
+                g_quesList.get(id).setStatus(status);
+            }
+
+        }
+
         private void setOption(Button btn, int option_num, int quesID){
             if(DBQurey.g_quesList.get(quesID).getSelectedAns(option_num) == option_num){
                     btn.setBackgroundResource(R.drawable.selected_btn);
