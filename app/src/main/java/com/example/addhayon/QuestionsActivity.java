@@ -11,6 +11,7 @@ import static com.example.addhayon.DBQurey.g_selected_test_index;
 import static com.example.addhayon.DBQurey.g_testList;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
@@ -48,8 +50,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private QuestionGridAdapter gridAdapter;
 
-
     QuestionsAdapter questionsAdapter;
+
+    private CountDownTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +62,12 @@ public class QuestionsActivity extends AppCompatActivity {
         questionsAdapter = new QuestionsAdapter(g_quesList);
         questionView.setAdapter(questionsAdapter);
 
-        gridAdapter = new QuestionGridAdapter(this,g_quesList.size());
-        quesListGV.setAdapter(gridAdapter);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         questionView.setLayoutManager(layoutManager);
+
+        gridAdapter = new QuestionGridAdapter(this,g_quesList.size());
+        quesListGV.setAdapter(gridAdapter);
 
         //-------------call all ques----------------
         setSnapHelper();
@@ -99,6 +102,8 @@ public class QuestionsActivity extends AppCompatActivity {
         quesID = 0;
         tvQuesID.setText("1/" + String.valueOf(g_quesList.size()));
         catNameTV.setText(g_catList.get(g_selected_cat_index).getName());
+
+        g_quesList.get(0).setStatus(UNANSWERED);
     }
 
 
@@ -112,8 +117,16 @@ public class QuestionsActivity extends AppCompatActivity {
                 super.onScrollStateChanged(recyclerView, newState);
                 View view = snapHelper.findSnapView(recyclerView.getLayoutManager());
                 quesID = recyclerView.getLayoutManager().getPosition(view);
-                if(g_quesList.get(quesID).getStatus() == NOT_VIDITED)
+                if(g_quesList.get(quesID).getStatus() == NOT_VIDITED){
                     g_quesList.get(quesID).setStatus(UNANSWERED);
+                }
+
+                if(g_quesList.get(quesID).getStatus() == REVIEW){
+                    markImage.setVisibility(View.VISIBLE);
+                }else{
+                    markImage.setVisibility(View.GONE);
+                }
+
                 tvQuesID.setText(String.valueOf(quesID + 1) + "/" +String.valueOf(g_quesList.size()));
             }
 
@@ -150,6 +163,8 @@ public class QuestionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 g_quesList.get(quesID).setSelectedAns(-1);
+                g_quesList.get(quesID).setStatus(UNANSWERED);
+                markImage.setVisibility(v.GONE);
                 questionsAdapter.notifyDataSetChanged();
 
             }
@@ -188,6 +203,43 @@ public class QuestionsActivity extends AppCompatActivity {
                 }
             }
         });
+        submitB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitText();
+            }
+        });
+    }
+    private void submitText(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(QuestionsActivity.this);
+        builder.setCancelable(true);
+
+        View view = getLayoutInflater().inflate(R.layout.alert_dialog_layout,null);
+
+        Button cancelB = view.findViewById(R.id.cancelB);
+        Button confirmB =view.findViewById(R.id.confrimB);
+
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+
+        cancelB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        confirmB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+                alertDialog.dismiss();
+                Intent intent = new Intent(QuestionsActivity.this, ScoreActivity.class);
+                startActivity(intent);
+                QuestionsActivity.this.finish();
+            }
+        });
+        alertDialog.show();
+
     }
 
     public void goToQuestion(int position){
@@ -201,7 +253,7 @@ public class QuestionsActivity extends AppCompatActivity {
     //------------------------Time Function------------------------------------
     public void startTimer(){
         long totalTime = g_testList.get(g_selected_test_index).getTime()*60*1000;
-        CountDownTimer timer = new CountDownTimer(totalTime +1000,1000) {
+        timer = new CountDownTimer(totalTime +1000,1000) {
             @Override
             public void onTick(long remainingTime) {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
@@ -217,7 +269,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                Intent intent = new Intent(QuestionsActivity.this, ScoreActivity.class);
+                startActivity(intent);
+                QuestionsActivity.this.finish();
 
             }
         };
