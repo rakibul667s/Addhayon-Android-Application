@@ -38,7 +38,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="220dp"
             android:backgroundTint="@color/gradient2StartColor"
             android:background="@drawable/baseline_camera"/>
 
@@ -49,7 +49,7 @@
             android:layout_height="120dp"
             android:layout_marginTop="120dp"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/sony_profile"
+            android:src="@drawable/baseline_puser"
             app:civ_border_width="5dp"
             app:civ_border_color="#FFFFFF">
         </de.hdodenhof.circleimageview.CircleImageView>
@@ -67,7 +67,7 @@
         android:gravity="center_vertical"
         android:text="Change your name. . ."
         android:textColor="@color/i1"
-        android:textSize="20sp"/>
+        android:textSize="14sp"/>
     <EditText
         android:id="@+id/bio"
         android:layout_marginTop="290dp"
@@ -119,23 +119,34 @@
         android:textSize="14sp" />
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom|right">
+        android:gravity="bottom|right"
+        android:orientation="vertical">
+
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/button1"
+            android:id="@+id/cancel"
             android:padding="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/baseline_clear_24"
+            android:background="@drawable/gradient5"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/save"
+            android:padding="10dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/baseline_save_alt_24"
-            android:background="@drawable/gradient5">
-
-        </de.hdodenhof.circleimageview.CircleImageView>
-    </RelativeLayout>
+            android:background="@drawable/gradient5"/>
+    </LinearLayout>
 
 
 
