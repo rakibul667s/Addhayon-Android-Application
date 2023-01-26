@@ -38,7 +38,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="214dp"
             android:backgroundTint="@color/gradient2StartColor"
             android:background="@drawable/baseline_camera"/>
 
@@ -101,7 +101,7 @@
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="School or College. . ."
+        android:hint="abc"
         android:textColor="@color/i1"
         android:textSize="14sp" />
 

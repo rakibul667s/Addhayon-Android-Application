@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.util.Map;
@@ -40,7 +41,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
         saveB.setOnClickListener(new View.OnClickListener() {
 
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 saveData();
@@ -51,14 +51,11 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void saveData(){
-        String names = name.getText().toString().trim();
-        Map<String, Object> userData = new ArrayMap<>();
-        userData.put("NAME",names);
+        String sname = name.getText().toString().trim();
+        FirebaseFirestore.getInstance()
+                .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .update("NAME", sname);
 
-        DocumentReference userDoc = g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        WriteBatch batch = g_firestore.batch();
-        batch.set(userDoc,userData);
     }
 }
