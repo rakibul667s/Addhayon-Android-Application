@@ -52,7 +52,7 @@
                 android:gravity="center_vertical"
                 android:text="Class"
                 android:textColor="@color/teal_200"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
@@ -82,7 +82,7 @@
                 android:gravity="center_vertical"
                 android:text="Exam"
                 android:textColor="@color/gradient2StartColor"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
@@ -112,7 +112,7 @@
                 android:gravity="center_vertical"
                 android:text="Current Date"
                 android:textColor="#03302F"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>

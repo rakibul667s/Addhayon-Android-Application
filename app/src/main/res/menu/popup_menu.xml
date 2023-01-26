@@ -4,14 +4,15 @@
         <item
             app:showAsAction="always"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Edit Profile">
+            android:title="Other">
 
             <menu>
 
             <item
                 android:id="@+id/one"
-                android:icon="@drawable/ic_edit_profile"
-                android:title="Edit Profile"
+                android:icon="@drawable/ic_baseline_calendar"
+                android:iconTint="@color/gradient2StartColor"
+                android:title="Calender"
                 app:showAsAction="never"
                 />
 
@@ -40,20 +41,20 @@
             <item
                 android:id="@+id/one1"
                 android:icon="@drawable/ic_edit_profile"
-                android:title="Edit Profile"
+                android:title="LeaderBorad"
                 app:showAsAction="never"
                 />
 
             <item
                 android:id="@+id/two1"
                 android:icon="@drawable/ic_result"
-                android:title="Result"
+                android:title="Rank"
                 app:showAsAction="never"/>
 
             <item
                 android:id="@+id/three1"
-                android:icon="@drawable/ic_logout"
-                android:title="Logout"
+                android:icon="@drawable/baseline_mark2"
+                android:title="Saved Question"
                 app:showAsAction="never"/>
 
         </menu>
@@ -76,11 +77,11 @@
             <item
                 android:id="@+id/two2"
                 android:icon="@drawable/ic_result"
-                android:title="Result"
+                android:title="Delete Accpunt"
                 app:showAsAction="never"/>
 
             <item
-                android:id="@+id/three2"
+                android:id="@+id/logout"
                 android:icon="@drawable/ic_logout"
                 android:title="Logout"
                 app:showAsAction="never"/>

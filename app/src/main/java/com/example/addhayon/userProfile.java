@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
@@ -23,14 +24,19 @@ import android.content.Intent;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class userProfile extends AppCompatActivity {
+    private ImageView cover_img;
+    private CircleImageView profile_image;
     private ImageView button1;
     private MeowBottomNavigation btm;
     private FirebaseAuth mAuth;
-    private TextView name;
+    private TextView name,rank,score;
 
 
 
@@ -42,13 +48,21 @@ public class userProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        cover_img =findViewById(R.id.cover_img);
+        profile_image =findViewById(R.id.profile_image);
+        name = findViewById(R.id.name);
+        rank = findViewById(R.id.rank);
+        score = findViewById(R.id.totalScore);
+
         //-------------------set Profile----------------------
         String pName = DBQurey.myProfile.getName();
-        name = findViewById(R.id.name);
         name.setText(pName);
+        score.setText(String.valueOf(DBQurey.myPerformance.getScore()));
 
 
 
+
+        //---------------------------memu item--------------------------------------------
         button1 = (ImageView) findViewById(R.id.button1);
         PopupMenu popupMenu = new PopupMenu(this, button1);
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
@@ -56,7 +70,7 @@ public class userProfile extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.three){
+                if(id == R.id.logout){
                     openLoginPage();
                 }
 
@@ -70,10 +84,11 @@ public class userProfile extends AppCompatActivity {
                 popupMenu.show();
             }
         });
+        //-------------------------------------------------------------------------------
 
 
 
-
+        //--------------------------------meow btn---------------------------------------
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2,R.drawable.ic_exam));
@@ -107,9 +122,15 @@ public class userProfile extends AppCompatActivity {
                 return null;
             }
         });
+        //-----------------------------------------------------------------------------------------
+
 
     }
 
+
+
+
+    //---------------------Meow btn-------------------------------------------------
     private  void  replace(Fragment fragment){
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame,fragment);
@@ -144,6 +165,9 @@ public class userProfile extends AppCompatActivity {
         Intent intent = new Intent(this, sign_in_page.class);
         startActivity(intent);
     }
+    //---------------------Meow btn end--------------------------------------------
+
+
 
 
 
