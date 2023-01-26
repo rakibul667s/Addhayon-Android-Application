@@ -68,7 +68,7 @@
         <menu>
 
             <item
-                android:id="@+id/one2"
+                android:id="@+id/editProfile"
                 android:icon="@drawable/ic_edit_profile"
                 android:title="Edit Profile"
                 app:showAsAction="never"

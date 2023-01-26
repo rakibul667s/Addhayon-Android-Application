@@ -73,6 +73,10 @@ public class userProfile extends AppCompatActivity {
                 if(id == R.id.logout){
                     openLoginPage();
                 }
+                if(id == R.id.editProfile){
+                    Intent intent = new Intent(userProfile.this, EditProfileActivity.class);
+                    startActivity(intent);;
+                }
 
 
                 return false;
