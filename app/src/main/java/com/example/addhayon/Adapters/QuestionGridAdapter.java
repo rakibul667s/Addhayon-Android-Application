@@ -36,12 +36,12 @@ public class QuestionGridAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int i) {
         return null;
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int i) {
         return 0;
     }
 

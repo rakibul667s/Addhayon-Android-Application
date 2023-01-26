@@ -14,11 +14,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoadingPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
+
     private Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_page);
+
 
         button2 =(Button) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +41,7 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public  void run(){
                 try {
-                    sleep(0);
+                    sleep(1000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -70,26 +73,25 @@ public class LoadingPage extends AppCompatActivity {
     }
     public void openSignPage(){
 
-        if(mAuth.getCurrentUser() != null){
-            DBQurey.loadData(new MyCompleteListener(){
-                @Override
-                public void onSuccess(){
-                    Intent intent = new Intent(LoadingPage.this,dashboard.class);
-                    startActivity(intent);
-                    LoadingPage.this.finish();
-                }
-                @Override
-                public void onFailure(){
-                    Toast.makeText(LoadingPage.this, "Something went wrong ! Please try Later.",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
-        }else{
-            Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
-            startActivity(intent);
-            LoadingPage.this.finish();
-        }
-    }
+//        if(mAuth.getCurrentUser() != null){
+//            DBQurey.loadData(new MyCompleteListener(){
+//                @Override
+//                public void onSuccess(){
+                    Toast.makeText(LoadingPage.this, "Build up your skills",
+                            Toast.LENGTH_SHORT).show();}
+//                }
+//                @Override
+//                public void onFailure(){
+//                    Toast.makeText(LoadingPage.this, "Just a wait few second",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//
+//
+//        }else{
+//            Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
+//            startActivity(intent);
+//            LoadingPage.this.finish();
+//        }
+//    }
 }

@@ -40,8 +40,20 @@ public class TestActivity extends AppCompatActivity {
         DBQurey.loadTestData(new MyCompleteListener(){
             @Override
             public void onSuccess(){
-                adapter = new TestAdapter(DBQurey.g_testList);
-                textView.setAdapter(adapter);
+                DBQurey.loadMyScore(new MyCompleteListener(){
+                    @Override
+                    public void onSuccess(){
+                        adapter = new TestAdapter(DBQurey.g_testList);
+                        textView.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onFailure(){
+                        Toast.makeText(TestActivity.this, "Something went wrong ! Please try Later.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
             @Override
             public void onFailure(){

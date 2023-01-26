@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import java.util.Map;
 public class DBQurey {
     public static FirebaseFirestore g_firestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
-    public static int g_selected_cat_index =0;
+    public static int g_selected_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
@@ -74,16 +75,48 @@ public class DBQurey {
                     }
                 });
     }
+    public  static void loadMyScore(MyCompleteListener completeListener){
+        g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getUid())
+                .collection("USER_DATA").document("MY_SCORE")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        for (int i=0; i<g_testList.size(); i++){
+                            int top = 0;
+                            if(documentSnapshot.get(g_testList.get(i).getTextID()) != null){
+                                top = documentSnapshot.getLong(g_testList.get(i).getTextID()).intValue();
+                            }
+                            g_testList.get(i).setTopScore(top);
+                        }
+                        completeListener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+
+                    }
+                });
+    }
 
     //------------------------Save Result-----------------------------
     public static void saveResult(int score, MyCompleteListener completeListener){
             WriteBatch batch = g_firestore.batch();
             DocumentReference userDoc = g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getUid());
+
             batch.update(userDoc, "TOTAL_SCORE", score);
 
             if(score > g_testList.get(g_selected_test_index).getTopScore()){
                 DocumentReference scoreDoc = userDoc.collection("USER_DATA").document("MY_SCORE");
-                batch.update(scoreDoc,g_testList.get(g_selected_test_index).getTextID(),score);
+                Map<String , Object> testData = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                    testData = new ArrayMap<>();
+                    testData.put(g_testList.get(g_selected_test_index).getTextID(),score);
+                    batch.set(scoreDoc,testData, SetOptions.merge());
+
+                }
 
             }
             batch.commit()
@@ -173,6 +206,7 @@ public class DBQurey {
 
     //------------------Load Question-----------------------------------------
     public static void loadquestions(MyCompleteListener completeListener){
+        g_quesList.clear();
         g_firestore.collection("Questions")
                 .whereEqualTo("CATEGORY", g_catList.get(g_selected_cat_index).getDocID())
                 .whereEqualTo("TEST",g_testList.get(g_selected_test_index).getTextID())

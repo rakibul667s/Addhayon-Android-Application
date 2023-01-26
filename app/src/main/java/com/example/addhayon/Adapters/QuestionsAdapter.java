@@ -108,7 +108,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         private void selectOption(Button btn, int option_num, int quesID){
             if(prevSelectedB == null){
                 btn.setBackgroundResource(R.drawable.selected_btn);
-                DBQurey.g_quesList.get(quesID).getSelectedAns(option_num);
+                DBQurey.g_quesList.get(quesID).setSelectedAns(option_num);
                 changeStatus(quesID, ANSWERED);
                 prevSelectedB =btn;
             }else{
