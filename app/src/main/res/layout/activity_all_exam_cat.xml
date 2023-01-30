@@ -9,14 +9,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         app:cardBackgroundColor="@color/gradient2StartColor"
         tools:ignore="MissingConstraints">
 
 
         <TextView
             android:layout_width="158dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="Eaxm Catagories"

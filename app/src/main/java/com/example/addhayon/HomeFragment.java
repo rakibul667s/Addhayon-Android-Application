@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
         return  view;
     }
     private void openExam(){
-        Intent intent = new Intent(context,ExamDashborad.class);
+        Intent intent = new Intent(context,AllExamCatActivity.class);
         startActivity(intent);
     }
     public void onStart() {

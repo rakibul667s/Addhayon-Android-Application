@@ -52,7 +52,7 @@ public class AllExamCatActivity extends AppCompatActivity {
                         openCalendar();
                         break;
                     case 4:
-                        openMap();
+                        openLeaderBoard();
                         break;
                     case 5:
                         openUserProfile();
@@ -82,22 +82,28 @@ public class AllExamCatActivity extends AppCompatActivity {
     public void openExamCat(){
         Intent intent = new Intent(this, AllExamCatActivity.class);
         startActivity(intent);
+        AllExamCatActivity.this.finish();
+    }
+    public void openLeaderBoard(){
+        Intent intent = new Intent(this, LeaderBoard.class);
+        startActivity(intent);
+        AllExamCatActivity.this.finish();
     }
     public void openDashboard(){
         Intent intent = new Intent(this, dashboard.class);
         startActivity(intent);
+        AllExamCatActivity.this.finish();
     }
 
     public void openUserProfile(){
         Intent intent = new Intent(this, userProfile.class);
         startActivity(intent);
+        AllExamCatActivity.this.finish();
     }
     public  void openCalendar(){
         Intent intent = new Intent(this, calender.class);
         startActivity(intent);
+        AllExamCatActivity.this.finish();
     }
-    public void openMap(){
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-    }
+
 }

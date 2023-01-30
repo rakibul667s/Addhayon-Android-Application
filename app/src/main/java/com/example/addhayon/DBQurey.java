@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -45,12 +46,15 @@ public class DBQurey {
     public static List<CategoryModel> g_catList = new ArrayList<>();
     public static int g_selected_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
+    public static List<RankModel> g_usersList = new ArrayList<>();
+    public static int g_userCount = 0;
+    public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
     public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
-    public static RankModel myPerformance = new RankModel(0,-1);
+    public static RankModel myPerformance = new RankModel("NULL",0,-1);
     public static final int NOT_VIDITED = 0;
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
@@ -273,6 +277,7 @@ public class DBQurey {
                         myProfile.setSclClg(documentSnapshot.getString("SCL_CLG"));
                         myProfile.setPhn(documentSnapshot.getString("PHONE"));
                         myPerformance.setScore(documentSnapshot.getLong("TOTAL_SCORE").intValue());
+                        myPerformance.setName(documentSnapshot.getString("NAME"));
                         completeListener.onSuccess();
                     }
                 })
@@ -308,7 +313,17 @@ public class DBQurey {
         loadCategories(new MyCompleteListener(){
             @Override
             public void onSuccess(){
-                getUserData(completeListener);
+                getUserData(new MyCompleteListener(){
+                    @Override
+                    public void onSuccess(){
+                        getUserCount(completeListener);
+                    }
+                    @Override
+                    public void onFailure(){
+
+                        completeListener.onFailure();
+                    }
+                });
             }
             @Override
             public void onFailure(){
@@ -320,8 +335,61 @@ public class DBQurey {
 
 
     //---------------------------------
-    public static void imageLoad(){
+    public static void getTopUsers(MyCompleteListener completeListener){
+        String myUserID = FirebaseAuth.getInstance().getUid();
+        g_usersList.clear();
+        g_firestore.collection("USERS")
+                .whereGreaterThan("TOTAL_SCORE",0)
+                .orderBy("TOTAL_SCORE", Query.Direction.DESCENDING)
+                .limit(100)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        int rank = 1;
+                        for(QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                            g_usersList.add(new RankModel(
+                                   doc.getString("NAME"),
+                                    doc.getLong("TOTAL_SCORE").intValue(),
+                                    rank
+                            ));
+                            if(myUserID.compareTo(doc.getId() ) == 0){
+                                isMeOnTopList = true;
+                                myPerformance.setRank(rank);
+                            }
+                            rank++;
+                        }
+                        completeListener.onSuccess();
 
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
+    }
+
+    public static void getUserCount(MyCompleteListener completeListener){
+        g_firestore.collection("USERS").document("TOTAL_USERS")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                        g_userCount = documentSnapshot.getLong("COUNT").intValue();
+                        completeListener.onSuccess();
+
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        completeListener.onFailure();
+                    }
+                });
     }
 
 }

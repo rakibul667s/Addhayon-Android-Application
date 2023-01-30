@@ -1,5 +1,9 @@
 package com.example.addhayon;
 
+import static com.example.addhayon.DBQurey.g_userCount;
+import static com.example.addhayon.DBQurey.g_usersList;
+import static com.example.addhayon.DBQurey.myPerformance;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +19,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.PopupMenu;
 import android.content.Intent;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -60,6 +66,7 @@ public class userProfile extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storage1Ref, storage2Ref;
     private  ExecutorService service;
+    private LinearLayout rankB;
 
 
 
@@ -84,6 +91,7 @@ public class userProfile extends AppCompatActivity {
         birth = findViewById(R.id.birth);
         phn = findViewById(R.id.phone);
         email2 = findViewById(R.id.email);
+        rankB =findViewById(R.id.rankB);
 
         pScl = DBQurey.myProfile.getSclClg();
         pAddress =DBQurey.myProfile.getAddress();
@@ -110,6 +118,13 @@ public class userProfile extends AppCompatActivity {
 
 
         loadProfile();
+
+        rankB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLeaderBoard();
+            }
+        });
 
 
 
@@ -193,7 +208,31 @@ public class userProfile extends AppCompatActivity {
         email2.setText(pEmail);
         phn.setText(pPhn);
         score.setText(String.valueOf(DBQurey.myPerformance.getScore()));
+        if(DBQurey.g_usersList.size() == 0){
+            DBQurey.getTopUsers(new MyCompleteListener(){
+                @Override
+                public void onSuccess(){
+                    if(myPerformance.getScore() != 0){
+                        if(!DBQurey.isMeOnTopList){
+                            calcukateRank();
+                        }
+                        score.setText(""+myPerformance.getScore());
+                        rank.setText(""+myPerformance.getRank());
+                    }
+                }
+                @Override
+                public void onFailure(){
+                    Toast.makeText(userProfile.this, "Something went weong ! Please try agian",
+                            Toast.LENGTH_SHORT).show();
 
+                }
+            });
+        }else{
+            score.setText(""+myPerformance.getScore());
+            if(myPerformance.getScore() != 0) {
+                rank.setText("" + myPerformance.getRank());
+            }
+        }
 
     }
     public void allImageSet(){
@@ -230,9 +269,29 @@ public class userProfile extends AppCompatActivity {
 
     }
 
+    private void calcukateRank(){
+        int lowTopScore = g_usersList.get(g_usersList.size()-1).getScore();
+        int remaining_slots = g_userCount - 20;
+        int myslot = (myPerformance.getScore()*remaining_slots)/lowTopScore;
+
+        int rank;
+
+        if(lowTopScore != myPerformance.getScore()){
+            rank = g_userCount - myslot;
+        }else{
+            rank = 21;
+        }
+        myPerformance.setRank(rank);
+
+    }
 
 
 
+    public void openLeaderBoard(){
+        Intent intent = new Intent(this, LeaderBoard.class);
+        startActivity(intent);
+        userProfile.this.finish();
+    }
 
 
     //---------------------Meow btn-------------------------------------------------

@@ -11,13 +11,13 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         app:cardBackgroundColor="@color/gradient2StartColor">
 
 
         <TextView
             android:layout_width="158dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/app_name"
@@ -28,7 +28,7 @@
 
         <ImageView
             android:layout_width="55dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom|center|right|end"
             android:layout_marginRight="65dp"
             android:padding="10dp"
@@ -37,7 +37,7 @@
         <ImageView
             android:id="@+id/chat"
             android:layout_width="50dp"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:padding="10dp"
