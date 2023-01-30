@@ -26,26 +26,22 @@
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingTop="8dp"
-        android:elevation="3dp"
+        android:layout_height="45dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
         <TextView
+            android:gravity="center"
             android:id="@+id/total_user"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Users : 0"
-            android:textSize="18sp"
-            android:textColor="@color/gradient2StartColor"
+            android:layout_height="45dp"
+            android:text="Total Students : 0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/i1"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/users_view"
@@ -105,16 +101,18 @@
                 android:textColor="@color/white"/>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/rank"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rank - NA"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:gravity="end"
+            android:layout_height="32dp"
+            android:layout_marginRight="24dp"
             android:layout_weight="1"
-            android:layout_marginRight="24dp"/>
+            android:layout_marginTop="10dp"
+            android:gravity="end|center_vertical"
+            android:text="Rank - NA"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/b4"

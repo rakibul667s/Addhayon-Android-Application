@@ -16,6 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question No.1"
+        android:textColor="@color/i2"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="1dp" />
 

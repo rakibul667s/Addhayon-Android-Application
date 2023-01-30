@@ -40,13 +40,12 @@ public class LeaderBoard extends AppCompatActivity {
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2, R.drawable.ic_exam));
-        btm.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_calendar));
+        btm.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_mark3));
         btm.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_dashborad));
         btm.add(new MeowBottomNavigation.Model(5, R.drawable.ic_baseline_person));
 
 
         btm.show(4, true);
-        //replace(new com.example.addhayon.examDashboardFragment());
         btm.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
@@ -58,7 +57,7 @@ public class LeaderBoard extends AppCompatActivity {
                         openExamCat();
                         break;
                     case 3:
-                        openCalendar();
+                        openMark();
                         break;
                     case 4:
                         openLeaderBoard();
@@ -149,8 +148,8 @@ public class LeaderBoard extends AppCompatActivity {
         startActivity(intent);
         LeaderBoard.this.finish();
     }
-    public  void openCalendar(){
-        Intent intent = new Intent(this, calender.class);
+    public  void openMark(){
+        Intent intent = new Intent(this, BookMaksActivity.class);
         startActivity(intent);
         LeaderBoard.this.finish();
     }

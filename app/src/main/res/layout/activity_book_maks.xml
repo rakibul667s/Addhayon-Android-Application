@@ -5,30 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BookMaksActivity">
-    <androidx.appcompat.widget.Toolbar
+    <TextView
         android:id="@+id/book_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:titleTextColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Save Questions"
         android:background="@color/gradient2StartColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-    </androidx.appcompat.widget.Toolbar>
+    </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/book_recyler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/i1"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/b4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+            app:layout_constraintBottom_toBottomOf="@+id/rank"
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:mbn_backgroundBottomColor="#ffffff"
+            app:mbn_circleColor="@color/gradient2StartColor"
+            app:mbn_countBackgroundColor="#191818"
+            app:mbn_countTextColor="#ffffff"
+            app:mbn_defaultIconColor="@color/gradient2StartColor"
+            app:mbn_rippleColor="#2f424242"
+            app:mbn_selectedIconColor="@color/white"
+            app:mbn_shadowColor="@color/gradient2EndColor"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

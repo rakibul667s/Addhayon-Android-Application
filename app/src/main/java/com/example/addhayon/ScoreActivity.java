@@ -2,6 +2,7 @@ package com.example.addhayon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,22 +11,58 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.addhayon.Models.QuestionModel;
 
 import java.util.concurrent.TimeUnit;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class ScoreActivity extends AppCompatActivity {
     private TextView scoreTV, timeTV, totalQTV, correctQTV, worngQTV, unattemtedQTV;
     private Button learderB, reAttemptB, viewAnsB;
     private long timeTaken;
     private int finalScore;
-
-    private ImageView backB;
+    private MeowBottomNavigation btm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        btm = findViewById(R.id.bottom_nav);
+        btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
+        btm.add(new MeowBottomNavigation.Model(2, R.drawable.ic_exam));
+        btm.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_mark3));
+        btm.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_dashborad));
+        btm.add(new MeowBottomNavigation.Model(5, R.drawable.ic_baseline_person));
+
+        btm.show(3, true);
+        btm.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                switch (model.getId()) {
+                    case 1:
+                        openDashboard();
+                        break;
+                    case 2:
+                        openExamCat();
+                        break;
+                    case 3:
+                        openMark();
+                        break;
+                    case 4:
+                        openLeaderBoard();
+                        break;
+                    case 5:
+                        openUserProfile();
+                        break;
+
+                }
+                return null;
+            }
+        });
         init();
         loadData();
         setBookMark();
@@ -45,22 +82,6 @@ public class ScoreActivity extends AppCompatActivity {
             }
         });
 
-        backB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScoreActivity.this, dashboard.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        learderB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScoreActivity.this, LeaderBoard.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
 
         saveResult();
@@ -74,10 +95,8 @@ public class ScoreActivity extends AppCompatActivity {
         correctQTV = findViewById(R.id.correctQ);
         worngQTV = findViewById(R.id.wrongQ);
         unattemtedQTV = findViewById(R.id.un_attemted);
-        learderB = findViewById(R.id.leaderB);
         reAttemptB = findViewById(R.id.reattamB);
         viewAnsB = findViewById(R.id.view_answerB);
-        backB = findViewById(R.id.st_back2);
 
     }
 
@@ -127,6 +146,7 @@ public class ScoreActivity extends AppCompatActivity {
         finish();
     }
 
+    @SuppressLint("NewApi")
     private void saveResult(){
         DBQurey.saveResult(finalScore,new MyCompleteListener(){
             @Override
@@ -156,5 +176,31 @@ public class ScoreActivity extends AppCompatActivity {
 
             }
         }
+    }
+    public void openExamCat(){
+        Intent intent = new Intent(this, AllExamCatActivity.class);
+        startActivity(intent);
+        ScoreActivity.this.finish();
+    }
+    public void openLeaderBoard(){
+        Intent intent = new Intent(this, LeaderBoard.class);
+        startActivity(intent);
+        ScoreActivity.this.finish();
+    }
+    public void openDashboard(){
+        Intent intent = new Intent(this, dashboard.class);
+        startActivity(intent);
+        ScoreActivity.this.finish();
+    }
+
+    public void openUserProfile(){
+        Intent intent = new Intent(this, userProfile.class);
+        startActivity(intent);
+        ScoreActivity.this.finish();
+    }
+    public  void openMark(){
+        Intent intent = new Intent(this, BookMaksActivity.class);
+        startActivity(intent);
+        ScoreActivity.this.finish();
     }
 }
