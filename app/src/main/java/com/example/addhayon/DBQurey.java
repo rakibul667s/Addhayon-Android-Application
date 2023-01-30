@@ -460,6 +460,9 @@ public class DBQurey {
     public static void loadBookmarks(MyCompleteListener completeListener){
         g_bookmarkList.clear();
        temp = 0;
+       if(g_bmIdList.size() == 0){
+           completeListener.onSuccess();
+       }
         for(int i=0; i<g_bmIdList.size(); i++){
             String docID = g_bmIdList.get(i);
             g_firestore.collection("Questions").document(docID)
