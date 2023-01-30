@@ -5,21 +5,17 @@ import android.graphics.Bitmap;
 public class ProfileModel {
     private String name;
     private String email;
-
     private String bio;
-
     private String address;
-
     private String dateofBirth;
-
     private String sclClg;
-
     private String phn;
+    private int bookmarksCount;
 
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn) {
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -27,6 +23,16 @@ public class ProfileModel {
         this.dateofBirth=dateofBirth;
         this.sclClg=sclClg;
         this.phn=phn;
+        this.bookmarksCount = bookmarksCount;
+
+    }
+
+    public int getBookmarksCount() {
+        return bookmarksCount;
+    }
+
+    public void setBookmarksCount(int bookmarksCount) {
+        this.bookmarksCount = bookmarksCount;
     }
 
     public String getName() {

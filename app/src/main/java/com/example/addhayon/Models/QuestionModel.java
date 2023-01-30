@@ -1,6 +1,7 @@
 package com.example.addhayon.Models;
 
 public class QuestionModel {
+    private String  qId;
     private String question;
     private String optionA;
     private String optionB;
@@ -13,9 +14,12 @@ public class QuestionModel {
 
     private int status;
 
+    private boolean isBookmark;
 
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD, int correctAns, int selectedAns, int status) {
+
+    public QuestionModel(String qId, String question, String optionA, String optionB, String optionC, String optionD, int correctAns, int selectedAns, int status, boolean isBookmark) {
+        this.qId = qId;
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
@@ -24,6 +28,23 @@ public class QuestionModel {
         this.correctAns = correctAns;
         this.selectedAns = selectedAns;
         this.status = status;
+        this.isBookmark =isBookmark;
+    }
+
+    public String getqId() {
+        return qId;
+    }
+
+    public void setqId(String qId) {
+        this.qId = qId;
+    }
+
+    public boolean isBookmark() {
+        return isBookmark;
+    }
+
+    public void setBookmark(boolean bookmark) {
+        isBookmark = bookmark;
     }
 
     public int getSelectedAns() {

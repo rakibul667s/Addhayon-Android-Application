@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.addhayon.Models.QuestionModel;
+
 import java.util.concurrent.TimeUnit;
 
 public class ScoreActivity extends AppCompatActivity {
@@ -26,9 +28,12 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score);
         init();
         loadData();
+        setBookMark();
         viewAnsB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(ScoreActivity.this, AnswersActivity.class);
+                startActivity(intent);
 
 
             }
@@ -134,5 +139,22 @@ public class ScoreActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void setBookMark(){
+        for(int i=0; i<DBQurey.g_quesList.size();i++){
+            QuestionModel questionModel = DBQurey.g_quesList.get(i);
+            if(questionModel.isBookmark()){
+                if(! DBQurey.g_bmIdList.contains(questionModel.getqId())){
+                    DBQurey.g_bmIdList.add(questionModel.getqId());
+                    DBQurey.myProfile.setBookmarksCount(DBQurey.g_bmIdList.size());
+                }
+            }else{
+                if(DBQurey.g_bmIdList.contains(questionModel.getqId())){
+                    DBQurey.g_bmIdList.remove(questionModel.getqId());
+                    DBQurey.myProfile.setBookmarksCount(DBQurey.g_bmIdList.size());
+                }
+
+            }
+        }
     }
 }
