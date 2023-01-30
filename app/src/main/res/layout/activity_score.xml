@@ -71,7 +71,7 @@
                 android:id="@+id/reattamB"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Re-Attempt"
+                android:text="Re-Exam"
                 android:textSize="16sp"
                 android:elevation="5dp"
                 android:layout_weight="1"

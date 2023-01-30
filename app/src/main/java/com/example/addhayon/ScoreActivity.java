@@ -48,6 +48,14 @@ public class ScoreActivity extends AppCompatActivity {
                 finish();
             }
         });
+        learderB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScoreActivity.this, LeaderBoard.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         saveResult();

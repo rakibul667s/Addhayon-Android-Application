@@ -1,11 +1,14 @@
 package com.example.addhayon;
 
+import static com.example.addhayon.DBQurey.g_selected_test_index;
+import static com.example.addhayon.DBQurey.g_testList;
 import static com.example.addhayon.DBQurey.g_userCount;
 import static com.example.addhayon.DBQurey.g_usersList;
 import static com.example.addhayon.DBQurey.myPerformance;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +35,7 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -48,7 +53,8 @@ public class userProfile extends AppCompatActivity {
     public CircleImageView profile_image;
     private ImageView button1;
     private MeowBottomNavigation btm;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth, userAuth;
+    private FirebaseUser firebaseUser;
     private TextView name;
     private TextView rank;
     private TextView score;
@@ -62,7 +68,7 @@ public class userProfile extends AppCompatActivity {
     public Bitmap bitmap;
     private String pName ,pEmail , pPhn, pAddress, pBirth, pScl;
     private FirebaseDatabase database;
-    private String userId;
+    private String userId, userAccount;
     private FirebaseStorage storage;
     private StorageReference storage1Ref, storage2Ref;
     private  ExecutorService service;
@@ -92,6 +98,9 @@ public class userProfile extends AppCompatActivity {
         phn = findViewById(R.id.phone);
         email2 = findViewById(R.id.email);
         rankB =findViewById(R.id.rankB);
+
+        userAuth = FirebaseAuth.getInstance();
+        firebaseUser = userAuth.getCurrentUser();
 
         pScl = DBQurey.myProfile.getSclClg();
         pAddress =DBQurey.myProfile.getAddress();
@@ -144,6 +153,17 @@ public class userProfile extends AppCompatActivity {
                 if(id == R.id.editProfile){
                     Intent intent = new Intent(userProfile.this, EditProfileActivity.class);
                     startActivity(intent);
+                }
+                if(id == R.id.rank){
+                    Intent intent = new Intent(userProfile.this, LeaderBoard.class);
+                    startActivity(intent);
+                }
+                if(id == R.id.timeS){
+                    Intent intent = new Intent(userProfile.this, calender.class);
+                    startActivity(intent);
+                }
+                if(id == R.id.delete){
+                    deleteAccount();
                 }
 
 
@@ -338,7 +358,39 @@ public class userProfile extends AppCompatActivity {
     }
     //---------------------Meow btn end--------------------------------------------
 
+    private void deleteAccount(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(userProfile.this);
+        builder.setCancelable(true);
 
+        View view = getLayoutInflater().inflate(R.layout.delete_diolog,null);
+
+        Button cancelB = view.findViewById(R.id.cancelB);
+        Button confirmB =view.findViewById(R.id.confrimB);
+
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+
+        cancelB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        confirmB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                firebaseUser.delete();
+                Toast.makeText(userProfile.this, "Delete your account successfully",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(userProfile.this, sign_in_page.class);
+                startActivity(intent);
+                userProfile.this.finish();
+            }
+        });
+        alertDialog.show();
+
+    }
 
 
 
