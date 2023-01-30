@@ -47,8 +47,8 @@ public class DBQurey {
     public static int g_selected_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
     public static List<RankModel> g_usersList = new ArrayList<>();
-
     public static List<String> g_bmIdList = new ArrayList<>();
+    public static List<QuestionModel> g_bookmarkList = new ArrayList<>();
     public static int g_userCount = 0;
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
@@ -61,6 +61,7 @@ public class DBQurey {
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
     public static final int REVIEW = 3;
+    static int temp;
 
 
 
@@ -452,6 +453,49 @@ public class DBQurey {
 
                     }
                 });
+
+    }
+
+
+    public static void loadBookmarks(MyCompleteListener completeListener){
+        g_bookmarkList.clear();
+       temp = 0;
+        for(int i=0; i<g_bmIdList.size(); i++){
+            String docID = g_bmIdList.get(i);
+            g_firestore.collection("Questions").document(docID)
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if(documentSnapshot.exists()){
+                                g_bookmarkList.add(new QuestionModel(
+                                        documentSnapshot.getId(),
+                                        documentSnapshot.getString("QUESTION"),
+                                        documentSnapshot.getString("A"),
+                                        documentSnapshot.getString("B"),
+                                        documentSnapshot.getString("C"),
+                                        documentSnapshot.getString("D"),
+                                        documentSnapshot.getLong("ANSWER").intValue(),
+                                        0,
+                                        -1,
+                                        false
+
+                                ));
+                            }
+                            temp++;
+                            if(temp ==g_bmIdList.size()){
+                                completeListener.onSuccess();
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                                completeListener.onFailure();
+                        }
+                    });
+
+        }
 
     }
 

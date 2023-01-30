@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.addhayon.Adapters.BookmarksAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -160,6 +161,10 @@ public class userProfile extends AppCompatActivity {
                 }
                 if(id == R.id.timeS){
                     Intent intent = new Intent(userProfile.this, calender.class);
+                    startActivity(intent);
+                }
+                if(id == R.id.mark){
+                    Intent intent = new Intent(userProfile.this, BookMaksActivity.class);
                     startActivity(intent);
                 }
                 if(id == R.id.delete){
