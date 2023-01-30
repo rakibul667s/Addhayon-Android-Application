@@ -1,5 +1,6 @@
 package com.example.addhayon;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,16 +22,26 @@ public class HomeFragment extends Fragment {
 
     ImageSlider imageSlider;
     ImageSlider imageSlider2;
+
+    private LinearLayout exam2;
     Activity context;
     public HomeFragment() {
         // Required empty public constructor
     }
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         context = getActivity();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        exam2 = view.findViewById(R.id.exam2);
+        exam2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExam();
+            }
+        });
         imageSlider = view.findViewById(R.id.image_slider);
         ArrayList<SlideModel> imagelist= new ArrayList<> ();
         imagelist.add(new SlideModel(R.drawable.slider_img, ScaleTypes.CENTER_CROP));
@@ -42,6 +53,10 @@ public class HomeFragment extends Fragment {
 
 
         return  view;
+    }
+    private void openExam(){
+        Intent intent = new Intent(context,ExamDashborad.class);
+        startActivity(intent);
     }
     public void onStart() {
        super.onStart();

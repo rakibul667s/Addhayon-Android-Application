@@ -10,18 +10,20 @@
     >
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:orientation="vertical">
         <ImageView
+            android:background="@color/gradient2StartColor"
+            android:scaleType="centerCrop"
             android:id="@+id/cover_img"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/gradient4"
-            android:orientation="horizontal"
+            android:layout_height="220dp" android:orientation="horizontal"
             />
             <ImageView
+                android:id="@+id/coverB"
                 android:layout_gravity="end"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -34,11 +36,11 @@
 
 
         <ImageView
-
+            android:id="@+id/profileB"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="110dp"
-            android:layout_marginTop="214dp"
+            android:layout_marginTop="238dp"
             android:backgroundTint="@color/gradient2StartColor"
             android:background="@drawable/baseline_camera"/>
 
@@ -47,7 +49,7 @@
             android:id="@+id/profile_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="140dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/baseline_puser"
             app:civ_border_width="5dp"
@@ -58,64 +60,92 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_marginTop="240dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableLeft="@drawable/ic_baseline_person"
+        android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="Change your name. . ."
-        android:textColor="@color/i1"
+        android:hint="Change your name. . ."
+        android:textColor="@color/i2"
         android:textSize="14sp"/>
     <EditText
         android:id="@+id/bio"
-        android:layout_marginTop="290dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableLeft="@drawable/baseline_emoji_emotions_24"
+        android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="Set your status. . ."
-        android:textColor="@color/i1"
+        android:hint="Set your status. . ."
+        android:textColor="@color/i2"
         android:textSize="14sp" />
     <EditText
         android:id="@+id/address"
-        android:layout_marginTop="340dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableLeft="@drawable/baseline_room_24"
+        android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="Address. . ."
-        android:textColor="@color/i1"
+        android:hint="Address. . ."
+        android:textColor="@color/i2"
         android:textSize="14sp" />
+
+
+    <EditText
+               android:layout_marginTop="420dp"
+               android:layout_marginStart="20dp"
+               android:layout_marginEnd="20dp"
+               android:padding="5dp"
+               android:layout_weight="2"
+               android:id="@+id/dateOfBirth"
+               android:drawableLeft="@drawable/baseline_cake_24"
+               android:drawablePadding="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:gravity="center_vertical"
+               android:hint="Date of Birth"
+               android:textColor="@color/i2"
+               android:textSize="14sp" />
+
     <EditText
         android:id="@+id/scl_clg"
-        android:layout_marginTop="390dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableLeft="@drawable/baseline_school_24"
+        android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:hint="abc"
-        android:textColor="@color/i1"
+        android:hint="set school or college. . ."
+        android:textColor="@color/i2"
         android:textSize="14sp" />
 
     <EditText
         android:id="@+id/phn"
         android:layout_width="match_parent"
-        android:layout_marginEnd="10dp"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableLeft="@drawable/baseline_local_phone_24"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="520dp"
         android:gravity="center_vertical"
         android:padding="5dp"
-        android:text="+880"
-        android:textColor="@color/i1"
+        android:hint="+880"
+        android:textColor="@color/i2"
         android:textSize="14sp" />
 
 

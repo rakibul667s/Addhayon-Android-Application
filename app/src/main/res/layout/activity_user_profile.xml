@@ -12,8 +12,9 @@
 
     <ImageView
         android:id="@+id/cover_img"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:background="@drawable/gradient4"
         android:orientation="horizontal"
         >
@@ -26,7 +27,7 @@
         android:id="@+id/profile_image"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="140dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/baseline_puser"
         app:civ_border_width="5dp"
@@ -35,7 +36,7 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="250dp"
         android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
@@ -47,32 +48,28 @@
         android:textStyle="bold" />
     <TextView
         android:id="@+id/bio"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="280dp"
         android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:text="Build up your skills. . ."
-        android:textColor="@color/i1"
+        android:textColor="@color/i2"
         android:textSize="14sp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="310dp"
-        >
+
       <LinearLayout
+          android:layout_marginTop="330dp"
           android:layout_marginLeft="10dp"
           android:layout_marginRight="10dp"
           android:padding="8dp"
           android:layout_width="match_parent"
-          android:layout_height="200dp"
+          android:layout_height="70dp"
           android:orientation="horizontal"
           android:background="@color/gradient2StartColor">
 
           <LinearLayout
-              android:layout_gravity="center"
               android:layout_weight="1"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -130,6 +127,95 @@
 
 
       </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="410dp"
+        >
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/sclclg"
+            android:drawableStart="@drawable/baseline_school_24"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="Set your study backgraound"
+            android:textColor="@color/i2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/address2"
+            android:drawableStart="@drawable/baseline_room_24"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="Address "
+            android:textColor="@color/i2"
+            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/birth"
+                android:drawableStart="@drawable/baseline_cake_24"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="6 JAN 2023"
+                android:textColor="@color/i2"
+                android:textSize="14sp" />
+            <TextView
+
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="Contact us : "
+                android:textColor="@color/i2"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/email"
+                android:drawableStart="@drawable/ic_baseline_email"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="addhayon.application@gmail.com"
+                android:textColor="@color/i2"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/phone"
+                android:drawableStart="@drawable/ic_baseline_call"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="+8801704081993"
+                android:textColor="@color/i2"
+                android:textSize="14sp" />
+        </LinearLayout>
 
 
     </ScrollView>

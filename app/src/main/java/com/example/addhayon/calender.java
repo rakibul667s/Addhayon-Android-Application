@@ -62,8 +62,6 @@ public class calender extends AppCompatActivity {
         dateHashMap.put(calendar.get(Calendar.DAY_OF_MONTH),"current");
         dateHashMap.put(1,"class");
         dateHashMap.put(2,"exam");
-        dateHashMap.put(3,"class");
-        dateHashMap.put(4,"exam");
         dateHashMap.put(5,"class");
         dateHashMap.put(7,"exam");
         dateHashMap.put(14,"class");

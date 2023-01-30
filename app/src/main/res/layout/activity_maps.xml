@@ -43,7 +43,7 @@
             android:layout_width="65dp"
             android:layout_height="45dp"
             android:text="Go"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="@color/white"
@@ -76,7 +76,6 @@
 
         <RelativeLayout
             android:layout_width="150dp"
-            android:background="@color/white"
             android:layout_marginTop="90dp"
             android:layout_height="108dp">
 
@@ -105,7 +104,7 @@
                         android:gravity="center_vertical"
                         android:text="Current location"
                         android:textColor="#39FF14 "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -135,7 +134,7 @@
                         android:gravity="center_vertical"
                         android:text="Search location"
                         android:textColor="#ff007f "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -165,7 +164,7 @@
                         android:gravity="center_vertical"
                         android:text="University"
                         android:textColor="#1520A6  "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -195,7 +194,7 @@
                         android:gravity="center_vertical"
                         android:text="College"
                         android:textColor="#2FF3E0  "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -225,7 +224,7 @@
                         android:gravity="center_vertical"
                         android:text="School"
                         android:textColor="#ec5297  "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -255,7 +254,7 @@
                         android:gravity="center_vertical"
                         android:text="Hostel"
                         android:textColor="#059DC0  "
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>

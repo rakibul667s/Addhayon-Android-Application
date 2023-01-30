@@ -98,6 +98,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/exam2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -109,17 +110,19 @@
                             android:layout_height="48dp"
                             android:layout_marginTop="8dp"
                             android:padding="6dp"
-                            android:src="@drawable/education" />
+                            android:src="@drawable/exam" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Study"
+                            android:text="Exam"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
 
                     </LinearLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -203,29 +206,6 @@
                     android:layout_height="106dp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="8dp"
-                            android:padding="6dp"
-                            android:src="@drawable/exam" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Exam"
-                            android:textAlignment="center"
-                            android:textColor="@color/loginEnd"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -244,7 +224,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Result"
+                            android:text="Ranking"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
@@ -273,6 +253,28 @@
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="8dp"
+                            android:padding="6dp"
+                            android:src="@drawable/notepad" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Note"
+                            android:textAlignment="center"
+                            android:textColor="@color/loginEnd"
+                            android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
@@ -658,7 +660,6 @@
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
-
                     </LinearLayout>
 
                     <LinearLayout

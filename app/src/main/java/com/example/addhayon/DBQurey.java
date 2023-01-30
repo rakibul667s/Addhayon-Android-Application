@@ -1,5 +1,8 @@
 package com.example.addhayon;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.util.ArrayMap;
 
@@ -7,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.addhayon.Models.CategoryModel;
+import com.example.addhayon.Models.ProfileImageModel;
 import com.example.addhayon.Models.ProfileModel;
 import com.example.addhayon.Models.QuestionModel;
 import com.example.addhayon.Models.RankModel;
@@ -22,21 +26,31 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class DBQurey {
+
+   public static String userId, pUrl;
+    public static Bitmap bitmap;
+    private static StorageReference storageReference;
     public static FirebaseFirestore g_firestore;
     public static List<CategoryModel> g_catList = new ArrayList<>();
     public static int g_selected_cat_index = 0;
     public static List<TestModel> g_testList = new ArrayList<>();
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("NA", "null");
-    public static RankModel myPerformance = new RankModel(0,-1);
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null");
 
+    public static ProfileImageModel myImage = new ProfileImageModel("p","c");
+    public static RankModel myPerformance = new RankModel(0,-1);
     public static final int NOT_VIDITED = 0;
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
@@ -52,6 +66,11 @@ public class DBQurey {
         userData.put("EMAIL_ID",email);
         userData.put("NAME",name);
         userData.put("TOTAL_SCORE", 0);
+        userData.put("BIO", "");
+        userData.put("ADDRESS", "");
+        userData.put("DATE_OF_BIRTH", "");
+        userData.put("SCL_CLG", "");
+        userData.put("PHONE", "");
 
         DocumentReference userDoc = g_firestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
         WriteBatch batch = g_firestore.batch();
@@ -248,6 +267,11 @@ public class DBQurey {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         myProfile.setName(documentSnapshot.getString("NAME"));
                         myProfile.setEmail(documentSnapshot.getString("EMAIL_ID"));
+                        myProfile.setBio(documentSnapshot.getString("BIO"));
+                        myProfile.setAddress(documentSnapshot.getString("ADDRESS"));
+                        myProfile.setDateofBirth(documentSnapshot.getString("DATE_OF_BIRTH"));
+                        myProfile.setSclClg(documentSnapshot.getString("SCL_CLG"));
+                        myProfile.setPhn(documentSnapshot.getString("PHONE"));
                         myPerformance.setScore(documentSnapshot.getLong("TOTAL_SCORE").intValue());
                         completeListener.onSuccess();
                     }
@@ -260,6 +284,26 @@ public class DBQurey {
                 });
     }
 
+    //-------------Profile Image load--------------------------------
+    public static void getProfileImage(final MyCompleteListener completeListener){
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_profile.jpg");
+
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                myImage.setProfileImg(url);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                completeListener.onFailure();
+            }
+        });
+    }
     public static void loadData(MyCompleteListener completeListener){
         loadCategories(new MyCompleteListener(){
             @Override
@@ -272,6 +316,12 @@ public class DBQurey {
 
             }
         });
+    }
+
+
+    //---------------------------------
+    public static void imageLoad(){
+
     }
 
 }

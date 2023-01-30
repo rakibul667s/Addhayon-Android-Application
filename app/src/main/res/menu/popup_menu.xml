@@ -1,61 +1,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <item
-            app:showAsAction="always"
-            android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Other">
 
-            <menu>
-
-            <item
-                android:id="@+id/one"
-                android:icon="@drawable/ic_baseline_calendar"
-                android:iconTint="@color/gradient2StartColor"
-                android:title="Calender"
-                app:showAsAction="never"
-                />
-
-            <item
-                android:id="@+id/two"
-                android:icon="@drawable/ic_result"
-                android:title="Result"
-                app:showAsAction="never"/>
-
-            <item
-                android:id="@+id/three"
-                android:icon="@drawable/ic_logout"
-                android:title="Logout"
-                app:showAsAction="never"/>
-
-            </menu>
-
-        </item>
     <item
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Show activities">
 
         <menu>
-
             <item
-                android:id="@+id/one1"
-                android:icon="@drawable/ic_edit_profile"
-                android:title="LeaderBorad"
-                app:showAsAction="never"
-                />
-
-            <item
-                android:id="@+id/two1"
-                android:icon="@drawable/ic_result"
+                android:id="@+id/rank"
+                android:icon="@drawable/baseline_bar_chart_24"
                 android:title="Rank"
                 app:showAsAction="never"/>
 
             <item
-                android:id="@+id/three1"
+                android:id="@+id/mark"
                 android:icon="@drawable/baseline_mark2"
                 android:title="Saved Question"
                 app:showAsAction="never"/>
+            <item
+                android:id="@+id/timeS"
+                android:icon="@drawable/baseline_calendar_month_24"
+                android:title="Time Schedule"
+                app:showAsAction="never"
+                />
 
         </menu>
 
@@ -75,8 +44,8 @@
                 />
 
             <item
-                android:id="@+id/two2"
-                android:icon="@drawable/ic_result"
+                android:id="@+id/delete"
+                android:icon="@drawable/baseline_do_not_disturb_on_24"
                 android:title="Delete Accpunt"
                 app:showAsAction="never"/>
 

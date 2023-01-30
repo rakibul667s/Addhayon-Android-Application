@@ -35,6 +35,7 @@
             android:src="@drawable/ic_baseline_notifications" />
 
         <ImageView
+            android:id="@+id/chat"
             android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_gravity="end"

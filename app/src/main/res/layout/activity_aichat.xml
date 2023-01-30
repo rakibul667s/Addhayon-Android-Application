@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".AIChatActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:background="@drawable/rounded_border2"
+            android:paddingStart="10dp"
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Enter message..." />
+
+        <ImageView
+
+            android:background="@drawable/gradient4"
+            android:id="@+id/send_button"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:padding="8dp"
+            android:src="@drawable/baseline_near_me_24"
+            />
+    </LinearLayout>
+    <ScrollView
+        android:layout_marginBottom="70dp"
+        android:background="@color/i1"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/message_output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Conversation:"
+            android:textSize="18sp" />
+    </ScrollView>
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_circleColor="@color/gradient2StartColor"
+        app:mbn_countBackgroundColor="#191818"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_defaultIconColor="@color/gradient2StartColor"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="@color/white"
+        app:mbn_shadowColor="@color/gradient2EndColor" />
+
+</RelativeLayout>

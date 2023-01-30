@@ -148,7 +148,8 @@
         android:elevation="3dp"
         android:layout_width="40dp"
         android:layout_height="36dp"
-        android:src="@drawable/baseline_clear_24"
+        android:background="@drawable/baseline_clear_24"
+        android:backgroundTint="@color/gradient2StartColor"
         />
 
     <TextView

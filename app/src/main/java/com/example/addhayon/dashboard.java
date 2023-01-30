@@ -1,9 +1,12 @@
 package com.example.addhayon;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -18,12 +21,23 @@ public class dashboard extends AppCompatActivity {
 
     private MeowBottomNavigation btm;
     private Button btnID;
+    private ImageView chat;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        chat = findViewById(R.id.chat);
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAIChat();
+            }
+        });
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));
@@ -61,6 +75,12 @@ public class dashboard extends AppCompatActivity {
             }
         });
     }
+
+    private void openAIChat(){
+        Intent intent = new Intent(this,AIChatActivity.class);
+        startActivity(intent);
+        dashboard.this.finish();
+    }
     private  void  replace(Fragment fragment){
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame,fragment);
@@ -70,18 +90,22 @@ public class dashboard extends AppCompatActivity {
     public void openUserProfile(){
         Intent intent = new Intent(this, userProfile.class);
         startActivity(intent);
+        dashboard.this.finish();
     }
     public void openExam(){
         Intent intent = new Intent(this, AllExamCatActivity.class);
         startActivity(intent);
+        dashboard.this.finish();
     }
     public  void openCalendar(){
         Intent intent = new Intent(this, calender.class);
         startActivity(intent);
+        dashboard.this.finish();
     }
     public void openMap(){
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
+        dashboard.this.finish();
     }
 
 }
