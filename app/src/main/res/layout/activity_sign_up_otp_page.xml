@@ -28,7 +28,7 @@
             android:layout_marginRight="30dp"
             android:text="Sent 6 digits OTP code in your mail."
             android:textAlignment="center"
-            android:textColor="@color/loginStar"
+            android:textColor="@color/i2"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -40,38 +40,81 @@
             android:layout_marginRight="30dp"
             android:text="Please, check your mail."
             android:textAlignment="center"
-            android:textColor="@color/loginStar"
+            android:textColor="@color/i2"
             android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:text="gygyffrtdrydtyfiyu"
+            android:textColor="#FF8686"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <EditText
+            android:inputType="number"
+            android:id="@+id/otpT"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/round_border"
             android:drawablePadding="10dp"
             android:hint="0 0 0 0 0 0"
             android:padding="10dp"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/i2"
             android:textSize="24sp" />
+        <TextView
+            android:id="@+id/wrongMsg"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/gradient2StartColor"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
 
-        <Button
-            android:id="@+id/fp_final_page"
+        <RelativeLayout
+            android:clickable="true"
+            android:id="@+id/verify"
+            android:background="@drawable/red_button_ripple"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/gets_started"
-            android:text="Verify"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/button_text"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:text="Virefy"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                app:lottie_rawRes="@raw/button_loading_white"
+                android:id="@+id/animation_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true" />
+
+        </RelativeLayout>
 
 
 

@@ -62,19 +62,38 @@
             android:textColor="@color/gradient2StartColor"
             android:layout_height="20dp" />
 
-        <Button
+        <RelativeLayout
+            android:clickable="true"
             android:id="@+id/logoin_button"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:background="@drawable/red_button_ripple"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/gets_started"
-            android:text="Sign in"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/button_text"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:text="Sign In"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                app:lottie_rawRes="@raw/button_loading_white"
+                android:id="@+id/animation_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/forgot_password"

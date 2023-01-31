@@ -259,6 +259,7 @@ public class EditProfileActivity extends AppCompatActivity {
             all= true;
         }
         if(pBoolean){
+            all= true;
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_profile.jpg");
             UploadTask uploadTask = storageRef.putFile(pfilePath);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -269,7 +270,6 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String downloadUrl = uri.toString();
-                            all= true;
                         }
                     });
                 }
@@ -286,7 +286,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         if(cBoolean){
-
+            all= true;
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_cover.jpg");
             UploadTask uploadTask = storageRef.putFile(cfilePath);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -297,7 +297,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String downloadUrl = uri.toString();
-                            all= true;
+
                         }
                     });
                 }

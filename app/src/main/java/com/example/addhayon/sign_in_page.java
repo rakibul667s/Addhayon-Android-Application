@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class sign_in_page extends AppCompatActivity {
     private EditText email, password;
-    private Button login_button;
+    private TextView buttonText;
+    private LottieAnimationView buttonAnim;
+    private RelativeLayout login_button;
     private TextView forgotPassword, signupPage, error_msg;
     private FirebaseAuth mAuth;
 
@@ -32,6 +36,8 @@ public class sign_in_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_page);
+
+
 
         mAuth = FirebaseAuth.getInstance();
 //        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -45,6 +51,10 @@ public class sign_in_page extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgot_password);
         signupPage = findViewById(R.id.sign_up_page);
         error_msg = findViewById(R.id.error_msg);
+
+        buttonText = findViewById(R.id.button_text);
+        buttonAnim = findViewById(R.id.animation_view);
+
 
         String text = "<font color=#5E5D5D>New User? </font><font color=#F52525>Register Now</font>";
         signupPage.setText(Html.fromHtml(text));
@@ -70,7 +80,9 @@ public class sign_in_page extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
             @Override
             public void onClick(View v) {
-
+                buttonAnim.setVisibility(View.VISIBLE);
+                buttonAnim.playAnimation();
+                buttonText.setVisibility(View.GONE);
 
                 if(validateData()){
                     login();
@@ -85,16 +97,28 @@ public class sign_in_page extends AppCompatActivity {
         boolean check = false;
        boolean status = false;
        if(email.getText().toString().isEmpty() && password.getText().toString().isEmpty() ){
+           buttonAnim.pauseAnimation();
+           buttonAnim.setVisibility(View.GONE);
+           buttonText.setVisibility(View.VISIBLE);
            error_msg.setText("Please enter mail and password *");
            return false;
        }else if(email.getText().toString().isEmpty()){
+           buttonAnim.pauseAnimation();
+           buttonAnim.setVisibility(View.GONE);
+           buttonText.setVisibility(View.VISIBLE);
            error_msg.setText("Please enter mail *");
            return false;
        }else if(password.getText().toString().isEmpty() ){
+           buttonAnim.pauseAnimation();
+           buttonAnim.setVisibility(View.GONE);
+           buttonText.setVisibility(View.VISIBLE);
 
            error_msg.setText("Please enter password *");
            return false;
        }else if(password.getText().toString().length() <6){
+           buttonAnim.pauseAnimation();
+           buttonAnim.setVisibility(View.GONE);
+           buttonText.setVisibility(View.VISIBLE);
            error_msg.setText("Password must be 6 charaters *");
            return false;
        }else {
@@ -106,15 +130,19 @@ public class sign_in_page extends AppCompatActivity {
     public void login(){
         mAuth.signInWithEmailAndPassword(email.getText().toString().trim(), password.getText().toString().trim())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             DBQurey.loadData(new MyCompleteListener(){
                                 @Override
                                 public void onSuccess(){
+
                                     Intent intent = new Intent(sign_in_page.this,dashboard.class);
                                     startActivity(intent);
-                                    sign_in_page.this.finish();
+                                    buttonAnim.pauseAnimation();
+                                    buttonAnim.setVisibility(View.GONE);
+                                    buttonText.setVisibility(View.VISIBLE);
                                 }
                                 @Override
                                 public void onFailure(){
@@ -123,6 +151,9 @@ public class sign_in_page extends AppCompatActivity {
                                 }
                             });
                         } else {
+                            buttonAnim.pauseAnimation();
+                            buttonAnim.setVisibility(View.GONE);
+                            buttonText.setVisibility(View.VISIBLE);
                             error_msg.setText("Please correct mail and password *");
                         }
                     }

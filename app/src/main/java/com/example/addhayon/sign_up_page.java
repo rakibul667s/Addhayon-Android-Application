@@ -24,6 +24,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class sign_up_page extends AppCompatActivity {
     private TextView sign_in_page, checkBox, error_msg2;
     private EditText name2, email2, password2, cPassword2;
@@ -31,6 +44,8 @@ public class sign_up_page extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private CheckBox check;
     private String emailStr, passStr, confimPassStr, nameStr;
+    private int code;
+    private Random random;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +58,9 @@ public class sign_up_page extends AppCompatActivity {
         signIn2 = findViewById(R.id.signIn2);
         error_msg2 = findViewById(R.id.error_msg2);
         check = findViewById(R.id.checkBox);
+
+        random = new Random();
+        code = 100000 + random.nextInt(900000);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -67,7 +85,9 @@ public class sign_up_page extends AppCompatActivity {
             public void onClick(View v) {
                // openSignUpOtpPage();
                 if(validate2()){
-                    signupNewUser();
+                    sendEmail();
+                    openSignUpOtpPage();
+                    //signupNewUser();
                 }
             }
         });
@@ -149,8 +169,61 @@ public class sign_up_page extends AppCompatActivity {
         Intent intent = new Intent(this, sign_in_page.class);
         startActivity(intent);
     }
+
+
+    public void sendEmail(){
+
+        try {
+            String stringSenderEmail = "addhayon.application@gmail.com";
+            String stringReceiverEmail = emailStr;
+            String stringPasswordSenderEmail = "qlrlujngpzmmhmeq";
+
+            String stringHost = "smtp.gmail.com";
+
+            Properties properties = System.getProperties();
+
+            properties.put("mail.smtp.host", stringHost);
+            properties.put("mail.smtp.port", "465");
+            properties.put("mail.smtp.ssl.enable", "true");
+            properties.put("mail.smtp.auth", "true");
+
+            javax.mail.Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                }
+            });
+
+            MimeMessage mimeMessage = new MimeMessage(session);
+            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+            mimeMessage.setSubject("Verification Code");
+            mimeMessage.setText("Hello "+nameStr+", \n\nDon't shear your varification code... \n\nVerification code is : "+code);
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Transport.send(mimeMessage);
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+
+        } catch (AddressException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
     public void openSignUpOtpPage(){
-        Intent intent = new Intent(this, sign_up_otp_page.class);
+        Intent intent = new Intent(sign_up_page.this, sign_up_otp_page.class);
+        intent.putExtra("name", nameStr);
+        intent.putExtra("email",emailStr);
+        intent.putExtra("password",passStr);
+        intent.putExtra("otp", code);
         startActivity(intent);
     }
 }

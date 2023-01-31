@@ -27,15 +27,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions{
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
+    }
     buildFeatures {
         viewBinding true
     }
+
     namespace 'com.example.addhayon'
 }
 configurations {
     implementation.exclude module:'guava-jdk5'
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
+
 
 dependencies {
 
@@ -78,7 +84,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
-    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'com.airbnb.android:lottie:3.4.4'
+    implementation 'com.sun.mail:android-mail:1.6.6'
+    implementation 'com.sun.mail:android-activation:1.6.7'
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
     implementation 'com.google.guava:guava:31.1-android'
 
