@@ -104,8 +104,14 @@ public class sign_up_page extends AppCompatActivity {
         }else if(nameStr.isEmpty()){
             error_msg2.setText("Please enter name *");
             return false;
+        }else if(!nameStr.matches("[a-zA-Z]+")){
+            error_msg2.setText("Name only alphadeticat characters *");
+            return false;
         }else if(emailStr.isEmpty()){
             error_msg2.setText("Please enter email *");
+            return false;
+        }else if(!emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+            error_msg2.setText("Please enter valid email *");
             return false;
         }else if(passStr.isEmpty() ){
             error_msg2.setText("Please enter password *");
@@ -198,7 +204,9 @@ public class sign_up_page extends AppCompatActivity {
             mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
 
             mimeMessage.setSubject("Verification Code");
-            mimeMessage.setText("Hello "+nameStr+", \n\nDon't shear your varification code... \n\nVerification code is : "+code);
+            String emailText1 = "Contact Us:";
+            String emailText2 = "Developer: MD. RAKIBUL ISLAM";
+            mimeMessage.setText("Hello "+nameStr+", \n\nDon't shear your varification code... \n\nVerification code is : "+code+"\n\n\n"+emailText1+"\n"+emailText2+"\nmd.rakibulislam_1@yahoo.com\n+8801704081993");
 
             Thread thread = new Thread(new Runnable() {
                 @Override

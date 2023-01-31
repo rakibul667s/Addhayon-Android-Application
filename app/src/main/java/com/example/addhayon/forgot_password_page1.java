@@ -1,20 +1,43 @@
 package com.example.addhayon;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class forgot_password_page1 extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
+public class forgot_password_page1 extends AppCompatActivity {
+    private EditText email;
+    private String emailStr;
+    private TextView wrong;
+    private FirebaseAuth auth;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_page1);
+
+        auth =FirebaseAuth.getInstance();
+
+        wrong =findViewById(R.id.wrong);
+
+        email=findViewById(R.id.email);
+
 
         Button btn = (Button) findViewById(R.id.fp_otp);
         TextView textView = (TextView) findViewById(R.id.sign_in_page);
@@ -29,9 +52,10 @@ public class forgot_password_page1 extends AppCompatActivity {
         });
 
         btn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
             @Override
             public void onClick(View v) {
-                openFpOTPpage();
+                validateData();
             }
         });
 
@@ -40,9 +64,36 @@ public class forgot_password_page1 extends AppCompatActivity {
         Intent intent = new Intent(this, sign_in_page.class);
         startActivity(intent);
     }
-    public void openFpOTPpage(){
-        Intent intent = new Intent(this, forgot_otp_page.class);
-        startActivity(intent);
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
+    public void validateData(){
+        emailStr = email.getText().toString().trim();
+        if(emailStr.isEmpty()){
+            wrong.setText("Enter your email *");
+        }else{
+            forgotPass();
+        }
+    }
+    public void forgotPass(){
+        auth.sendPasswordResetEmail(emailStr)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                       if(task.isSuccessful()){
+                           Toast.makeText(forgot_password_page1.this, "Check your email ("+emailStr+")",
+                                   Toast.LENGTH_SHORT).show();
+                       }else{
+                           Toast.makeText(forgot_password_page1.this, "Error : "+task.getException().getMessage(),
+                                   Toast.LENGTH_SHORT).show();
+                       }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(forgot_password_page1.this, "Something is wrong",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }

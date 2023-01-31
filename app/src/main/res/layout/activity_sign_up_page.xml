@@ -61,6 +61,7 @@
             android:drawableStart="@drawable/ic_baseline_lock"
             android:drawablePadding="10dp"
             android:hint="Password"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -79,6 +80,7 @@
             android:drawableStart="@drawable/ic_baseline_lock"
             android:drawablePadding="10dp"
             android:hint="Confirm password"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="16sp" />

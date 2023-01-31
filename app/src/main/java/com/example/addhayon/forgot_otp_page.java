@@ -27,19 +27,11 @@ public class forgot_otp_page extends AppCompatActivity {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFpFinalPage();
-            }
-        });
+
     }
     public void openSignInPage() {
         Intent intent = new Intent(this, sign_in_page.class);
         startActivity(intent);
     }
-    public void openFpFinalPage(){
-        Intent intent = new Intent(this, forgot_final_page.class);
-        startActivity(intent);
-    }
+
 }

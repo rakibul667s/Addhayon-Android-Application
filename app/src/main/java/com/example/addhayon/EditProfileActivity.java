@@ -223,10 +223,15 @@ public class EditProfileActivity extends AppCompatActivity {
         String sphn = phn.getText().toString().trim();
 
         if(!sname.isEmpty()){
-            FirebaseFirestore.getInstance()
-                    .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .update("NAME", sname);
-            all= true;
+            if(!sname.matches("[a-zA-Z]+")){
+                Toast.makeText(EditProfileActivity.this, "Name only alphadeticat characters ",
+                        Toast.LENGTH_SHORT).show();
+            }else{
+                FirebaseFirestore.getInstance()
+                        .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .update("NAME", sname);
+                all= true;
+            }
         }
         if(!sbio.isEmpty()){
             FirebaseFirestore.getInstance()

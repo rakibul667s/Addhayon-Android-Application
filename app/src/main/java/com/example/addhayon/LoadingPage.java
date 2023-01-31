@@ -31,6 +31,7 @@ public class LoadingPage extends AppCompatActivity {
     private RelativeLayout button2;
     private TextView buttonText;
     private LottieAnimationView buttonAnim;
+    private boolean check;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,10 @@ public class LoadingPage extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                check = true;
+                buttonAnim.setVisibility(View.VISIBLE);
+                buttonAnim.playAnimation();
+                buttonText.setVisibility(View.GONE);
                 openSignPage();
             }
         });
@@ -73,9 +78,11 @@ public class LoadingPage extends AppCompatActivity {
                             buttonAnim.pauseAnimation();
                             buttonAnim.setVisibility(View.GONE);
                             buttonText.setVisibility(View.VISIBLE);
-                            Intent intent = new Intent(LoadingPage.this,dashboard.class);
-                            startActivity(intent);
-                            LoadingPage.this.finish();
+                            if(!check){
+                                Intent intent = new Intent(LoadingPage.this,dashboard.class);
+                                startActivity(intent);
+                                LoadingPage.this.finish();
+                            }
                         }
                         @Override
                         public void onFailure(){
@@ -97,28 +104,29 @@ public class LoadingPage extends AppCompatActivity {
     }
     public void openSignPage(){
 
-//        if(mAuth.getCurrentUser() != null){
-//            DBQurey.loadData(new MyCompleteListener(){
-//                @Override
-//                public void onSuccess(){
-                    buttonAnim.setVisibility(View.VISIBLE);
-                     buttonAnim.playAnimation();
-                     buttonText.setVisibility(View.GONE);
-                    Toast.makeText(LoadingPage.this, "Build up your skills",
-                            Toast.LENGTH_SHORT).show();}
-//                }
-//                @Override
-//                public void onFailure(){
+        if(mAuth.getCurrentUser() != null){
+            DBQurey.loadData(new MyCompleteListener(){
+                @Override
+                public void onSuccess(){
+                    buttonAnim.pauseAnimation();
+                    buttonAnim.setVisibility(View.GONE);
+                    buttonText.setVisibility(View.VISIBLE);
+                    Toast.makeText(LoadingPage.this, "Build up your skills", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoadingPage.this,dashboard.class);
+                    startActivity(intent);
+                    LoadingPage.this.finish();
+
+                }
+                @Override
+                public void onFailure(){
 //                    Toast.makeText(LoadingPage.this, "Just a wait few second",
 //                            Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//
-//
-//        }else{
-//            Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
-//            startActivity(intent);
-//            LoadingPage.this.finish();
-//        }
-//    }
+                }
+            });
+        }else{
+            Intent intent = new Intent(LoadingPage.this, sign_in_page.class);
+            startActivity(intent);
+            LoadingPage.this.finish();
+        }
+    }
 }

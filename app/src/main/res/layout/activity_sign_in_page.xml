@@ -49,6 +49,7 @@
             android:drawableStart="@drawable/ic_baseline_lock"
             android:drawablePadding="10dp"
             android:hint="******"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
