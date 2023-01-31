@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class forgot_password_page1 extends AppCompatActivity {
     private EditText email;
     private String emailStr;
-    private TextView wrong;
+    private TextView wrong, checkMail;
     private FirebaseAuth auth;
 
     @SuppressLint("MissingInflatedId")
@@ -41,6 +41,7 @@ public class forgot_password_page1 extends AppCompatActivity {
 
         Button btn = (Button) findViewById(R.id.fp_otp);
         TextView textView = (TextView) findViewById(R.id.sign_in_page);
+        checkMail = findViewById(R.id.checkMail);
 
         String text = "<font color=#5E5D5D>Now no need. </font><font color=#F52525>Sign in</font>";
         textView.setText(Html.fromHtml(text));
@@ -69,6 +70,8 @@ public class forgot_password_page1 extends AppCompatActivity {
         emailStr = email.getText().toString().trim();
         if(emailStr.isEmpty()){
             wrong.setText("Enter your email *");
+        }else if(!emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+            wrong.setText("Enter your valid email *");
         }else{
             forgotPass();
         }
@@ -79,8 +82,7 @@ public class forgot_password_page1 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                        if(task.isSuccessful()){
-                           Toast.makeText(forgot_password_page1.this, "Check your email ("+emailStr+")",
-                                   Toast.LENGTH_SHORT).show();
+                           checkMail.setText("Check your mail :'"+emailStr+"'");
                        }else{
                            Toast.makeText(forgot_password_page1.this, "Error : "+task.getException().getMessage(),
                                    Toast.LENGTH_SHORT).show();

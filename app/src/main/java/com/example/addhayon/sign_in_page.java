@@ -94,6 +94,7 @@ public class sign_in_page extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
     public boolean validateData(){
+        String emailStrC=email.getText().toString().trim();
         boolean check = false;
        boolean status = false;
        if(email.getText().toString().isEmpty() && password.getText().toString().isEmpty() ){
@@ -107,6 +108,12 @@ public class sign_in_page extends AppCompatActivity {
            buttonAnim.setVisibility(View.GONE);
            buttonText.setVisibility(View.VISIBLE);
            error_msg.setText("Please enter mail *");
+           return false;
+       }else if(!emailStrC.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+           buttonAnim.pauseAnimation();
+           buttonAnim.setVisibility(View.GONE);
+           buttonText.setVisibility(View.VISIBLE);
+           error_msg.setText("Please enter valid email *");
            return false;
        }else if(password.getText().toString().isEmpty() ){
            buttonAnim.pauseAnimation();

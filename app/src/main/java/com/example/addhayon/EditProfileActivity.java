@@ -223,7 +223,7 @@ public class EditProfileActivity extends AppCompatActivity {
         String sphn = phn.getText().toString().trim();
 
         if(!sname.isEmpty()){
-            if(!sname.matches("[a-zA-Z]+")){
+            if(!sname.matches("^[a-zA-Z\\s.]+$")){
                 Toast.makeText(EditProfileActivity.this, "Name only alphadeticat characters ",
                         Toast.LENGTH_SHORT).show();
             }else{

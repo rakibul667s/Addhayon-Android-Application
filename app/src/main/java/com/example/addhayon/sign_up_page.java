@@ -19,10 +19,12 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.Properties;
 import java.util.Random;
@@ -46,6 +48,7 @@ public class sign_up_page extends AppCompatActivity {
     private String emailStr, passStr, confimPassStr, nameStr;
     private int code;
     private Random random;
+    private boolean a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +107,7 @@ public class sign_up_page extends AppCompatActivity {
         }else if(nameStr.isEmpty()){
             error_msg2.setText("Please enter name *");
             return false;
-        }else if(!nameStr.matches("[a-zA-Z]+")){
+        }else if(!nameStr.matches("^[a-zA-Z\\s.]+$")){
             error_msg2.setText("Name only alphadeticat characters *");
             return false;
         }else if(emailStr.isEmpty()){
@@ -113,6 +116,27 @@ public class sign_up_page extends AppCompatActivity {
         }else if(!emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
             error_msg2.setText("Please enter valid email *");
             return false;
+        }else if(emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+
+               mAuth.fetchSignInMethodsForEmail(emailStr)
+                       .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                           @Override
+                           public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                               boolean checkEmail = !task.getResult().getSignInMethods().isEmpty();
+                               if(checkEmail){
+                                   a=false;
+                                   error_msg2.setText("This email already use *");
+
+                               }
+                           }
+                       })
+                       .addOnFailureListener(new OnFailureListener() {
+                           @Override
+                           public void onFailure(@NonNull Exception e) {
+
+                           }
+                       });
+               return a;
         }else if(passStr.isEmpty() ){
             error_msg2.setText("Please enter password *");
             return false;
