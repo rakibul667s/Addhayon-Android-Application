@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient3"
+    android:backgroundTint="@color/white"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="35dp"
+    android:layout_margin="32dp">
+
+
+
+    <ScrollView
+        android:id="@+id/sc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terms and Conditions"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/gradient2StartColor"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last update: February 02, 2023"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"/>
+            <TextView
+                android:id="@+id/c1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Interpretation and Definitions"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/content"/>
+            <TextView
+                android:id="@+id/c2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Interpretation"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c1"/>
+            <TextView
+                android:id="@+id/c3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural."
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c2"/>
+            <TextView
+                android:id="@+id/c4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Definitions"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c3"/>
+
+            <TextView
+                android:id="@+id/c5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Addhayon means the software program provided by the Company downloaded by You on any electronic device, named Addhayon"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c4"/>
+            <TextView
+                android:id="@+id/c6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="refers to:  Bangladesh"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c5"/>
+            <TextView
+                android:id="@+id/c7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Device means any device that can access the Service such as a computer, a cellphone or a digital tablet."
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c6"/>
+            <TextView
+                android:id="@+id/c8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acknowledgment"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c7"/>
+            <TextView
+                android:id="@+id/c9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service."
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c8"/>
+            <TextView
+                android:id="@+id/c10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Access to internet ,location and file."
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c9"/>
+
+            <TextView
+                android:id="@+id/c11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Addhayon privide for any student like online exam, course, book shop, rankink, live solution, user profile, ranking, nearby loacation, event etc "
+                android:textSize="12sp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c10"/>
+            <TextView
+                android:id="@+id/a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="These Terms and Conditions may have been translated if We have made them available to You on our Service.
+You agree that the original English text shall prevail in the case of a dispute."
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c11"/>
+
+            <TextView
+                android:id="@+id/c12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developed by MD.Rakibul Islam"
+                android:textSize="12sp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a"/>
+            <TextView
+                android:id="@+id/c13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="If you have any questions about these Terms and Conditions, You can contact us:"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c12"/>
+            <TextView
+                android:id="@+id/c14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By email: addhayon.application@gmail.com"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c13"/>
+            <TextView
+                android:id="@+id/c15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="phn no : +8801704081993"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/i2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c14"/>
+            <Button
+                android:layout_gravity="right"
+                android:id="@+id/okB"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:text="Ok"
+                android:textColor="@color/white"
+                android:background="@drawable/gradient4"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c15"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

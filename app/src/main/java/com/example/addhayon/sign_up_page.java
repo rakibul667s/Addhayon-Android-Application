@@ -2,6 +2,7 @@ package com.example.addhayon;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,7 +42,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class sign_up_page extends AppCompatActivity {
-    private TextView sign_in_page, checkBox, error_msg2;
+    private TextView sign_in_page, checkBox, error_msg2,terms;
     private EditText name2, email2, password2, cPassword2;
     private Button signIn2;
     private FirebaseAuth mAuth;
@@ -62,6 +64,7 @@ public class sign_up_page extends AppCompatActivity {
         signIn2 = findViewById(R.id.signIn2);
         error_msg2 = findViewById(R.id.error_msg2);
         check = findViewById(R.id.checkBox);
+        terms =findViewById(R.id.terms);
 
         random = new Random();
         code = 100000 + random.nextInt(900000);
@@ -73,9 +76,16 @@ public class sign_up_page extends AppCompatActivity {
         sign_in_page.setText(Html.fromHtml(text));
 
         checkBox = findViewById(R.id.checkBox);
-        String text2 = "<font color=#5E5D5D>I agree to the </font><font color=#00663d>trems and conditions</font>";
-        checkBox.setText(Html.fromHtml(text2));
 
+        String text2 = "<font color=#5E5D5D>I agree to the </font><font color=#00663d>trems and conditions</font>";
+        terms.setText(Html.fromHtml(text2));
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                termsAndCondition();
+            }
+        });
         sign_in_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,5 +263,25 @@ public class sign_up_page extends AppCompatActivity {
         intent.putExtra("password",passStr);
         intent.putExtra("otp", code);
         startActivity(intent);
+    }
+
+    private void termsAndCondition(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(sign_up_page.this);
+        builder.setCancelable(true);
+
+        View view = getLayoutInflater().inflate(R.layout.tconditons,null);
+
+       Button cancelB = view.findViewById(R.id.okB);
+
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+
+        cancelB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 }
