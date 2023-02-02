@@ -48,7 +48,8 @@ public class sign_up_page extends AppCompatActivity {
     private String emailStr, passStr, confimPassStr, nameStr;
     private int code;
     private Random random;
-    private boolean a;
+    private boolean a, b;
+    private boolean checkEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,76 +89,71 @@ public class sign_up_page extends AppCompatActivity {
             public void onClick(View v) {
                // openSignUpOtpPage();
                 if(validate2()){
-                    sendEmail();
-                    openSignUpOtpPage();
-                    //signupNewUser();
+                   if (emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+
+                        mAuth.fetchSignInMethodsForEmail(emailStr)
+                                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                                        checkEmail = !task.getResult().getSignInMethods().isEmpty();
+                                        if (checkEmail) {
+                                            error_msg2.setText("This email already use *");
+
+                                        }else{
+                                            error_msg2.setText("");
+                                            sendEmail();
+                                            openSignUpOtpPage();
+                                        }
+                                    }
+                                });
+
+                    }
                 }
             }
         });
     }
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
-    public boolean validate2(){
+    public boolean validate2() {
         nameStr = name2.getText().toString().trim();
         emailStr = email2.getText().toString().trim();
         passStr = password2.getText().toString().trim();
         confimPassStr = cPassword2.getText().toString().trim();
-        if(nameStr.isEmpty() && emailStr.isEmpty() && passStr.isEmpty() && confimPassStr.isEmpty() && !check.isChecked()){
+        if (nameStr.isEmpty() && emailStr.isEmpty() && passStr.isEmpty() && confimPassStr.isEmpty() && !check.isChecked()) {
             error_msg2.setText("Please enter all data *");
             return false;
-        }else if(nameStr.isEmpty()){
+        } else if (nameStr.isEmpty()) {
             error_msg2.setText("Please enter name *");
             return false;
-        }else if(!nameStr.matches("^[a-zA-Z\\s.]+$")){
+        } else if (!nameStr.matches("^[a-zA-Z\\s.]+$")) {
             error_msg2.setText("Name only alphadeticat characters *");
             return false;
-        }else if(emailStr.isEmpty()){
+        } else if (emailStr.isEmpty()) {
             error_msg2.setText("Please enter email *");
             return false;
-        }else if(!emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+        } else if (!emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
             error_msg2.setText("Please enter valid email *");
             return false;
-        }else if(emailStr.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
-
-               mAuth.fetchSignInMethodsForEmail(emailStr)
-                       .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                           @Override
-                           public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                               boolean checkEmail = !task.getResult().getSignInMethods().isEmpty();
-                               if(checkEmail){
-                                   a=false;
-                                   error_msg2.setText("This email already use *");
-
-                               }
-                           }
-                       })
-                       .addOnFailureListener(new OnFailureListener() {
-                           @Override
-                           public void onFailure(@NonNull Exception e) {
-
-                           }
-                       });
-               return a;
-        }else if(passStr.isEmpty() ){
-            error_msg2.setText("Please enter password *");
-            return false;
-        }else if(passStr.length() <6){
-            error_msg2.setText("Password must be 6 charaters *");
-            return false;
-        }else if(confimPassStr.isEmpty() ){
-            error_msg2.setText("Please enter confirm password *");
-            return false;
-        }else if(confimPassStr.length() <6){
-            error_msg2.setText("Confirm password must be 6 charaters *");
-            return false;
-        }else if(passStr.compareTo(confimPassStr) != 0){
-            error_msg2.setText("password not matched *");
-            return false;
-        }else if(!check.isChecked()){
-            error_msg2.setText("Click I aggree checkbox *");
-            return false;
-        }else {
+        }else if (passStr.isEmpty()) {
+                error_msg2.setText("");
+                error_msg2.setText("Please enter password *");
+                return false;
+            } else if (passStr.length() < 6) {
+                error_msg2.setText("Password must be 6 charaters *");
+                return false;
+            } else if (confimPassStr.isEmpty()) {
+                error_msg2.setText("Please enter confirm password *");
+                return false;
+            } else if (confimPassStr.length() < 6) {
+                error_msg2.setText("Confirm password must be 6 charaters *");
+                return false;
+            } else if (passStr.compareTo(confimPassStr) != 0) {
+                error_msg2.setText("password not matched *");
+                return false;
+            } else if (!check.isChecked()) {
+                error_msg2.setText("Click I aggree checkbox *");
+                return false;
+            }else{
             return true;
-
         }
 
     }
