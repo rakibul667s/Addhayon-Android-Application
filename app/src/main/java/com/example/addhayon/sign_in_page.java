@@ -147,9 +147,11 @@ public class sign_in_page extends AppCompatActivity {
 
                                     Intent intent = new Intent(sign_in_page.this,dashboard.class);
                                     startActivity(intent);
+                                    Toast.makeText(sign_in_page.this, "Build up your skills", Toast.LENGTH_SHORT).show();
                                     buttonAnim.pauseAnimation();
                                     buttonAnim.setVisibility(View.GONE);
                                     buttonText.setVisibility(View.VISIBLE);
+
                                 }
                                 @Override
                                 public void onFailure(){
