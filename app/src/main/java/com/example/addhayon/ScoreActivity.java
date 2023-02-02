@@ -34,7 +34,7 @@ public class ScoreActivity extends AppCompatActivity {
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2, R.drawable.ic_exam));
-        btm.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_mark3));
+        btm.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_menu_book_24));
         btm.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_dashborad));
         btm.add(new MeowBottomNavigation.Model(5, R.drawable.ic_baseline_person));
 
