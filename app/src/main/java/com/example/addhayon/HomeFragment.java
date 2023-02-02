@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         context = getActivity();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        exam2 = view.findViewById(R.id.exam2);
+        exam2 = view.findViewById(R.id.rank);
         aboutMe = view.findViewById(R.id.about);
         exam2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
         startActivity(intent);
     }
     private void openExam(){
-        Intent intent = new Intent(context,AllExamCatActivity.class);
+        Intent intent = new Intent(context,LeaderBoard.class);
         startActivity(intent);
     }
     public void onStart() {

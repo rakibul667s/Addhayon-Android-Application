@@ -11,8 +11,6 @@
     android:paddingBottom="35dp"
     android:layout_margin="32dp">
 
-
-
     <ScrollView
         android:id="@+id/sc"
         android:layout_width="match_parent"

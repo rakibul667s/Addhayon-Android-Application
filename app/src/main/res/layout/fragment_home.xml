@@ -98,7 +98,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/exam2"
+                        android:id="@+id/exam"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -201,7 +201,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/exam"
+                    android:id="@+id/rank"
                     android:layout_width="match_parent"
                     android:layout_height="106dp"
                     android:orientation="horizontal">
@@ -476,11 +476,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="78dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/app" />
 
                             <TextView
                                 android:layout_width="match_parent"
