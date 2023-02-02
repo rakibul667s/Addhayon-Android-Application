@@ -14,7 +14,7 @@
         android:id="@+id/cover_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/about_round"
+        android:background="@drawable/gradient4"
         android:orientation="vertical"
         android:gravity="center"
         >
@@ -27,7 +27,7 @@
             android:text="ADDHAYON"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/gradient2StartColor"
+            android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
             android:text="অধ্যয়ন"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="#EFC2C2"
+            android:textColor="@color/i1"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -53,14 +53,14 @@
         android:layout_marginTop="120dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/sonycover"
-        app:civ_border_width="3dp"
         android:outlineSpotShadowColor="#EFC2C2"
-        app:civ_border_color="@color/gradient2StartColor">
+        app:civ_border_width="5dp"
+        app:civ_border_color="#FFFFFF">
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
         android:id="@+id/name"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="240dp"
         android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:padding="5dp"
@@ -75,7 +75,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="269dp"
+        android:layout_marginTop="275dp"
         android:layout_marginBottom="75dp"
         >
         <LinearLayout
@@ -85,15 +85,17 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/bio"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginBottom="6dp"
                 android:layout_width="match_parent"
                 android:padding="5dp"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="Developer"
                 android:textColor="@color/i2"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
             <TextView
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="15dp"
@@ -101,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:padding="5dp"
                 android:layout_height="2dp"
-                android:background="#EFC2C2"
+                android:background="#FA9E9E"
                 android:gravity="center_vertical"
                 android:textColor="@color/i2"
                 android:textSize="20sp" /><TextView
@@ -112,7 +114,7 @@
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
                 android:text="Details :"
-                android:textColor="@color/gradient2StartColor"
+                android:textColor="@color/i1"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
@@ -184,7 +186,7 @@
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
                 android:text="Family details :"
-                android:textColor="@color/gradient2StartColor"
+                android:textColor="@color/i1"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
@@ -245,7 +247,7 @@
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
                 android:text="Contact me : "
-                android:textColor="@color/gradient2StartColor"
+                android:textColor="@color/i1"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
