@@ -226,19 +226,38 @@ You agree that the original English text shall prevail in the case of a dispute.
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/c14"/>
-            <Button
-                android:layout_gravity="right"
-                android:id="@+id/okB"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="10dp"
-                android:text="Ok"
-                android:textColor="@color/white"
-                android:background="@drawable/gradient4"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/c15"/>
+           <LinearLayout
+               android:layout_marginTop="20dp"
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:orientation="horizontal">
+               <Button
+                   android:layout_weight="1"
+                   android:layout_gravity="left"
+                   android:id="@+id/cancelB"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:text="Cancle"
+                   android:textColor="@color/white"
+                   android:background="@drawable/gradient4"
+                   android:backgroundTint="@color/i2"
+                   app:layout_constraintRight_toRightOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/c15"/>
+              <View
+                  android:layout_width="100dp"
+                  android:layout_height="match_parent"/>
+               <Button
+                   android:layout_weight="1"
+                   android:layout_gravity="end"
+                   android:id="@+id/okB"
+                   android:layout_width="wrap_content"
+                   android:layout_height="30dp"
+                   android:text="Ok"
+                   android:textColor="@color/white"
+                   android:background="@drawable/gradient4"
+                   app:layout_constraintRight_toRightOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/c15"/>
+           </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

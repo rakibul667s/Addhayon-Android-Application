@@ -75,11 +75,16 @@ public class sign_up_page extends AppCompatActivity {
         String text = "<font color=#5E5D5D>Already have a account. </font><font color=#F52525>Sign in</font>";
         sign_in_page.setText(Html.fromHtml(text));
 
-        checkBox = findViewById(R.id.checkBox);
 
         String text2 = "<font color=#5E5D5D>I agree to the </font><font color=#00663d>trems and conditions</font>";
         terms.setText(Html.fromHtml(text2));
 
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                termsAndCondition();
+            }
+        });
         terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,15 +276,26 @@ public class sign_up_page extends AppCompatActivity {
 
         View view = getLayoutInflater().inflate(R.layout.tconditons,null);
 
-       Button cancelB = view.findViewById(R.id.okB);
+       Button oklB = view.findViewById(R.id.okB);
+        Button cancellB = view.findViewById(R.id.cancelB);
 
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
 
-        cancelB.setOnClickListener(new View.OnClickListener() {
+        oklB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
+                check.setChecked(true);
+                
+            }
+        });
+        cancellB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                check.setChecked(false);
+
             }
         });
         alertDialog.show();
