@@ -71,9 +71,6 @@
             android:name=".ExamTestActivity"
             android:exported="false" />
         <activity
-            android:name=".mapTest"
-            android:exported="false" />
-        <activity
             android:name=".calender"
             android:exported="false" />
         <activity
