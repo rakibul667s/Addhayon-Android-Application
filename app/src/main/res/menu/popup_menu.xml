@@ -35,6 +35,12 @@
         android:title="Account setting">
 
         <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/baseline_remember_me_2"
+                android:title="About !"
+                app:showAsAction="never"
+                />
 
             <item
                 android:id="@+id/editProfile"

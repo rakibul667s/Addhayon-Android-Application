@@ -170,6 +170,9 @@ public class userProfile extends AppCompatActivity {
                 if(id == R.id.delete){
                     deleteAccount();
                 }
+                if(id == R.id.about){
+                    about();
+                }
 
 
                 return false;
@@ -317,6 +320,12 @@ public class userProfile extends AppCompatActivity {
         startActivity(intent);
         userProfile.this.finish();
     }
+    public void about(){
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+        userProfile.this.finish();
+    }
+
 
 
     //---------------------Meow btn-------------------------------------------------

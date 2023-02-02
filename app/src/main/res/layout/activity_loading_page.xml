@@ -39,7 +39,7 @@
             android:text="অধ্যয়ন"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="#CCC8C8"
+            android:textColor="@color/i1"
             android:textSize="30sp"
             android:textStyle="bold" />
 

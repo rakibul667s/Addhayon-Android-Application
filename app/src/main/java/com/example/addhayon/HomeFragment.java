@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
     ImageSlider imageSlider;
     ImageSlider imageSlider2;
 
-    private LinearLayout exam2;
+    private LinearLayout exam2, aboutMe;
     Activity context;
     public HomeFragment() {
         // Required empty public constructor
@@ -36,10 +36,17 @@ public class HomeFragment extends Fragment {
         context = getActivity();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         exam2 = view.findViewById(R.id.exam2);
+        aboutMe = view.findViewById(R.id.about);
         exam2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openExam();
+            }
+        });
+        aboutMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAbout();
             }
         });
         imageSlider = view.findViewById(R.id.image_slider);
@@ -53,6 +60,10 @@ public class HomeFragment extends Fragment {
 
 
         return  view;
+    }
+    private void openAbout(){
+        Intent intent = new Intent(context,AboutActivity.class);
+        startActivity(intent);
     }
     private void openExam(){
         Intent intent = new Intent(context,AllExamCatActivity.class);
