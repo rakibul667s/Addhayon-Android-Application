@@ -56,7 +56,7 @@ public class sign_in_page extends AppCompatActivity {
         buttonAnim = findViewById(R.id.animation_view);
 
 
-        String text = "<font color=#5E5D5D>New User? </font><font color=#F52525>Register Now</font>";
+        String text = "<font color=#5E5D5D>New User? </font><font color=#F52525>Sign up now</font>";
         signupPage.setText(Html.fromHtml(text));
 
 

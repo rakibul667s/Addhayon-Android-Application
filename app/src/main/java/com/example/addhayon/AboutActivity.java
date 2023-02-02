@@ -2,8 +2,11 @@ package com.example.addhayon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
@@ -12,11 +15,16 @@ import kotlin.jvm.functions.Function1;
 
 public class AboutActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
+    private TextView bio;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        bio = findViewById(R.id.bio);
+        String text = "<font color=#888484>I'm a </font><font color=#FA9E9E>Developer</font><font color=#888484> from</font><font color=#FA9E9E> Bogura, Bangladesh</font><font color=#888484>. Good knowledge in </font><font color=#FA9E9E>Font-End </font><font color=#888484>and </font><font color=#FA9E9E>Back-End </font><font color=#888484>Development.</font><font color=#888484> I love time spending for</font><font color=#FA9E9E> Programming</font><font color=#888484>. And also like to work with</font><font color=#FA9E9E> Team</font><font color=#888484>. In this time,</font><font color=#FA9E9E> Addhayon </font><font color=#888484>mobile application it's my latest project.</font>";
+        bio.setText(Html.fromHtml(text));
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2,R.drawable.ic_exam));
