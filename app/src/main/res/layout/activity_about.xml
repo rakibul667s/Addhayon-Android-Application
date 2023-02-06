@@ -52,7 +52,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="120dp"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/sonycover"
+        android:src="@drawable/sp"
         android:outlineSpotShadowColor="#EFC2C2"
         app:civ_border_width="5dp"
         app:civ_border_color="#FFFFFF">
