@@ -95,7 +95,7 @@ public class dashboard extends AppCompatActivity {
     }
 
     private void openAIChat(){
-        Intent intent = new Intent(this,AIChatActivity.class);
+        Intent intent = new Intent(this,ChatMainActivity.class);
         startActivity(intent);
         dashboard.this.finish();
     }

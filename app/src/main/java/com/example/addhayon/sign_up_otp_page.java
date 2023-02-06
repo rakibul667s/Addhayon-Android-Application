@@ -151,13 +151,7 @@ public class sign_up_otp_page extends AppCompatActivity {
                             DBQurey.createUserData(emailStr,nameStr, new MyCompleteListener(){
                                 @Override
                                 public void onSuccess(){
-                                    String uid = FirebaseAuth.getInstance().getUid();
-                                    root.setValue("abc");
-                                    String imageUrl ="abc";
-                                    String phone = "abc";
-                                    String name = "sony";
-                                    User user = new  User(uid,name, phone);
-                                    root.child(uid).setValue(user);
+
 
 
 //                                    Toast.makeText(sign_up_otp_page.this,"Successfully create your Account", Toast.LENGTH_SHORT).show();

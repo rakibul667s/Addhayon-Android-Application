@@ -1,15 +1,24 @@
 package com.example.addhayon;
 
 public class User {
-    private  String uid, name, phoneNumber;
+    private  String uid, name, phoneNumber, profileImg;
     public  User(){
 
     }
 
-    public User(String uid, String name, String phoneNumber) {
+    public User(String uid, String name, String phoneNumber, String profileImg) {
         this.uid = uid;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.profileImg = profileImg;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 
     public String getUid() {
