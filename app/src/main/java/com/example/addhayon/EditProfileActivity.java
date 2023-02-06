@@ -25,12 +25,17 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.example.addhayon.Models.ProfileModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,19 +61,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity {
     private EditText name, bio, address, sclClg, phn, dateofBirth;
-    private ImageView saveB, cancelB,coverB,profileB, coverImg, dates;
+    private ImageView  cancelB,coverB,profileB, coverImg, dates;
+    private RelativeLayout saveB;
     private CircleImageView  profileImg;
-
+    private LottieAnimationView buttonAnim;
     private final int pData = 1, cData=2000;
 
     private String pIF, cIF;
 
-    private boolean pBoolean, cBoolean, all;
+    private boolean pBoolean, cBoolean, all, pb, cb;
 
     private Bitmap bitmap;
     private Uri imageUri;
 
-    private FirebaseDatabase database;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference root = database.getReference().child("users");
     private FirebaseStorage storage;
 
     private Uri pfilePath, cfilePath;
@@ -87,6 +94,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private int year;
     private int month;
     private int day;
+    private TextView buttonText;
 
 
 
@@ -107,9 +115,9 @@ public class EditProfileActivity extends AppCompatActivity {
         profileImg = findViewById(R.id.profile_image);
         profileB = findViewById(R.id.profileB);
         coverB = findViewById(R.id.coverB);
+        buttonText = findViewById(R.id.button_text);
+        buttonAnim = findViewById(R.id.animation_view);
         calendar = Calendar.getInstance();
-
-        database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -154,6 +162,9 @@ public class EditProfileActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
             @Override
             public void onClick(View v) {
+                buttonAnim.setVisibility(View.VISIBLE);
+                buttonAnim.playAnimation();
+                buttonText.setVisibility(View.GONE);
                 saveData();
             }
         });
@@ -230,41 +241,52 @@ public class EditProfileActivity extends AppCompatActivity {
                 FirebaseFirestore.getInstance()
                         .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .update("NAME", sname);
-                all= true;
+                DBQurey.myProfile.setName(sname);
+                all=true;
+
             }
         }
         if(!sbio.isEmpty()){
             FirebaseFirestore.getInstance()
                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .update("BIO", sbio);
+            DBQurey.myProfile.setBio(sbio);
             all= true;
         }
         if(!saddress.isEmpty()){
             FirebaseFirestore.getInstance()
                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .update("ADDRESS", saddress);
+            DBQurey.myProfile.setAddress(saddress);
             all= true;
         }
         if(!ssclClg.isEmpty()){
             FirebaseFirestore.getInstance()
                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .update("SCL_CLG", ssclClg);
+            DBQurey.myProfile.setSclClg(ssclClg);
             all= true;
         }
         if(!sdateofBirth.isEmpty()){
             FirebaseFirestore.getInstance()
                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .update("DATE_OF_BIRTH", sdateofBirth);
+            DBQurey.myProfile.setDateofBirth(sdateofBirth);
             all= true;
         }
         if(!sphn.isEmpty()){
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseFirestore.getInstance()
                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .update("PHONE", sphn);
+            DBQurey.myProfile.setPhn(sphn);
+            root.child(uid).child("phoneNumber").setValue(sphn);
             all= true;
         }
         if(pBoolean){
-            all= true;
+            pb = true;
+            Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
+                    Toast.LENGTH_SHORT).show();
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_profile.jpg");
             UploadTask uploadTask = storageRef.putFile(pfilePath);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -274,7 +296,36 @@ public class EditProfileActivity extends AppCompatActivity {
                     taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
+                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             String downloadUrl = uri.toString();
+                            DBQurey.myProfile.setProfileImg(downloadUrl);
+
+                            FirebaseFirestore.getInstance()
+                                    .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .update("PROFILE_IMG", downloadUrl);
+                            root.child(uid).child("profileImg").setValue(downloadUrl);
+                            Toast.makeText(EditProfileActivity.this, "Update your profile image",
+                                    Toast.LENGTH_SHORT).show();
+                            if(all){
+                                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                        Toast.LENGTH_SHORT).show();
+                                buttonAnim.pauseAnimation();
+                                buttonAnim.setVisibility(View.GONE);
+                                buttonText.setVisibility(View.VISIBLE);
+                                Intent intent = new Intent(EditProfileActivity.this, userProfile.class);
+                                startActivity(intent);
+                                EditProfileActivity.this.finish();
+                            }else{
+                                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                        Toast.LENGTH_SHORT).show();
+                                buttonAnim.pauseAnimation();
+                                buttonAnim.setVisibility(View.GONE);
+                                buttonText.setVisibility(View.VISIBLE);
+                                Intent intent = new Intent(EditProfileActivity.this, userProfile.class);
+                                startActivity(intent);
+                                EditProfileActivity.this.finish();
+                            }
                         }
                     });
                 }
@@ -291,9 +342,14 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         if(cBoolean){
-            all= true;
+            cb= true;
+
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_cover.jpg");
             UploadTask uploadTask = storageRef.putFile(cfilePath);
+            if(!pb){
+                Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
+                        Toast.LENGTH_SHORT).show();
+            }
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -301,7 +357,36 @@ public class EditProfileActivity extends AppCompatActivity {
                     taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
                             String downloadUrl = uri.toString();
+
+                            FirebaseFirestore.getInstance()
+                                    .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .update("COVER_IMG", downloadUrl);
+                            DBQurey.myProfile.setCoverImg(downloadUrl);
+                            Toast.makeText(EditProfileActivity.this, "Update your cover image",
+                                    Toast.LENGTH_SHORT).show();
+                            if(!pb){
+                                if(all){
+                                    Toast.makeText(EditProfileActivity.this, "Safely update  your all data",
+                                            Toast.LENGTH_SHORT).show();
+                                    buttonAnim.pauseAnimation();
+                                    buttonAnim.setVisibility(View.GONE);
+                                    buttonText.setVisibility(View.VISIBLE);
+                                    Intent intent = new Intent(EditProfileActivity.this, userProfile.class);
+                                    startActivity(intent);
+                                    EditProfileActivity.this.finish();
+                                }else{
+                                    Toast.makeText(EditProfileActivity.this, "Safely update  your all data",
+                                            Toast.LENGTH_SHORT).show();
+                                    buttonAnim.pauseAnimation();
+                                    buttonAnim.setVisibility(View.GONE);
+                                    buttonText.setVisibility(View.VISIBLE);
+                                    Intent intent = new Intent(EditProfileActivity.this, userProfile.class);
+                                    startActivity(intent);
+                                    EditProfileActivity.this.finish();
+                                }
+                            }
 
                         }
                     });
@@ -316,17 +401,21 @@ public class EditProfileActivity extends AppCompatActivity {
             });
 
 
+
         }
-        if(all){
-            Toast.makeText(EditProfileActivity.this, "Safely update  your data",
-                    Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, userProfile.class);
-            startActivity(intent);
-            EditProfileActivity.this.finish();
-        }if(!all){
-            Toast.makeText(EditProfileActivity.this, "Empty data not update",
-                    Toast.LENGTH_SHORT).show();
+        if(!pb || !cb){
+            if(all){
+                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                        Toast.LENGTH_SHORT).show();
+                buttonAnim.pauseAnimation();
+                buttonAnim.setVisibility(View.GONE);
+                buttonText.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(EditProfileActivity.this, userProfile.class);
+                startActivity(intent);
+                EditProfileActivity.this.finish();
+            }
         }
+
 
 
     }

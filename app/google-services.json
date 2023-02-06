@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "294585879206",
+    "firebase_url": "https://addhayon-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "addhayon",
     "storage_bucket": "addhayon.appspot.com"
   },
@@ -22,7 +23,7 @@
           }
         },
         {
-          "client_id": "294585879206-bjv8dkbhqsdpb2brois4fqqh46covet7.apps.googleusercontent.com",
+          "client_id": "294585879206-b1nn82hq3c4u2l5b5ou5nm3sn2p3vovd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "294585879206-bjv8dkbhqsdpb2brois4fqqh46covet7.apps.googleusercontent.com",
+              "client_id": "294585879206-b1nn82hq3c4u2l5b5ou5nm3sn2p3vovd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

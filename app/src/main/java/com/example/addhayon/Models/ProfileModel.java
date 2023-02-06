@@ -10,12 +10,14 @@ public class ProfileModel {
     private String dateofBirth;
     private String sclClg;
     private String phn;
+    private String profileImg;
+    private String coverImg;
     private int bookmarksCount;
 
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount) {
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -24,7 +26,25 @@ public class ProfileModel {
         this.sclClg=sclClg;
         this.phn=phn;
         this.bookmarksCount = bookmarksCount;
+        this.profileImg = profileImg;
+        this.coverImg = coverImg;
 
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
+    }
+
+    public String getCoverImg() {
+        return coverImg;
+    }
+
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
     }
 
     public int getBookmarksCount() {

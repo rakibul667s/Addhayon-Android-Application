@@ -8,12 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,6 +29,8 @@ public class HomeFragment extends Fragment {
     ImageSlider imageSlider2;
 
     private LinearLayout exam2, aboutMe;
+
+
     Activity context;
     public HomeFragment() {
         // Required empty public constructor
@@ -37,6 +44,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         exam2 = view.findViewById(R.id.rank);
         aboutMe = view.findViewById(R.id.about);
+
+
+
+        //setData();
         exam2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +71,9 @@ public class HomeFragment extends Fragment {
 
 
         return  view;
+    }
+    private void setData(){
+
     }
     private void openAbout(){
         Intent intent = new Intent(context,AboutActivity.class);

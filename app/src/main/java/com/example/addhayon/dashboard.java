@@ -7,12 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -22,6 +28,11 @@ public class dashboard extends AppCompatActivity {
     private MeowBottomNavigation btm;
     private Button btnID;
     private ImageView chat;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference root = database.getReference().child("users");
+    private FirebaseStorage storage;
+    private FirebaseAuth mAuth, auth;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,7 +41,14 @@ public class dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        String phone = DBQurey.myProfile.getPhn();
+        String name = DBQurey.myProfile.getName();
+
+        root.child(uid).child("name").setValue(name);
         chat = findViewById(R.id.chat);
+
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override

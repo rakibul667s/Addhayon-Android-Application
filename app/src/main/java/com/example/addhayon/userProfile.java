@@ -116,15 +116,15 @@ public class userProfile extends AppCompatActivity {
         storage2Ref = storage.getReference().child("allUsers/"+userId+"/image_cover.jpg");
 
 
-        service = Executors.newSingleThreadExecutor();
-
-        service.execute(new Runnable() {
-            @Override
-            public void run() {
-                allImageSet();
-            }
-
-        });
+//        service = Executors.newSingleThreadExecutor();
+//
+//        service.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                allImageSet();
+//            }
+//
+//        });
 
 
         loadProfile();
@@ -236,6 +236,13 @@ public class userProfile extends AppCompatActivity {
         email2.setText(pEmail);
         phn.setText(pPhn);
         score.setText(String.valueOf(DBQurey.myPerformance.getScore()));
+
+        Glide.with(userProfile.this)
+                .load(DBQurey.myProfile.getProfileImg())
+                .into(profile_image);
+        Glide.with(userProfile.this)
+                .load(DBQurey.myProfile.getCoverImg())
+                .into(cover_img);
         if(DBQurey.g_usersList.size() == 0){
             DBQurey.getTopUsers(new MyCompleteListener(){
                 @Override

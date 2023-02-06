@@ -161,21 +161,46 @@
             android:padding="10dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/baseline_clear_24"
             android:background="@drawable/gradient5"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        <RelativeLayout
+            android:clickable="true"
             android:id="@+id/save"
-            android:padding="10dp"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:background="@drawable/red_button_ripple"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/baseline_save_alt_24"
-            android:background="@drawable/gradient5"/>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/button_text"
+                android:textColor="@color/white"
+                android:text="Save"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/baseline_save_alt_24"
+                android:drawablePadding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                app:lottie_rawRes="@raw/button_loading_white"
+                android:id="@+id/animation_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 

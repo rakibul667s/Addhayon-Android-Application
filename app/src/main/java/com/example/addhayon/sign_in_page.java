@@ -144,13 +144,13 @@ public class sign_in_page extends AppCompatActivity {
                             DBQurey.loadData(new MyCompleteListener(){
                                 @Override
                                 public void onSuccess(){
-
-                                    Intent intent = new Intent(sign_in_page.this,dashboard.class);
-                                    startActivity(intent);
-                                    Toast.makeText(sign_in_page.this, "Build up your skills", Toast.LENGTH_SHORT).show();
                                     buttonAnim.pauseAnimation();
                                     buttonAnim.setVisibility(View.GONE);
                                     buttonText.setVisibility(View.VISIBLE);
+                                    Intent intent = new Intent(sign_in_page.this,dashboard.class);
+                                    startActivity(intent);
+                                    Toast.makeText(sign_in_page.this, "Build up your skills", Toast.LENGTH_SHORT).show();
+
 
                                 }
                                 @Override

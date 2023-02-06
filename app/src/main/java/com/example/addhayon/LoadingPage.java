@@ -49,10 +49,10 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 check = true;
+                Toast.makeText(LoadingPage.this, "Please wait a few seconds", Toast.LENGTH_SHORT).show();
                 buttonAnim.setVisibility(View.VISIBLE);
                 buttonAnim.playAnimation();
                 buttonText.setVisibility(View.GONE);
-                openSignPage();
             }
         });
         mAuth = FirebaseAuth.getInstance();
@@ -70,19 +70,17 @@ public class LoadingPage extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 if (mAuth.getCurrentUser() != null) {
                     DBQurey.loadData(new MyCompleteListener() {
                         @Override
                         public void onSuccess() {
-                            buttonAnim.pauseAnimation();
-                            buttonAnim.setVisibility(View.GONE);
-                            buttonText.setVisibility(View.VISIBLE);
                             Intent intent = new Intent(LoadingPage.this, dashboard.class);
                             startActivity(intent);
                             LoadingPage.this.finish();
+                            buttonAnim.pauseAnimation();
+                            buttonAnim.setVisibility(View.GONE);
+                            buttonText.setVisibility(View.VISIBLE);
                             Toast.makeText(LoadingPage.this, "Build up your skills", Toast.LENGTH_SHORT).show();
-
                         }
 
                         @Override
@@ -91,7 +89,6 @@ public class LoadingPage extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
-
 
                 } else {
                     Intent intent = new Intent(LoadingPage.this, sign_in_page.class);

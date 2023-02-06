@@ -18,10 +18,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class sign_up_otp_page extends AppCompatActivity {
     private String nameStr,emailStr,passStr, s;
@@ -32,7 +37,10 @@ public class sign_up_otp_page extends AppCompatActivity {
     private TextView buttonText;
     private LottieAnimationView buttonAnim;
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth, auth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference root = database.getReference().child("users");
+    private FirebaseStorage storage;
 
 
 
@@ -51,6 +59,10 @@ public class sign_up_otp_page extends AppCompatActivity {
         buttonAnim = findViewById(R.id.animation_view);
 
         mAuth = FirebaseAuth.getInstance();
+
+        storage = FirebaseStorage.getInstance();
+
+
 
         Intent intent = getIntent();
 
@@ -80,6 +92,7 @@ public class sign_up_otp_page extends AppCompatActivity {
                 }
 
                 if(valid()){
+                    //realS();
                     signupNewUser();
                 }
             }
@@ -90,6 +103,18 @@ public class sign_up_otp_page extends AppCompatActivity {
                 openSignInPage();
             }
         });
+    }
+    public void realS(){
+//        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String imageUrl ="abc";
+        String phone = "abc";
+        String name = "sony";
+//        User user = new  User(uid,name, phone,imageUrl);
+        root.setValue(name);
+        buttonAnim.setVisibility(View.VISIBLE);
+        buttonAnim.playAnimation();
+        buttonText.setVisibility(View.GONE);
+
     }
     public void openSignInPage() {
         Intent intent = new Intent(this, sign_in_page.class);
@@ -110,23 +135,36 @@ public class sign_up_otp_page extends AppCompatActivity {
         return false;
     }
     public void signupNewUser(){
+
         mAuth.createUserWithEmailAndPassword(emailStr, passStr)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
+                            buttonAnim.pauseAnimation();
+                            buttonAnim.setVisibility(View.GONE);
+                            buttonText.setVisibility(View.VISIBLE);
+
 
                             DBQurey.createUserData(emailStr,nameStr, new MyCompleteListener(){
                                 @Override
                                 public void onSuccess(){
-                                    buttonAnim.pauseAnimation();
-                                    buttonAnim.setVisibility(View.GONE);
-                                    buttonText.setVisibility(View.VISIBLE);
-                                    Toast.makeText(sign_up_otp_page.this,"Successfully create your Account", Toast.LENGTH_SHORT).show();
-                                    //-------call Sign in page--------------
-                                    openSignInPage();
+                                    String uid = FirebaseAuth.getInstance().getUid();
+                                    root.setValue("abc");
+                                    String imageUrl ="abc";
+                                    String phone = "abc";
+                                    String name = "sony";
+                                    User user = new  User(uid,name, phone);
+                                    root.child(uid).setValue(user);
+
+
+//                                    Toast.makeText(sign_up_otp_page.this,"Successfully create your Account", Toast.LENGTH_SHORT).show();
+//                                    //-------call Sign in page--------------
+//                                    openSignInPage();
+
+
                                 }
                                 @Override
                                 public void onFailure(){
@@ -144,5 +182,6 @@ public class sign_up_otp_page extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 }
