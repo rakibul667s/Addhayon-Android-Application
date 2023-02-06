@@ -10,8 +10,10 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
+        android:layout_height="52dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@color/gradient2StartColor"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -34,10 +36,11 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/baseline_puser" />
+                android:src="@drawable/baseline_puser"
+                android:background="@drawable/gradient5"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,21 +51,21 @@
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mian Asad Ali"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:text="Addhayon"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/status"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_height="26dp"
                     android:text="Online"
+                    android:textSize="14sp"
                     android:textColor="@color/white"
-                    android:visibility="gone" />
+                    />
             </LinearLayout>
 
         </LinearLayout>
