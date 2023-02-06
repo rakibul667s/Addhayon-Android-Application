@@ -27,6 +27,7 @@
         android:layout_height="match_parent"
         android:background="#FAFAFA"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
