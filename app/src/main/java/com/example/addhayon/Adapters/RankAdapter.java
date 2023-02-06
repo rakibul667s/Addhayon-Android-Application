@@ -1,18 +1,24 @@
 package com.example.addhayon.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.addhayon.Models.RankModel;
 import com.example.addhayon.R;
+import com.example.addhayon.userProfile;
 
 import java.util.List;
 import java.util.Locale;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     private List<RankModel> userList;
@@ -33,8 +39,9 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
         String name = userList.get(position).getName();
         int score = userList.get(position).getScore();
         int rank = userList.get(position).getRank();
+        String pImg = userList.get(position).getpImg();
 
-        holder.setData(name,score, rank);
+        holder.setData(name,score, rank, pImg);
     }
 
     @Override
@@ -47,7 +54,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView nameTv, rankTv, scoreTv, imgTv;
+        private TextView nameTv, rankTv, scoreTv;
+        private CircleImageView imgTv;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTv = itemView.findViewById(R.id.name2);
@@ -55,11 +63,13 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
             scoreTv = itemView.findViewById(R.id.score2);
             imgTv = itemView.findViewById(R.id.img_txt);
         }
-        private void setData(String name, int score, int rank){
+        private void setData(String name, int score, int rank, String pImg){
             nameTv.setText(name);
             scoreTv.setText("Score : "+score);
             rankTv.setText("Rank : "+rank);
-            imgTv.setText(name.toUpperCase().substring(0,1));
+            Glide.with(itemView.getContext())
+                    .load(pImg)
+                    .into(imgTv);
         }
     }
 }

@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:scaleType="centerCrop"
         android:id="@+id/img_txt"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -13,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/gradient5"
-        android:text="R"
+        android:src="@drawable/baseline_puser"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="20sp"

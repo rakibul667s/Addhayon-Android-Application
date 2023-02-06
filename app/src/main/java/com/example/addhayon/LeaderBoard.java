@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.addhayon.Adapters.RankAdapter;
 
@@ -26,7 +27,7 @@ import kotlin.jvm.functions.Function1;
 
 public class LeaderBoard extends AppCompatActivity {
     private TextView totalUsers, myScore, myRank;
-    private TextView myProfileImg;
+    private CircleImageView myProfileImg;
     private RecyclerView usersView;
     private RankAdapter adapter;
     private MeowBottomNavigation btm;
@@ -96,7 +97,9 @@ public class LeaderBoard extends AppCompatActivity {
             }
         });
         totalUsers.setText("Total students : " +DBQurey.g_userCount);
-        myProfileImg.setText(myPerformance.getName().toUpperCase().substring(0,1));
+        Glide.with(this)
+                .load(DBQurey.myProfile.getProfileImg())
+                .into(myProfileImg);
 
     }
 
@@ -111,7 +114,6 @@ public class LeaderBoard extends AppCompatActivity {
         int lowTopScore = g_usersList.get(g_usersList.size()-1).getScore();
         int remaining_slots = g_userCount - 20;
         int myslot = (myPerformance.getScore()*remaining_slots)/lowTopScore;
-
         int rank;
 
         if(lowTopScore != myPerformance.getScore()){

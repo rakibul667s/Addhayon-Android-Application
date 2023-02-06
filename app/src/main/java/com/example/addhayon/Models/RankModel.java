@@ -4,11 +4,21 @@ public class RankModel {
     private String name;
     private int score;
     private int rank;
+    private String pImg;
 
-    public RankModel(String name,int score, int rank) {
+    public RankModel(String name,int score, int rank,String pImg) {
         this.score = score;
         this.rank = rank;
         this.name = name;
+        this.pImg = pImg;
+    }
+
+    public String getpImg() {
+        return pImg;
+    }
+
+    public void setpImg(String pImg) {
+        this.pImg = pImg;
     }
 
     public String getName() {
