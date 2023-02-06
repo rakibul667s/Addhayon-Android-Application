@@ -185,8 +185,6 @@
                 android:text="Save"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:drawableStart="@drawable/baseline_save_alt_24"
-                android:drawablePadding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
