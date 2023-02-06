@@ -92,17 +92,18 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true">
+
             <TextView
-                android:layout_centerInParent="true"
                 android:id="@+id/button_text"
-                android:textSize="24sp"
-                android:textColor="@color/white"
-                android:text="Virefy"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Virefy"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:visibility="gone"
