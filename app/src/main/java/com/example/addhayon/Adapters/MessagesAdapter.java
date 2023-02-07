@@ -78,6 +78,8 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 .build();
 
         ReactionPopup popup = new ReactionPopup(context, config, (pos) -> {
+            if (pos < 0)
+                return false;
             if(holder.getClass() == SentViewHolder.class){
                 SentViewHolder viewHolder = (SentViewHolder)holder;
                 viewHolder.binding.feeling.setImageResource(reactions[pos]);

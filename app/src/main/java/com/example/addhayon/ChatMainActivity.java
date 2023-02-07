@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.addhayon.databinding.ActivityChatMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -33,6 +37,9 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class ChatMainActivity extends AppCompatActivity {
     ActivityChatMainBinding binding;
@@ -44,6 +51,7 @@ public class ChatMainActivity extends AppCompatActivity {
     ProgressDialog dialog;
     User user;
     private Toolbar toolbar;
+    private MeowBottomNavigation btm;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,12 +59,26 @@ public class ChatMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        database = FirebaseDatabase.getInstance();
+
+        FirebaseMessaging.getInstance()
+                .getToken()
+                .addOnSuccessListener(new OnSuccessListener<String>() {
+                    @Override
+                    public void onSuccess(String token) {
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("token",token);
+                        database.getReference().child("users")
+                                .child(FirebaseAuth.getInstance().getUid())
+                                .updateChildren(map);
+                    }
+                });
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading Image. . .");
         dialog.setCancelable(false);
 
-        database = FirebaseDatabase.getInstance();
+
         users = new ArrayList<>();
         userStatuses = new ArrayList<>();
 
@@ -138,17 +160,52 @@ public class ChatMainActivity extends AppCompatActivity {
             }
         });
 
-        binding.bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-            @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+//        binding.bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+//            @Override
+//            public void onNavigationItemReselected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId()){
+//                    case R.id.status:
+//                        Intent intent = new Intent();
+//                        intent.setType("image/*");
+//                        intent.setAction(Intent.ACTION_GET_CONTENT);
+//                        startActivityForResult(intent,75);
+//                }
+//            }
+//        });
 
-                switch (item.getItemId()){
-                    case R.id.status:
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(intent,75);
+        btm = findViewById(R.id.bottom_nav);
+        btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));
+        btm.add(new MeowBottomNavigation.Model(2,R.drawable.ic_baseline_chat_bubble_24));
+        btm.add(new MeowBottomNavigation.Model(3,R.drawable.baseline_add_a_photo_24));
+        btm.add(new MeowBottomNavigation.Model(4,R.drawable.ic_baseline_call));
+        btm.add(new MeowBottomNavigation.Model(5,R.drawable.ic_baseline_person));
+
+
+
+        btm.show(2,true);
+        btm.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                switch (model.getId()){
+                    case 1:
+                        openHome();
+                        break;
+                    case 2:
+                        openChat();
+                        break;
+                    case 3:
+                        openStory();
+                        break;
+                    case 4:
+                        //openMap();
+                        break;
+                    case 5:
+                        openUserProfile();;
+                        break;
+
                 }
+                return null;
             }
         });
 
@@ -159,6 +216,34 @@ public class ChatMainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
 
+    }
+    private void  openHome(){
+        Intent intent = new Intent(this,dashboard.class);
+        startActivity(intent);
+        ChatMainActivity.this.finish();
+    }
+    private  void  replace(Fragment fragment){
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame,fragment);
+        transaction.commit();
+    }
+
+    public void openUserProfile(){
+        Intent intent = new Intent(this, userProfile.class);
+        startActivity(intent);
+        ChatMainActivity.this.finish();
+    }
+    public void openChat(){
+        Intent intent = new Intent(this, ChatMainActivity.class);
+        startActivity(intent);
+        ChatMainActivity.this.finish();
+    }
+
+    public void  openStory(){
+        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(intent,75);
     }
 
     @Override

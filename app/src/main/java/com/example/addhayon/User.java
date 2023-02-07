@@ -1,7 +1,7 @@
 package com.example.addhayon;
 
 public class User {
-    private  String uid, name, phoneNumber, profileImg;
+    private  String uid, name, phoneNumber, profileImg, token;
     public  User(){
 
     }
@@ -11,6 +11,14 @@ public class User {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.profileImg = profileImg;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getProfileImg() {
