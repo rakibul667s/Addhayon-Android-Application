@@ -27,10 +27,9 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 app:srcCompat="@drawable/baseline_arrow_left_24"
                 app:tint="@color/white" />
 
@@ -38,32 +37,37 @@
                 android:id="@+id/profile"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:src="@drawable/baseline_puser"
-                android:background="@drawable/gradient5"/>
+                android:background="@drawable/gradient5"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FFFFFF"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
                     android:text="Addhayon"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:layout_weight="1"
+                    android:visibility="invisible"
                     android:id="@+id/status"
                     android:layout_width="match_parent"
-                    android:layout_height="26dp"
+                    android:layout_height="wrap_content"
                     android:text="Online"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="@color/white"
                     />
             </LinearLayout>
@@ -80,6 +84,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="30dp"
+        android:outlineSpotShadowColor="@color/gradient2StartColor"
+        android:outlineAmbientShadowColor="@color/gradient2StartColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendBtn"
         app:layout_constraintStart_toStartOf="parent">
@@ -105,18 +111,17 @@
             <ImageView
                 android:id="@+id/attachment"
                 android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="12dp"
-                app:srcCompat="@drawable/baseline_attach_file_24"
-                app:tint="#676767" />
+                app:srcCompat="@drawable/baseline_attach_file_24" />
 
             <ImageView
                 android:id="@+id/camera"
                 android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginRight="12dp"
-                app:srcCompat="@drawable/baseline_add_a_photo_24"
-                app:tint="#676767" />
+                app:srcCompat="@drawable/baseline_add_a_photo_24" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -132,14 +137,16 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
+        android:layout_marginTop="8dp"
         android:id="@+id/sendBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:padding="10dp"
+        android:padding="7dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:srcCompat="@drawable/baseline_send_24"
+
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,10 +49,11 @@ public class LoadingPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 check = true;
-                Toast.makeText(LoadingPage.this, "Please wait a few seconds", Toast.LENGTH_SHORT).show();
+
                 buttonAnim.setVisibility(View.VISIBLE);
                 buttonAnim.playAnimation();
                 buttonText.setVisibility(View.GONE);
+                Toast.makeText(LoadingPage.this, "Please wait a few seconds", Toast.LENGTH_SHORT).show();
             }
         });
         mAuth = FirebaseAuth.getInstance();
@@ -74,12 +75,12 @@ public class LoadingPage extends AppCompatActivity {
                     DBQurey.loadData(new MyCompleteListener() {
                         @Override
                         public void onSuccess() {
-                            Intent intent = new Intent(LoadingPage.this, dashboard.class);
-                            startActivity(intent);
-                            LoadingPage.this.finish();
                             buttonAnim.pauseAnimation();
                             buttonAnim.setVisibility(View.GONE);
                             buttonText.setVisibility(View.VISIBLE);
+                            Intent intent = new Intent(LoadingPage.this, dashboard.class);
+                            startActivity(intent);
+                            LoadingPage.this.finish();
                             Toast.makeText(LoadingPage.this, "Build up your skills", Toast.LENGTH_SHORT).show();
                         }
 
@@ -101,12 +102,7 @@ public class LoadingPage extends AppCompatActivity {
         }.start();
     }
 
-    public void openSignPage() {
 
-        Toast.makeText(LoadingPage.this, "Please wait a few seconds", Toast.LENGTH_SHORT).show();
-
-
-    }
 
 
 }

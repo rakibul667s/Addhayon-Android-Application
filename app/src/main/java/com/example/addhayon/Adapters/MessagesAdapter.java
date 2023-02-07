@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.addhayon.Message;
 import com.example.addhayon.R;
 import com.example.addhayon.databinding.ItemReciveBinding;
@@ -105,6 +106,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         if(holder.getClass() == SentViewHolder.class){
             SentViewHolder viewHolder = (SentViewHolder)holder;
+
+            if(message.getMessage().equals("photo")){
+                viewHolder.binding.image.setVisibility(View.VISIBLE);
+                viewHolder.binding.message.setVisibility(View.GONE);
+
+                Glide.with(context).load(message.getImageUrl()).placeholder(R.drawable.imageplaceholder).into(viewHolder.binding.image);
+            }
             viewHolder.binding.message.setText(message.getMessage());
 
             if(message.getFeeling() >=0){
@@ -124,6 +132,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             });
         }else{
             ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
+            if(message.getMessage().equals("photo")){
+                viewHolder.binding.image.setVisibility(View.VISIBLE);
+                viewHolder.binding.message.setVisibility(View.GONE);
+
+                Glide.with(context).load(message.getImageUrl())
+                        .placeholder(R.drawable.imageplaceholder).into(viewHolder.binding.image);
+            }
             viewHolder.binding.message.setText(message.getMessage());
 
             if(message.getFeeling() >=0){
@@ -135,6 +150,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
             }
 
             viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popup.onTouch(v,event);
+                    return false;
+                }
+            });
+            viewHolder.binding.image.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     popup.onTouch(v,event);
