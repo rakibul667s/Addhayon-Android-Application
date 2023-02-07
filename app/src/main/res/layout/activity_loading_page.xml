@@ -54,6 +54,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/linearlayout"
@@ -74,6 +76,7 @@
             android:textStyle="bold" />
 
         <RelativeLayout
+            android:layout_gravity="bottom"
             android:clickable="true"
             android:id="@+id/loading"
             android:background="@drawable/red_button_ripple"
@@ -88,7 +91,7 @@
                 android:layout_centerInParent="true"
                 android:text="Get Started"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <com.airbnb.lottie.LottieAnimationView
