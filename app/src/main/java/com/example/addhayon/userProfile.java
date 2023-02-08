@@ -112,8 +112,6 @@ public class userProfile extends AppCompatActivity {
 
 
         storage = FirebaseStorage.getInstance();
-        storage1Ref = storage.getReference().child("allUsers/"+userId+"/image_profile.jpg");
-        storage2Ref = storage.getReference().child("allUsers/"+userId+"/image_cover.jpg");
 
 
 //        service = Executors.newSingleThreadExecutor();
