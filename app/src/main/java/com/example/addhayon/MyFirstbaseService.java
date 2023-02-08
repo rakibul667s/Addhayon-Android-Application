@@ -38,6 +38,7 @@ public class MyFirstbaseService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         String channelId = "1";
+       // Uri defaultSoundUri = Uri.parse("android.resource://"+getApplicationContext().getPackageName() + "/"+ R.raw.sound);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)

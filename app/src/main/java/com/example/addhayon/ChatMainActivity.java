@@ -195,7 +195,10 @@ public class ChatMainActivity extends AppCompatActivity {
                         openChat();
                         break;
                     case 3:
-                        openStory();
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(intent,75);
                         break;
                     case 4:
                         //openMap();

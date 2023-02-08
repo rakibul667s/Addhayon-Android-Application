@@ -78,6 +78,7 @@ public class ChatActivity extends AppCompatActivity {
         //name2 =findViewById(R.id.name);
 
         String name = getIntent().getStringExtra("name");
+        String titleName = DBQurey.myProfile.getName();
 
         String profile = getIntent().getStringExtra("image");
         String token = getIntent().getStringExtra("token");
@@ -175,7 +176,7 @@ public class ChatActivity extends AppCompatActivity {
                                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
-                                                sendNotification(name, message.getMessage(),token);
+                                                sendNotification(titleName, message.getMessage(),token);
                                             }
                                         });
 
