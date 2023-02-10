@@ -3,9 +3,39 @@
 
 
     <item
+        android:id="@+id/lan"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Show activities">
+        android:title="Set Language">
+
+        <menu>
+            <item
+                android:id="@+id/Bangla"
+                android:icon="@drawable/baseline_text_format_24"
+                android:title="বাংলা"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/English"
+                android:icon="@drawable/baseline_text_format_24"
+                android:title="English"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/Hindi"
+                android:icon="@drawable/baseline_text_format_24"
+                android:title="
+हिंदी"
+                app:showAsAction="never"
+                />
+
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/act"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="All activities">
 
         <menu>
             <item
@@ -17,7 +47,7 @@
             <item
                 android:id="@+id/mark"
                 android:icon="@drawable/baseline_mark2"
-                android:title="Saved Question"
+                android:title="Mark Questions"
                 app:showAsAction="never"/>
             <item
                 android:id="@+id/timeS"
@@ -30,9 +60,10 @@
 
     </item>
     <item
+        android:id="@+id/accountMenu"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Account setting">
+        android:title="Account settings">
 
         <menu>
             <item
@@ -52,7 +83,7 @@
             <item
                 android:id="@+id/delete"
                 android:icon="@drawable/baseline_do_not_disturb_on_24"
-                android:title="Delete Accpunt"
+                android:title="Delete Account"
                 app:showAsAction="never"/>
 
             <item

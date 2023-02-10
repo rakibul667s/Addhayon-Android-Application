@@ -32,6 +32,7 @@ public class LoadingPage extends AppCompatActivity {
     private TextView buttonText;
     private LottieAnimationView buttonAnim;
     private boolean check = false;
+    String btnText, toastMst1, s1= "Bangla";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,6 +40,9 @@ public class LoadingPage extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_page);
+
+
+        btnText = DBQurey.myProfile.getLanguage();
 
         buttonText = findViewById(R.id.button_text);
         buttonAnim = findViewById(R.id.animation_view);
@@ -72,6 +76,7 @@ public class LoadingPage extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (mAuth.getCurrentUser() != null) {
+
                     DBQurey.loadData(new MyCompleteListener() {
                         @Override
                         public void onSuccess() {

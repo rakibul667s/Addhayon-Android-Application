@@ -53,7 +53,7 @@ public class DBQurey {
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null");
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
     public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL");
@@ -81,6 +81,7 @@ public class DBQurey {
         userData.put("BOOKMARKS",0);
         userData.put("PROFILE_IMG","");
         userData.put("COVER_IMG","");
+        userData.put("LANGUAGE","");
 
 
 
@@ -307,6 +308,7 @@ public class DBQurey {
                         myProfile.setPhn(documentSnapshot.getString("PHONE"));
                         myProfile.setProfileImg(documentSnapshot.getString("PROFILE_IMG"));
                         myProfile.setCoverImg(documentSnapshot.getString("COVER_IMG"));
+                        myProfile.setLanguage(documentSnapshot.getString("LANGUAGE"));
                         if(documentSnapshot.get("BOOKMARKS") != null){
                             myProfile.setBookmarksCount(documentSnapshot.getLong("BOOKMARKS").intValue());
                         }

@@ -14,7 +14,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Save Questions"
+        android:text="Mark Questions"
         android:background="@color/gradient2StartColor"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

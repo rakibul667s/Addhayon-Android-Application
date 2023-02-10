@@ -80,6 +80,7 @@
                   android:layout_height="20dp"
                   android:src="@drawable/ic_baseline_dashborad"/>
               <TextView
+                  android:id="@+id/rankText"
                   android:gravity="center"
                   android:layout_width="match_parent"
                   android:layout_height="20dp"
@@ -108,10 +109,11 @@
                   android:src="@drawable/baseline_checklist_24"/>
 
               <TextView
+                  android:id="@+id/scoreText"
                   android:gravity="center"
                   android:layout_width="match_parent"
                   android:layout_height="20dp"
-                  android:text="Score"
+                  android:text="Total Score"
                   android:textSize="12sp"
                   android:textColor="@color/white"/>
               <TextView
@@ -179,7 +181,7 @@
                 android:textColor="@color/i2"
                 android:textSize="14sp" />
             <TextView
-
+                android:id="@+id/contactText"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
                 android:layout_width="match_parent"

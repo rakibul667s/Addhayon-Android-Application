@@ -14,10 +14,12 @@ public class ProfileModel {
     private String coverImg;
     private int bookmarksCount;
 
+    private String language;
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg) {
+
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -28,7 +30,16 @@ public class ProfileModel {
         this.bookmarksCount = bookmarksCount;
         this.profileImg = profileImg;
         this.coverImg = coverImg;
+        this.language = language;
 
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getProfileImg() {

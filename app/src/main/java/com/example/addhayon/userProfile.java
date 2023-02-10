@@ -38,6 +38,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -61,6 +62,7 @@ public class userProfile extends AppCompatActivity {
     private TextView score;
     private TextView bio;
     private TextView sclClg;
+    private TextView rankText, scoreText, contactText;
 
     private TextView birth, address, email2, phn;
     private String pdata;
@@ -74,6 +76,9 @@ public class userProfile extends AppCompatActivity {
     private StorageReference storage1Ref, storage2Ref;
     private  ExecutorService service;
     private LinearLayout rankB;
+    private PopupMenu popupMenu;
+    private MenuItem lanMenu, actMenu, accountMenu,rankMenu, sqMenu, tMenu, aboutMenu, editMenu, deleteMenu,logMenu;
+
 
 
 
@@ -99,6 +104,50 @@ public class userProfile extends AppCompatActivity {
         phn = findViewById(R.id.phone);
         email2 = findViewById(R.id.email);
         rankB =findViewById(R.id.rankB);
+
+        button1 = (ImageView) findViewById(R.id.button1);
+        popupMenu = new PopupMenu(this, button1);
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
+        lanMenu = popupMenu.getMenu().findItem(R.id.lan);
+        actMenu = popupMenu.getMenu().findItem(R.id.act);
+        accountMenu = popupMenu.getMenu().findItem(R.id.accountMenu);
+        rankMenu = popupMenu.getMenu().findItem(R.id.rank);
+        sqMenu = popupMenu.getMenu().findItem(R.id.mark);
+        tMenu = popupMenu.getMenu().findItem(R.id.timeS);
+        aboutMenu = popupMenu.getMenu().findItem(R.id.about);
+        editMenu = popupMenu.getMenu().findItem(R.id.editProfile);
+        deleteMenu = popupMenu.getMenu().findItem(R.id.delete);
+        logMenu = popupMenu.getMenu().findItem(R.id.logout);
+
+
+
+
+        scoreText = findViewById(R.id.scoreText);
+        rankText = findViewById(R.id.rankText);
+        contactText = findViewById(R.id.contactText);
+
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            rankText.setText("পদমর্যাদা");
+            scoreText.setText("সম্পূর্ণ ফলাফল");
+            contactText.setText("যোগাযোগ করুন :");
+            lanMenu.setTitle("ভাষা সেট করুন");
+            actMenu.setTitle("সমস্ত কার্যক্রম");
+            accountMenu.setTitle("অ্যাকাউন্ট সেটিংস");
+            rankMenu.setTitle("পদমর্যাদা");
+            sqMenu.setTitle("চিহ্নিত প্রশ্ন");
+            tMenu.setTitle("সময়সূচী");
+            aboutMenu.setTitle("সম্পর্কিত !");
+            editMenu.setTitle("প্রোফাইল সম্পাদনা করুন");
+            deleteMenu.setTitle("একাউন্ট মুছে ফেলুন");
+            logMenu.setTitle("লগআউট");
+
+        }else {
+            rankText.setText("Rank");
+            scoreText.setText("Total Score");
+            contactText.setText("Contact us :");
+
+        }
 
         userAuth = FirebaseAuth.getInstance();
         firebaseUser = userAuth.getCurrentUser();
@@ -141,9 +190,7 @@ public class userProfile extends AppCompatActivity {
 
 
         //---------------------------memu item--------------------------------------------
-        button1 = (ImageView) findViewById(R.id.button1);
-        PopupMenu popupMenu = new PopupMenu(this, button1);
-        popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
+
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -173,8 +220,28 @@ public class userProfile extends AppCompatActivity {
                 if(id == R.id.about){
                     about();
                 }
+                if(id == R.id.Bangla){
+                    DBQurey.myProfile.setLanguage("Bangla");
+                    FirebaseFirestore.getInstance()
+                    .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .update("LANGUAGE", "Bangla");
+                    Intent intent = new Intent(userProfile.this, userProfile.class);
+                    startActivity(intent);
 
+                }
+                if(id == R.id.English){
+                    DBQurey.myProfile.setLanguage("English");
+                    FirebaseFirestore.getInstance()
+                            .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .update("LANGUAGE", "English");
+                    Intent intent = new Intent(userProfile.this, userProfile.class);
+                    startActivity(intent);
 
+                }
+                if(id == R.id.Hindi){
+                    Toast.makeText(userProfile.this, "Not Available",
+                            Toast.LENGTH_SHORT).show();
+                }
                 return false;
             }
         });
