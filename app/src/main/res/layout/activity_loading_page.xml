@@ -43,7 +43,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="420dp"
             android:src="@drawable/ic_loadingimg"

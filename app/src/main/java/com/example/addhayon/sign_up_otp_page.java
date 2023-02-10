@@ -152,11 +152,9 @@ public class sign_up_otp_page extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(){
 
-
-
-//                                    Toast.makeText(sign_up_otp_page.this,"Successfully create your Account", Toast.LENGTH_SHORT).show();
-//                                    //-------call Sign in page--------------
-//                                    openSignInPage();
+                                    Toast.makeText(sign_up_otp_page.this,"Successfully create your Account", Toast.LENGTH_SHORT).show();
+                                    //-------call Sign in page--------------
+                                    openSignInPage();
 
 
                                 }

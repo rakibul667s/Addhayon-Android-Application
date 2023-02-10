@@ -3,4 +3,6 @@
     <style name="checkBox" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="checkboxStyle">@color/gradient2EndColor</item>
     </style>
+
+
 </resources>

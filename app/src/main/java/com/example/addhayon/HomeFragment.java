@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
     ImageSlider imageSlider;
     ImageSlider imageSlider2;
 
-    private LinearLayout exam2, aboutMe;
+    private LinearLayout exam2, aboutMe, course;
 
 
     Activity context;
@@ -44,6 +44,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         exam2 = view.findViewById(R.id.rank);
         aboutMe = view.findViewById(R.id.about);
+        course = view.findViewById(R.id.course);
 
 
 
@@ -60,6 +61,12 @@ public class HomeFragment extends Fragment {
                 openAbout();
             }
         });
+        course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCourse();
+            }
+        });
         imageSlider = view.findViewById(R.id.image_slider);
         ArrayList<SlideModel> imagelist= new ArrayList<> ();
         imagelist.add(new SlideModel(R.drawable.slider_img, ScaleTypes.CENTER_CROP));
@@ -74,6 +81,10 @@ public class HomeFragment extends Fragment {
     }
     private void setData(){
 
+    }
+    private  void openCourse(){
+        Intent intent = new Intent(context,CourseActivity.class);
+        startActivity(intent);
     }
     private void openAbout(){
         Intent intent = new Intent(context,AboutActivity.class);

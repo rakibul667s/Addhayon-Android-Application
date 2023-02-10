@@ -46,7 +46,9 @@ public class dashboard extends AppCompatActivity {
         String phone = DBQurey.myProfile.getPhn();
         String name = DBQurey.myProfile.getName();
 
+
         root.child(uid).child("name").setValue(name);
+        root.child(uid).child("uid").setValue(uid);
         chat = findViewById(R.id.chat);
 
 
