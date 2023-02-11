@@ -27,7 +27,11 @@ public class AnswersActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("View Answers");
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            getSupportActionBar().setTitle("উত্তর দেখুন");
+        }else {
+            getSupportActionBar().setTitle("View Answers");
+        }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

@@ -86,7 +86,11 @@ public class LoadingPage extends AppCompatActivity {
                             Intent intent = new Intent(LoadingPage.this, dashboard.class);
                             startActivity(intent);
                             LoadingPage.this.finish();
-                            Toast.makeText(LoadingPage.this, "Build up your skills", Toast.LENGTH_SHORT).show();
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                Toast.makeText(LoadingPage.this, "আপনার দক্ষতা গড়ে তুলুন", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(LoadingPage.this, "Build up your skills", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         @Override

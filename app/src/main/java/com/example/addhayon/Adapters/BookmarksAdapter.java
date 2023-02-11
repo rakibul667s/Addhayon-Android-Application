@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.addhayon.DBQurey;
 import com.example.addhayon.Models.QuestionModel;
 import com.example.addhayon.R;
 
@@ -59,23 +60,38 @@ public class BookmarksAdapter extends RecyclerView.Adapter<BookmarksAdapter.View
         }
         @SuppressLint("ResourceType")
         private void setData(int pos, String ques, String a, String b, String c, String d, int correctAns){
-            quesNo.setText("Question No :"+String.valueOf(pos+1));
+            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                quesNo.setText("প্রশ্ন নং :" + String.valueOf(pos + 1));
+            }else {
+                quesNo.setText("Question No :" + String.valueOf(pos + 1));
+            }
             question.setText(ques);
             optionA.setText("A. "+ a);
-            optionA.setText("B. "+ b);
-            optionA.setText("C. "+ c);
-            optionA.setText("D. "+ d);
+            optionB.setText("B. "+ b);
+            optionC.setText("C. "+ c);
+            optionD.setText("D. "+ d);
 
-            if(correctAns == 1){
-                result.setText("ANSWER : "+a);
-            }else if(correctAns == 2){
-                result.setText("ANSWER : "+b);
-            }else if(correctAns == 3){
-                result.setText("ANSWER : "+c);
+            if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                if (correctAns == 1) {
+                    result.setText("উত্তর : " + a);
+                } else if (correctAns == 2) {
+                    result.setText("উত্তর : " + b);
+                } else if (correctAns == 3) {
+                    result.setText("উত্তর : " + c);
+                } else {
+                    result.setText("উত্তর : " + d);
+                }
             }else {
-                result.setText("ANSWER : "+d);
+                if (correctAns == 1) {
+                    result.setText("ANSWER : " + a);
+                } else if (correctAns == 2) {
+                    result.setText("ANSWER : " + b);
+                } else if (correctAns == 3) {
+                    result.setText("ANSWER : " + c);
+                } else {
+                    result.setText("ANSWER : " + d);
+                }
             }
-
 
 
         }

@@ -70,7 +70,11 @@ public class ChatActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         messages = new ArrayList<>();
         dialog = new ProgressDialog(this);
-        dialog.setMessage("Uploading Image...");
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            dialog.setMessage("ছবি আপলোড করা হচ্ছে...");
+        }else {
+            dialog.setMessage("Uploading Image...");
+        }
         dialog.setCancelable(false);
 
 

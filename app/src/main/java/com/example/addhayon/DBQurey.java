@@ -56,7 +56,7 @@ public class DBQurey {
     public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
-    public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL");
+    public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL");
     public static final int NOT_VIDITED = 0;
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
@@ -402,7 +402,14 @@ public class DBQurey {
                                     doc.getLong("TOTAL_SCORE").intValue(),
                                     rank,
                                     doc.getString("PROFILE_IMG"),
-                                    doc.getString("ID")
+                                    doc.getString("ID"),
+                                    doc.getString("COVER_IMG"),
+                                    doc.getString("BIO"),
+                                    doc.getString("SCL_CLG"),
+                                    doc.getString("ADDRESS"),
+                                    doc.getString("DATE_OF_BIRTH"),
+                                    doc.getString("EMAIL_ID"),
+                                    doc.getString("PHONE")
                             ));
                             if(myUserID.compareTo(doc.getId() ) == 0){
                                 isMeOnTopList = true;

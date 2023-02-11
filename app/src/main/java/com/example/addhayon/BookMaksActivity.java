@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.addhayon.Adapters.AnswersAdapter;
@@ -24,6 +25,7 @@ public class BookMaksActivity extends AppCompatActivity {
     private RecyclerView questionsView;
     private RecyclerView textView;
     private Toolbar toolbar;
+    private TextView book_toolbar;
     private MeowBottomNavigation btm;
 
     @Override
@@ -31,6 +33,11 @@ public class BookMaksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_maks);
         textView = findViewById(R.id.book_recyler_view);
+        book_toolbar = findViewById(R.id.book_toolbar);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            book_toolbar.setText("চিহ্নিত প্রশ্ন");
+        }
 
 
 
