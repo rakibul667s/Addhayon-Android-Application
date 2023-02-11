@@ -140,7 +140,7 @@ public class userProfile extends AppCompatActivity {
             aboutMenu.setTitle("সম্পর্কিত !");
             editMenu.setTitle("প্রোফাইল সম্পাদনা করুন");
             deleteMenu.setTitle("একাউন্ট মুছে ফেলুন");
-            logMenu.setTitle("লগআউট");
+            logMenu.setTitle("প্রস্থান");
 
         }else {
             rankText.setText("Rank");
@@ -452,6 +452,18 @@ public class userProfile extends AppCompatActivity {
 
         Button cancelB = view.findViewById(R.id.cancelB);
         Button confirmB =view.findViewById(R.id.confrimB);
+        TextView title = view.findViewById(R.id.title2);
+        TextView content = view.findViewById(R.id.content);
+        TextView c = view.findViewById(R.id.c);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            title.setText("মুছে ফেলা");
+            content.setText("আপনি কি নিশ্চিত ?");
+            c.setText("আপনার একাউন্ট মুছে ফেলুন !");
+            cancelB.setText("বাতিল");
+            confirmB.setText("হ্যাঁ");
+
+        }
 
         builder.setView(view);
         AlertDialog alertDialog = builder.create();

@@ -51,7 +51,6 @@ public class dashboard extends AppCompatActivity {
         root.child(uid).child("uid").setValue(uid);
         chat = findViewById(R.id.chat);
 
-
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -83,7 +83,7 @@
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:hint="Set your status. . ."
+        android:hint="Set your bio. . ."
         android:textColor="@color/i2"
         android:textSize="14sp" />
     <EditText
@@ -129,7 +129,7 @@
         android:padding="5dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:hint="set school or college. . ."
+        android:hint="Set school or college name. . ."
         android:textColor="@color/i2"
         android:textSize="14sp" />
 

@@ -126,6 +126,19 @@ public class EditProfileActivity extends AppCompatActivity {
 
         dateofBirth = findViewById(R.id.dateOfBirth);
 
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            name.setHint("তোমার নাম পরিবর্তন কর");
+            bio.setHint("আপনার জীবনী সেট করুন");
+            address.setHint("ঠিকানা");
+            dateofBirth.setHint("জন্ম তারিখ");
+            sclClg.setHint("স্কুল বা কলেজের নাম সেট করুন");
+            buttonText.setText("সংরক্ষণ");
+
+        }else{
+
+        }
+
         dateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
