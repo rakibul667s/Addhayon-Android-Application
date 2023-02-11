@@ -35,6 +35,9 @@
         android:theme="@style/Theme.addhayon"
         tools:targetApi="31">
         <activity
+            android:name=".AllUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".CourseActivity"
             android:exported="false" />
         <activity

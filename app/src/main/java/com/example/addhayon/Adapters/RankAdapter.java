@@ -1,31 +1,33 @@
 package com.example.addhayon.Adapters;
 
-import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.addhayon.AllUserActivity;
 import com.example.addhayon.DBQurey;
-import com.example.addhayon.EditProfileActivity;
 import com.example.addhayon.Models.RankModel;
+import com.example.addhayon.MyCompleteListener;
 import com.example.addhayon.R;
 import com.example.addhayon.userProfile;
 
 import java.util.List;
-import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     private List<RankModel> userList;
+    //private PopupMenu popupMenu;
 
     public RankAdapter(List<RankModel> userList) {
         this.userList = userList;
@@ -70,11 +72,35 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
 
         }
         private void setData(String name, int score, int rank, String pImg, String id){
+
             itemView.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), userProfile.class);
-                    v.getContext().startActivity(intent);
+                    PopupMenu popupMenu = new PopupMenu(v.getContext(), itemView);
+                    popupMenu.getMenuInflater().inflate(R.menu.view_profile, popupMenu.getMenu());
+                    popupMenu.show();
+                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch (item.getItemId()) {
+                                case R.id.user_p:
+
+                                            Intent intent = new Intent(v.getContext(),AllUserActivity.class);
+                                            intent.putExtra("user_id",pImg);
+                                            v.getContext().startActivity(intent);
+
+                                    break;
+                            }
+                            return true;
+                        }
+                    });
+
+//                    popupMenu = new PopupMenu(v.getContext(), imgTv);
+//                    popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
+
+//                    Intent intent = new Intent(v.getContext(), userProfile.class);
+//                    v.getContext().startActivity(intent);
                 }
             });
             nameTv.setText(name);

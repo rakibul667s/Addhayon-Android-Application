@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class DBQurey {
 
-   public static String userId, pUrl;
+    public static String userId, pUrl;
     public static Bitmap bitmap;
     private static StorageReference storageReference;
     public static FirebaseFirestore g_firestore;
@@ -514,5 +514,6 @@ public class DBQurey {
         }
 
     }
+
 
 }
