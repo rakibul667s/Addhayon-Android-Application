@@ -79,7 +79,7 @@ public class AllUserActivity extends AppCompatActivity {
         address2.setText(intent.getStringExtra("address"));
         birth.setText(intent.getStringExtra("dateOfbirth"));
         email.setText(intent.getStringExtra("emailId"));
-        email.setText(intent.getStringExtra("phone"));
+        phone.setText(intent.getStringExtra("phone"));
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
