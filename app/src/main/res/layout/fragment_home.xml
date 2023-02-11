@@ -57,6 +57,7 @@
                             android:src="@drawable/exam" />
 
                         <TextView
+                            android:id="@+id/bExam"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Exam"
@@ -84,6 +85,7 @@
                             android:src="@drawable/online_course" />
 
                         <TextView
+                            android:id="@+id/bCourse"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Course"
@@ -109,6 +111,7 @@
                             android:src="@drawable/calendar" />
 
                         <TextView
+                            android:id="@+id/bEvent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Event"
@@ -134,6 +137,7 @@
                             android:src="@drawable/location" />
 
                         <TextView
+                            android:id="@+id/bLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Location"
@@ -167,6 +171,7 @@
                             android:src="@drawable/results" />
 
                         <TextView
+                            android:id="@+id/bRank"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Ranking"
@@ -191,6 +196,7 @@
                             android:src="@drawable/shopping_cart" />
 
                         <TextView
+                            android:id="@+id/bShop"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Shop"
@@ -214,6 +220,7 @@
                             android:src="@drawable/notepad" />
 
                         <TextView
+                            android:id="@+id/bNote"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Note"
@@ -237,6 +244,7 @@
                             android:src="@drawable/info_button" />
 
                         <TextView
+                            android:id="@+id/bAbout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="About!"
@@ -250,6 +258,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/seeMore1"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:layout_marginStart="10dp"
@@ -270,11 +279,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="132dp"
+                    android:id="@+id/bLetest"
+                    android:layout_width="wrap_content"
                     android:layout_height="46dp"
                     android:layout_marginStart="12dp"
                     android:gravity="center_vertical"
-                    android:text=" Letest Courses"
+                    android:text="Popular Courses"
                     android:textColor="@color/gradient2StartColor"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -309,6 +319,7 @@
                                 android:src="@drawable/bcs" />
 
                             <TextView
+                                android:id="@+id/bC1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" BCS premium course"
@@ -317,6 +328,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase  10.67k+"
@@ -349,6 +361,7 @@
                                 android:src="@drawable/ict" />
 
                             <TextView
+                                android:id="@+id/bC2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" ICT HSC course"
@@ -357,6 +370,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase  25.4k+"
@@ -389,6 +403,7 @@
                                 android:src="@drawable/eng" />
 
                             <TextView
+                                android:id="@+id/bC3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" Spoken English"
@@ -397,6 +412,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase 13.65k+"
@@ -423,6 +439,7 @@
 
 
                             <TextView
+                                android:id="@+id/bC4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" Mobile Application"
@@ -431,6 +448,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase 8.45k+"
@@ -463,6 +481,7 @@
                                 android:src="@drawable/bangla" />
 
                             <TextView
+                                android:id="@+id/bC5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" Bangla for SSC"
@@ -471,6 +490,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase 31.28k+"
@@ -502,6 +522,7 @@
                                 android:src="@drawable/web" />
 
                             <TextView
+                                android:id="@+id/bC6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" Web Application "
@@ -510,6 +531,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/bP6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="  Purchase 13.65k+"
@@ -531,7 +553,8 @@
 
             <!-- Extra Features -->
             <TextView
-                android:layout_width="115dp"
+                android:id="@+id/bExtra"
+                android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="12dp"
@@ -572,6 +595,7 @@
                             android:src="@drawable/calculator" />
 
                         <TextView
+                            android:id="@+id/bCal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Calcultor"
@@ -595,6 +619,7 @@
                             android:src="@drawable/notepad" />
 
                         <TextView
+                            android:id="@+id/bnote2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Note"
@@ -618,6 +643,7 @@
                             android:src="@drawable/newspaper" />
 
                         <TextView
+                            android:id="@+id/bNews"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="News"
@@ -642,6 +668,7 @@
                             android:src="@drawable/healthcare" />
 
                         <TextView
+                            android:id="@+id/bHealth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Health"
@@ -655,6 +682,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/seeMore2"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:layout_marginStart="10dp"

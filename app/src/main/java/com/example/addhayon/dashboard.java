@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import kotlin.Unit;
@@ -32,6 +34,9 @@ public class dashboard extends AppCompatActivity {
     private DatabaseReference root = database.getReference().child("users");
     private FirebaseStorage storage;
     private FirebaseAuth mAuth, auth;
+    private TextView menuTitle;
+
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -40,6 +45,13 @@ public class dashboard extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        menuTitle = findViewById(R.id.menuTitle);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+            menuTitle.setText("অধ্যয়ন");
+        }else{
+            menuTitle.setText("Addhayon");
+        }
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -51,12 +63,18 @@ public class dashboard extends AppCompatActivity {
         root.child(uid).child("uid").setValue(uid);
         chat = findViewById(R.id.chat);
 
+        FirebaseFirestore.getInstance()
+                .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .update("ID", uid);
+
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openAIChat();
             }
         });
+
+
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));

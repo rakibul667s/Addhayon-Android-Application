@@ -33,7 +33,7 @@
             android:paddingRight="20dp"
             android:paddingBottom="5dp"
             android:text="TextView"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <ImageView

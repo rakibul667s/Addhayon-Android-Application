@@ -53,10 +53,10 @@ public class DBQurey {
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "");
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
-    public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL");
+    public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL");
     public static final int NOT_VIDITED = 0;
     public static final int UNANSWERED = 1;
     public static final int ANSWERED = 2;
@@ -82,6 +82,7 @@ public class DBQurey {
         userData.put("PROFILE_IMG","");
         userData.put("COVER_IMG","");
         userData.put("LANGUAGE","");
+        userData.put("ID","");
 
 
 
@@ -309,6 +310,8 @@ public class DBQurey {
                         myProfile.setProfileImg(documentSnapshot.getString("PROFILE_IMG"));
                         myProfile.setCoverImg(documentSnapshot.getString("COVER_IMG"));
                         myProfile.setLanguage(documentSnapshot.getString("LANGUAGE"));
+                        myProfile.setId(documentSnapshot.getString("ID"));
+
                         if(documentSnapshot.get("BOOKMARKS") != null){
                             myProfile.setBookmarksCount(documentSnapshot.getLong("BOOKMARKS").intValue());
                         }
@@ -398,7 +401,8 @@ public class DBQurey {
                                    doc.getString("NAME"),
                                     doc.getLong("TOTAL_SCORE").intValue(),
                                     rank,
-                                    doc.getString("PROFILE_IMG")
+                                    doc.getString("PROFILE_IMG"),
+                                    doc.getString("ID")
                             ));
                             if(myUserID.compareTo(doc.getId() ) == 0){
                                 isMeOnTopList = true;

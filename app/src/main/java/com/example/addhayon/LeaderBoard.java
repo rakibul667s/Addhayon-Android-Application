@@ -26,7 +26,7 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class LeaderBoard extends AppCompatActivity {
-    private TextView totalUsers, myScore, myRank;
+    private TextView totalUsers, myScore, myRank, tRank, you;
     private CircleImageView myProfileImg;
     private RecyclerView usersView;
     private RankAdapter adapter;
@@ -38,6 +38,10 @@ public class LeaderBoard extends AppCompatActivity {
         setContentView(R.layout.activity_leader_board);
 
         initViews();
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            tRank.setText( "পদমর্যাদা");
+            you.setText("আপনি");
+        }
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2, R.drawable.ic_exam));
@@ -85,8 +89,14 @@ public class LeaderBoard extends AppCompatActivity {
                     if(! DBQurey.isMeOnTopList){
                         calcukateRank();
                     }
-                    myScore.setText("Total Score : "+myPerformance.getScore());
-                    myRank.setText("Rank : "+myPerformance.getRank());
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        myScore.setText("সম্পূর্ণ ফলাফল : " + myPerformance.getScore());
+                        myRank.setText("পদমর্যাদা : " + myPerformance.getRank());
+
+                    }else {
+                        myScore.setText("Total Score : " + myPerformance.getScore());
+                        myRank.setText("Rank : " + myPerformance.getRank());
+                    }
                 }
             }
             @Override
@@ -96,7 +106,11 @@ public class LeaderBoard extends AppCompatActivity {
 
             }
         });
-        totalUsers.setText("Total students : " +DBQurey.g_userCount);
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            totalUsers.setText("মোট ব্যবহারকারী : " + DBQurey.g_userCount);
+        }else {
+            totalUsers.setText("Total Users : " + DBQurey.g_userCount);
+        }
         Glide.with(this)
                 .load(DBQurey.myProfile.getProfileImg())
                 .into(myProfileImg);
@@ -109,6 +123,8 @@ public class LeaderBoard extends AppCompatActivity {
         myRank = findViewById(R.id.rank);
         myProfileImg = findViewById(R.id.img_txt);
         usersView = findViewById(R.id.users_view);
+        tRank = findViewById(R.id.tRank);
+        you =findViewById(R.id.you);
     }
     private void calcukateRank(){
         int lowTopScore = g_usersList.get(g_usersList.size()-1).getScore();

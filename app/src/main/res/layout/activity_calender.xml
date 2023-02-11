@@ -10,6 +10,7 @@
         android:layout_height="50dp"
         app:cardBackgroundColor="@color/gradient2StartColor">
         <TextView
+            android:id="@+id/shedule"
             android:layout_width="match_parent"
             android:layout_marginStart="5dp"
             android:layout_height="50dp"
@@ -47,6 +48,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@color/teal_200" />
             <TextView
+                android:id="@+id/cls"
                 android:layout_width="166dp"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
@@ -77,6 +79,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/gradient4" />
             <TextView
+                android:id="@+id/exm2"
                 android:layout_width="166dp"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
@@ -107,6 +110,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="#03302F" />
             <TextView
+                android:id="@+id/cd"
                 android:layout_width="166dp"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"

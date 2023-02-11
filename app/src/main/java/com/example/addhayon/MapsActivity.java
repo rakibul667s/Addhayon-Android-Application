@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -60,13 +61,29 @@ public class MapsActivity extends FragmentActivity implements
     private static final int Request_User_Location_Code = 99;
     private double latitide, longitude;
     private int ProximityRadius = 60000;
+    private TextView floaction, search_address;
+    private EditText sl;
 
 
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        floaction = findViewById(R.id.flocation);
+        sl = findViewById(R.id.location_search);
+        search_address = findViewById(R.id.search_address);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            floaction.setText("অবস্থান খুঁজুন");
+            sl.setHint("স্থান অনুসন্ধান করুন");
+            search_address.setText("অনুসন্ধান");
+
+        }
+
+
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -180,13 +197,22 @@ public class MapsActivity extends FragmentActivity implements
                                 mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
                             }
                         } else {
-                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
-                        }
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                            }
+                          }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(this, "Enter search place name", Toast.LENGTH_SHORT).show();
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        Toast.makeText(this, "অনুসন্ধান স্থানের নাম লিখুন", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(this, "Enter search place name", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 break;
 
@@ -214,13 +240,22 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
-                    }
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
+                        }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(this, "Searching for Nearby University...", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing Nearby University...", Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(this, "কাছাকাছি বিশ্ববিদ্যালয় খুঁজছেন...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "কাছাকাছি বিশ্ববিদ্যালয় দেখানো হচ্ছে...", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Searching for Nearby University...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Showing Nearby University...", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
 
@@ -252,7 +287,11 @@ public class MapsActivity extends FragmentActivity implements
                                 mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                             }
                         } else {
-                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -276,7 +315,11 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -300,7 +343,11 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -324,7 +371,11 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -348,14 +399,23 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(this,"Searching for nearby college..." , Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing nearby college...", Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(this, "কাছাকাছি কলেজ খুঁজছি...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "কাছের কলেজ দেখাচ্ছি...", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Searching for nearby college...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Showing nearby college...", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
 
@@ -386,14 +446,22 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                    }else{
                         Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
-                    }
+                    }}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(this, "Searching for Nearby Schools...", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing Nearby Schools...", Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(this, "Searching for Nearby Schools...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Showing Nearby Schools...", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "কাছাকাছি স্কুলের জন্য অনুসন্ধান...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "কাছাকাছি স্কুলগুলি দেখানো হচ্ছে৷...", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
 
@@ -425,7 +493,11 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -449,14 +521,23 @@ public class MapsActivity extends FragmentActivity implements
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                         }
                     } else {
-                        Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(this, "অবস্থান পাওয়া যায়নি...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(this, "Location not found...", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(this,"Searching for nearby Hostel..." , Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing nearby Hostel...", Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(this, "কাছাকাছি হোস্টেল খুঁজছেন...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "কাছাকাছি হোস্টেল দেখানো হচ্ছে...", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Searching for nearby Hostel...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Showing nearby Hostel...", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -529,8 +610,12 @@ public class MapsActivity extends FragmentActivity implements
                         mMap.setMyLocationEnabled(true);
                     }
                 } else {
-                    Toast.makeText(this, "Permission Denied...", Toast.LENGTH_SHORT).show();
-                }
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        Toast.makeText(this, "অনুমতি অস্বীকার করা হয়েছে...", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(this, "Permission Denied...", Toast.LENGTH_SHORT).show();
+                    }
+                    }
                 return;
         }
     }

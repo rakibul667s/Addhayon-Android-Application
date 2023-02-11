@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -51,6 +52,7 @@ public class ChatMainActivity extends AppCompatActivity {
     ProgressDialog dialog;
     User user;
     private Toolbar toolbar;
+    private TextView titleBar, collection;
     private MeowBottomNavigation btm;
 
     @SuppressLint("MissingInflatedId")
@@ -60,6 +62,15 @@ public class ChatMainActivity extends AppCompatActivity {
         binding = ActivityChatMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         database = FirebaseDatabase.getInstance();
+
+        titleBar = findViewById(R.id.titleBar);
+        collection = findViewById(R.id.collection);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+           titleBar.setText("অধ্যয়ন");
+           collection.setText("ছবি সংগ্রহ");
+
+        }
 
         FirebaseMessaging.getInstance()
                 .getToken()
@@ -190,8 +201,11 @@ public class ChatMainActivity extends AppCompatActivity {
                         startActivityForResult(intent,75);
                         break;
                     case 4:
-                        Toast.makeText(ChatMainActivity.this,"Working on call system",Toast.LENGTH_SHORT).show();
-                        //openMap();
+                        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                            Toast.makeText(ChatMainActivity.this, "কল সিস্টেমে এখনও কাজ চলছে ", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(ChatMainActivity.this, "Working on call system", Toast.LENGTH_SHORT).show();
+                        }//openMap();
                         break;
                     case 5:
                         openUserProfile();;
@@ -219,10 +233,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
 
 
-        toolbar = findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
 
     }
@@ -282,6 +293,7 @@ public class ChatMainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         String currentId = FirebaseAuth.getInstance().getUid();
+
         database.getReference().child("presence").child(currentId).setValue("Online");
     }
 
@@ -297,7 +309,11 @@ public class ChatMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.search:
-                Toast.makeText(this,"Working on search system",Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(ChatMainActivity.this, "অনুসন্ধান সিস্টেমে এখনও কাজ চলছে ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Working on search system", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.settings:
                 Toast.makeText(this,"Search",Toast.LENGTH_SHORT).show();

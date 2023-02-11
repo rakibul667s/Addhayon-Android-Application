@@ -43,6 +43,7 @@
             android:background="@drawable/gradient4"
             android:backgroundTint="@color/white">
             <TextView
+                android:id="@+id/es"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Your Exam Score"
@@ -91,7 +92,7 @@
                 android:id="@+id/view_answerB"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="View Answes"
+                android:text="View Answers"
                 android:textSize="14sp"
                 android:elevation="5dp"
                 android:layout_weight="1"
@@ -118,6 +119,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp">
                 <TextView
+                    android:id="@+id/tt"
                     android:layout_weight="1"
                     android:textAlignment="textStart"
                     android:layout_width="wrap_content"
@@ -146,6 +148,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp">
                 <TextView
+                    android:id="@+id/tq"
                     android:layout_weight="1"
                     android:textAlignment="textStart"
                     android:layout_width="wrap_content"
@@ -197,6 +200,7 @@
                         android:layout_height="26dp"
                         android:src="@drawable/baseline_check_24"/>
                     <TextView
+                        android:id="@+id/c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Correct"
@@ -235,6 +239,7 @@
                         android:background="@drawable/baseline_clear_24"
                         android:backgroundTint="@color/gradient2StartColor"/>
                     <TextView
+                        android:id="@+id/w"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wrong"
@@ -271,6 +276,7 @@
                         android:layout_height="26dp"
                         android:src="@drawable/baseline_question_mark_black"/>
                     <TextView
+                        android:id="@+id/b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Blank"

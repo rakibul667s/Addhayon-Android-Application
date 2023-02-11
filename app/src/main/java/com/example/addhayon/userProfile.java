@@ -237,8 +237,14 @@ public class userProfile extends AppCompatActivity {
 
                 }
                 if(id == R.id.Hindi){
-                    Toast.makeText(userProfile.this, "Not Available",
-                            Toast.LENGTH_SHORT).show();
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                        Toast.makeText(userProfile.this, "উপলব্ধ নয়",
+                                Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        Toast.makeText(userProfile.this, "Not Available",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
                 return false;
             }
@@ -292,6 +298,7 @@ public class userProfile extends AppCompatActivity {
 
     }
 
+
     private void loadProfile(){
         name.setText(pName);
         bio.setText(DBQurey.myProfile.getBio());
@@ -301,10 +308,16 @@ public class userProfile extends AppCompatActivity {
         email2.setText(pEmail);
         phn.setText(pPhn);
         score.setText(String.valueOf(DBQurey.myPerformance.getScore()));
+        String pI = DBQurey.myProfile.getProfileImg();
 
-        Glide.with(userProfile.this)
-                .load(DBQurey.myProfile.getProfileImg())
-                .into(profile_image);
+        if(pI.length() == 0){
+            profile_image.setImageResource(R.drawable.baseline_puser);
+        }
+        if(pI.length() != 0){
+            Glide.with(userProfile.this)
+                    .load(DBQurey.myProfile.getProfileImg())
+                    .into(profile_image);
+        }
         Glide.with(userProfile.this)
                 .load(DBQurey.myProfile.getCoverImg())
                 .into(cover_img);
@@ -322,8 +335,13 @@ public class userProfile extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(){
-                    Toast.makeText(userProfile.this, "Something went weong ! Please try agian",
-                            Toast.LENGTH_SHORT).show();
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                        Toast.makeText(userProfile.this, "কিছু ভুল হয়েছে ! পরে চেষ্টা করুন",
+                                Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(userProfile.this, "Something went wrong ! Please try Later.",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             });
@@ -337,9 +355,13 @@ public class userProfile extends AppCompatActivity {
     }
     public void allImageSet(){
         storage1Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
+                if(url.isEmpty()){
+
+                }
                 Glide.with(userProfile.this)
                         .load(url)
                         .into(profile_image);
@@ -479,8 +501,14 @@ public class userProfile extends AppCompatActivity {
             public void onClick(View v) {
                 alertDialog.dismiss();
                 firebaseUser.delete();
-                Toast.makeText(userProfile.this, "Delete your account successfully",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                    Toast.makeText(userProfile.this, "সফলভাবে আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(userProfile.this, "Delete your account successfully",
+                            Toast.LENGTH_SHORT).show();
+                }
+
                 Intent intent = new Intent(userProfile.this, sign_in_page.class);
                 startActivity(intent);
                 userProfile.this.finish();

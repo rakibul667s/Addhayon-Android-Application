@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
@@ -13,12 +15,18 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class CourseActivity extends AppCompatActivity {
+    private TextView w;
     private MeowBottomNavigation btm;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+        w = findViewById(R.id.w);
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            w.setText("এই সিস্টেমে এখনও কাজ চলছে");
+        }
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));

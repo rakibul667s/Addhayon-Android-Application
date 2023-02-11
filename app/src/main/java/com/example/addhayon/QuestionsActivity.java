@@ -23,7 +23,9 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -31,6 +33,7 @@ import android.widget.TextView;
 
 import com.example.addhayon.Adapters.QuestionGridAdapter;
 import com.example.addhayon.Adapters.QuestionsAdapter;
+import com.example.addhayon.databinding.ActivityChatBinding;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +46,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private ImageView prevQuesB, nextQuesB;
     private ImageView quesListB;
     private int quesID;
+    QuestionsActivity binding;
 
     private DrawerLayout drawer;
 
@@ -64,7 +68,28 @@ public class QuestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions_list_layout);
+
+
+        TextView textView6 = findViewById(R.id.textView6);
+        TextView textView7 = findViewById(R.id.textView7);
+        TextView textView8 = findViewById(R.id.textView8);
+        TextView textView9 = findViewById(R.id.textView9);
+        TextView textView5 = findViewById(R.id.textView5);
+
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            textView5.setText("সমস্ত প্রশ্নের তালিকা");
+            textView6.setText("উত্তর");
+            textView7.setText("উত্তর নেই");
+            textView8.setText("খালি");
+            textView9.setText("পুনঃমূল্যায়ন");
+        }
         init();
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            submitB.setText("জমা দিন");
+            clearSelB.setText("পরিষ্কার করুন");
+        }
+
         questionsAdapter = new QuestionsAdapter(g_quesList);
         questionView.setAdapter(questionsAdapter);
 
@@ -128,7 +153,9 @@ public class QuestionsActivity extends AppCompatActivity {
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 View view = snapHelper.findSnapView(recyclerView.getLayoutManager());
+
                 quesID = recyclerView.getLayoutManager().getPosition(view);
+
                 if(g_quesList.get(quesID).getStatus() == NOT_VIDITED){
                     g_quesList.get(quesID).setStatus(UNANSWERED);
                 }
@@ -242,6 +269,15 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Button cancelB = view.findViewById(R.id.cancelB);
         Button confirmB =view.findViewById(R.id.confrimB);
+        TextView title = view.findViewById(R.id.title);
+        TextView content = view.findViewById(R.id.content);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            title.setText("জমা !");
+            content.setText("আপনি আপনার উত্তর জমা দিতে চান?");
+            cancelB.setText("বাতিল");
+            confirmB.setText("হ্যাঁ");
+        }
 
         builder.setView(view);
         AlertDialog alertDialog = builder.create();

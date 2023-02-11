@@ -97,6 +97,7 @@
                 android:textColor="@color/i2"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/details2"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -180,6 +181,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/family2"
                 android:layout_marginStart="10dp"
                 android:layout_width="match_parent"
                 android:padding="5dp"
@@ -241,12 +243,13 @@
                 android:textColor="@color/i2"
                 android:textSize="20sp" />
             <TextView
+                android:id="@+id/contact2"
                 android:layout_marginStart="10dp"
                 android:layout_width="match_parent"
                 android:padding="5dp"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
-                android:text="Contact me : "
+                android:text="Contact us : "
                 android:textColor="@color/i1"
                 android:textSize="16sp"
                 android:textStyle="bold"/>

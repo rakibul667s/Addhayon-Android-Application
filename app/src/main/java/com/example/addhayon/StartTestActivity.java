@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class StartTestActivity extends AppCompatActivity {
-    private TextView catName, testNo, totalq, bestScore, time;
+    private TextView catName, testNo, totalq, bestScore, time, q, s, t;
     private Button startTestB;
     private ImageView backB;
 
@@ -24,6 +24,13 @@ public class StartTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_test);
         init();
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            q.setText("প্রশ্ন");
+            s.setText("আপনার সেরা স্কোর");
+            t.setText("সময়");
+            startTestB.setText( "শুরু");
+        }
 
         loadquestions(new MyCompleteListener(){
             @Override
@@ -47,6 +54,9 @@ public class StartTestActivity extends AppCompatActivity {
         time = findViewById(R.id.st_time);
         startTestB = findViewById(R.id.start_test);
         backB = findViewById(R.id.st_back);
+        q = findViewById(R.id.q);
+        s = findViewById(R.id.s);
+        t = findViewById(R.id.t);
 
 
         backB.setOnClickListener(new View.OnClickListener() {

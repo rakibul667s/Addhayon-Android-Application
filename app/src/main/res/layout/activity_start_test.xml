@@ -77,6 +77,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/baseline_question_mark_24"/>
                 <TextView
+                    android:id="@+id/q"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Questions"
@@ -114,6 +115,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/baseline_win"/>
                 <TextView
+                    android:id="@+id/s"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Your Best Score"
@@ -151,9 +153,10 @@
                     android:layout_height="40dp"
                     android:src="@drawable/baseline_access_time_24"/>
                 <TextView
+                    android:id="@+id/t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Times"
+                    android:text="Time"
                     android:gravity="bottom"
                     android:textAlignment="center"
                     android:textSize="14sp"/>
@@ -175,7 +178,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="15dp"
         android:text="Start"
         android:background="@drawable/gradient3"
         android:textColor="@color/white"

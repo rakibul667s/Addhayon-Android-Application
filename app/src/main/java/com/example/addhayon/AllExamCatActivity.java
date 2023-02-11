@@ -3,9 +3,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.addhayon.Adapters.CategoryAdapter;
@@ -16,12 +18,20 @@ import kotlin.jvm.functions.Function1;
 public class AllExamCatActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
     private GridView catView;
+    private TextView title;
     //public static List<CategoryModel> catList = new ArrayList<>();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_exam_cat);
+        title = findViewById(R.id.title3);
+
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            title.setText( "পরীক্ষার তালিকা");
+        }
 
         catView = findViewById(R.id.cat_grid);
         //loadCategories();

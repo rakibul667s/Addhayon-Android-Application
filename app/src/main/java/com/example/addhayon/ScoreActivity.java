@@ -20,7 +20,9 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class ScoreActivity extends AppCompatActivity {
-    private TextView scoreTV, timeTV, totalQTV, correctQTV, worngQTV, unattemtedQTV;
+    private TextView scoreTV, timeTV, totalQTV, correctQTV, worngQTV,
+            unattemtedQTV,book_toolbar,es,
+            tt, tq, c, w, b;
     private Button learderB, reAttemptB, viewAnsB;
     private long timeTaken;
     private int finalScore;
@@ -30,6 +32,18 @@ public class ScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        init();
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            book_toolbar.setText("ফলাফল");
+            es.setText("আপনার পরীক্ষার স্কোর");
+            reAttemptB.setText("আবার");
+            viewAnsB.setText("আপনার উত্তর দেখুন");
+            tt.setText("পরীক্ষার সময়");
+            tq.setText("মোট প্রশ্ন");
+            c.setText("সঠিক");
+            w.setText("ভুল");
+            b.setText("ফাঁকা");
+        }
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
@@ -63,7 +77,7 @@ public class ScoreActivity extends AppCompatActivity {
                 return null;
             }
         });
-        init();
+
         loadData();
         setBookMark();
         viewAnsB.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +111,15 @@ public class ScoreActivity extends AppCompatActivity {
         unattemtedQTV = findViewById(R.id.un_attemted);
         reAttemptB = findViewById(R.id.reattamB);
         viewAnsB = findViewById(R.id.view_answerB);
+        book_toolbar = findViewById(R.id.book_toolbar);
+        es = findViewById(R.id.es);
+        tt = findViewById(R.id.tt);
+        tq = findViewById(R.id.tq);
+        c = findViewById(R.id.c);
+        w = findViewById(R.id.w);
+        b = findViewById(R.id.b);
+
+
 
     }
 
@@ -155,8 +178,13 @@ public class ScoreActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(){
-                Toast.makeText(ScoreActivity.this,"Something went worng !",Toast.LENGTH_SHORT).show();
-
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                    Toast.makeText(ScoreActivity.this, "কিছু ভুল হয়েছে ! পরে চেষ্টা করুন",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(ScoreActivity.this, "Something went wrong ! Please try Later.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -1,16 +1,20 @@
 package com.example.addhayon.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.addhayon.DBQurey;
+import com.example.addhayon.EditProfileActivity;
 import com.example.addhayon.Models.RankModel;
 import com.example.addhayon.R;
 import com.example.addhayon.userProfile;
@@ -40,8 +44,9 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
         int score = userList.get(position).getScore();
         int rank = userList.get(position).getRank();
         String pImg = userList.get(position).getpImg();
+        String id = userList.get(position).getId();
 
-        holder.setData(name,score, rank, pImg);
+        holder.setData(name,score, rank, pImg, id);
     }
 
     @Override
@@ -62,14 +67,32 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
             rankTv = itemView.findViewById(R.id.rank2);
             scoreTv = itemView.findViewById(R.id.score2);
             imgTv = itemView.findViewById(R.id.img_txt);
+
         }
-        private void setData(String name, int score, int rank, String pImg){
+        private void setData(String name, int score, int rank, String pImg, String id){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), userProfile.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
             nameTv.setText(name);
-            scoreTv.setText("Score : "+score);
-            rankTv.setText("Rank : "+rank);
-            Glide.with(itemView.getContext())
-                    .load(pImg)
-                    .into(imgTv);
+            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                scoreTv.setText("স্কোর : " + score);
+                rankTv.setText("পদমর্যাদা : " + rank);
+            }else {
+                scoreTv.setText("Score : " + score);
+                rankTv.setText("Rank : " + rank);
+            }
+            if(pImg.length() == 0){
+                imgTv.setImageResource(R.drawable.baseline_puser);
+            }
+            if(pImg.length() != 0) {
+                Glide.with(itemView.getContext())
+                        .load(pImg)
+                        .into(imgTv);
+            }
         }
     }
 }

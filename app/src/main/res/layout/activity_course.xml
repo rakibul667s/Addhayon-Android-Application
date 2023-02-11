@@ -11,11 +11,12 @@
     android:orientation="vertical"
     android:layout_marginBottom="70dp">
     <TextView
+        android:id="@+id/w"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Working on this system"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/gradient2StartColor"/>
 

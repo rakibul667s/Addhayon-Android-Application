@@ -59,7 +59,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
                                                    holder.binding.msgTime.setText(dateFormat.format(new Date(time)));
                                                    holder.binding.lastMsg.setText(lastMsg);
                                                }else {
-                                                   holder.binding.lastMsg.setText("Tap to chat");
+                                                   if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                                       holder.binding.lastMsg.setText("চ্যাট করতে এখানে চাপুন");
+                                                   }else {
+                                                       holder.binding.lastMsg.setText("Tap to chat");
+                                                   }
                                                }
                                             }
 

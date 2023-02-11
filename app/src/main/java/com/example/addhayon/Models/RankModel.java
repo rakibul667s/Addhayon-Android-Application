@@ -5,12 +5,22 @@ public class RankModel {
     private int score;
     private int rank;
     private String pImg;
+    private String id;
 
-    public RankModel(String name,int score, int rank,String pImg) {
+    public RankModel(String name,int score, int rank,String pImg, String id) {
         this.score = score;
         this.rank = rank;
         this.name = name;
         this.pImg = pImg;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getpImg() {

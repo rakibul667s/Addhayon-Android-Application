@@ -1,9 +1,11 @@
 package com.example.addhayon;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -20,12 +22,27 @@ import kotlin.jvm.functions.Function1;
 
 public class calender extends AppCompatActivity {
     CustomCalendar customCalendar;
+    private TextView shedule, cls,exm, cd;
     private MeowBottomNavigation btm;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calender);
+
+
+        shedule = findViewById(R.id.shedule);
+        cls = findViewById(R.id.cls);
+        exm =findViewById(R.id.exm2);
+        cd = findViewById(R.id.cd);
+
+        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+            shedule.setText("সময়সূচী");
+            cls.setText("ক্লাস");
+            exm.setText("পরীক্ষা");
+            cd.setText("বর্তমান তারিখ");
+        }
 
         //---------------------Calendar--------------------------
         customCalendar = findViewById(R.id.custom_calendar);
@@ -84,22 +101,44 @@ public class calender extends AppCompatActivity {
                 boolean dateCheck = false;
                 if(day == 1) {
                     dateCheck = true;
-                    sDate = "Math class at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = "সকাল ১০টায় গণিত ক্লাস";
+                    }else{
+                        sDate = "Math class at 10.00am";
+                    }
+
+
                 } else if(day == 2 ){
                     dateCheck = true;
-                    sDate ="Math exam at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = "সকাল ১০টায় গণিত পরীক্ষা";
+                    }else {
+                        sDate = "Math exam at 10.00am";
+                    }
 
                 } else if(day == 3 ){
                     dateCheck = true;
-                    sDate ="English class at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = "সকাল ১০টায় ইংরেজি ক্লাস";
+                    }else {
+                        sDate = "English class at 10.00am";
+                    }
 
                 }else if(day == 4 ){
                     dateCheck = true;
-                    sDate ="English exam at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = "ইংরেজি পরীক্ষা সকাল ১০টায়";
+                    }else {
+                        sDate = "English exam at 10.00am";
+                    }
 
                 }else if(day == 5 ){
                     dateCheck = true;
-                    sDate ="English class at 1.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = " দুপুর ১টায় ইংরেজি ক্লাস";
+                    }else {
+                        sDate = "English class at 10.00am";
+                    }
 
                 }else if(day == 7 ){
                     dateCheck = true;
@@ -107,11 +146,19 @@ public class calender extends AppCompatActivity {
 
                 } else if(day == 15 || day == 17 || day == 25 || day == 26  ){
                     dateCheck = true;
-                    sDate ="Exam at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = " সকাল ১০টায় পরীক্ষা";
+                    }else {
+                        sDate = "Class at 10.00am";
+                    }
 
                 }else if(day == 14 || day == 16 || day == 19 || day == 29  ){
                     dateCheck = true;
-                    sDate ="Class at 10.00am";
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                        sDate = " সকাল ১০টায় ক্লাস";
+                    }else {
+                        sDate = "Class at 10.00am";
+                    }
 
                 }
 

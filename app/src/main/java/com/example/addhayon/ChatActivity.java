@@ -96,8 +96,37 @@ public class ChatActivity extends AppCompatActivity {
                 if(snapshot.exists()){
                     String status = snapshot.getValue(String.class);
                     if(!status.isEmpty()){
-                        binding.status.setText(status);
-                        binding.status.setVisibility(View.VISIBLE);
+                        if(status.equals("Offline")){
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                binding.status.setText("অফলাইন");
+                                binding.status.setVisibility(View.VISIBLE);
+                            }else{
+                                binding.status.setText(status);
+                                binding.status.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+                        if(status.equals("Online")){
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                binding.status.setText("অনলাইন");
+                                binding.status.setVisibility(View.VISIBLE);
+                            }else{
+                                binding.status.setText(status);
+                                binding.status.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+                        if(status.equals("Typing...")){
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                                binding.status.setText("টাইপিং...");
+                                binding.status.setVisibility(View.VISIBLE);
+                            }else{
+                                binding.status.setText(status);
+                                binding.status.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -210,7 +239,11 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                database.getReference().child("presence").child(sendertUid).setValue("Typing...");
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    database.getReference().child("presence").child(sendertUid).setValue("টাইপিং...");
+                }else {
+                    database.getReference().child("presence").child(sendertUid).setValue("Typing...");
+                }
                 handler.removeCallbacksAndMessages(null);
                 handler.postDelayed(userStoppedTyping,1000);
 

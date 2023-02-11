@@ -128,7 +128,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")){
-            name.setHint("তোমার নাম পরিবর্তন কর");
+            name.setHint("আপনার নাম পরিবর্তন কর");
             bio.setHint("আপনার জীবনী সেট করুন");
             address.setHint("ঠিকানা");
             dateofBirth.setHint("জন্ম তারিখ");
@@ -298,8 +298,14 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         if(pBoolean){
             pb = true;
-            Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
-                    Toast.LENGTH_SHORT).show();
+            if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                Toast.makeText(EditProfileActivity.this, "অনুগ্রহ করে কয়েক সেকেন্ড অপেক্ষা করুন",
+                        Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
+                        Toast.LENGTH_SHORT).show();
+            }
+
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_profile.jpg");
             UploadTask uploadTask = storageRef.putFile(pfilePath);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -318,11 +324,22 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .update("PROFILE_IMG", downloadUrl);
                             root.child(uid).child("profileImg").setValue(downloadUrl);
-                            Toast.makeText(EditProfileActivity.this, "Update your profile image",
-                                    Toast.LENGTH_SHORT).show();
-                            if(all){
-                                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                Toast.makeText(EditProfileActivity.this, "আপনার প্রোফাইল ইমেজ আপডেট করা হয়েছে",
                                         Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(EditProfileActivity.this, "Update your profile image",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            if(all){
+                                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                    Toast.makeText(EditProfileActivity.this, "নিরাপদে আপনার ডেটা আপডেট করা হয়েছে",
+                                            Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+
                                 buttonAnim.pauseAnimation();
                                 buttonAnim.setVisibility(View.GONE);
                                 buttonText.setVisibility(View.VISIBLE);
@@ -330,8 +347,13 @@ public class EditProfileActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 EditProfileActivity.this.finish();
                             }else{
-                                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
-                                        Toast.LENGTH_SHORT).show();
+                                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                    Toast.makeText(EditProfileActivity.this, "নিরাপদে আপনার ডেটা আপডেট করা হয়েছে",
+                                            Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                            Toast.LENGTH_SHORT).show();
+                                }
                                 buttonAnim.pauseAnimation();
                                 buttonAnim.setVisibility(View.GONE);
                                 buttonText.setVisibility(View.VISIBLE);
@@ -345,8 +367,13 @@ public class EditProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(EditProfileActivity.this, "Something went wrong ! Please try Later.",
-                            Toast.LENGTH_SHORT).show();
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                        Toast.makeText(EditProfileActivity.this, "কিছু ভুল হয়েছে ! পরে চেষ্টা করুন",
+                                Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(EditProfileActivity.this, "Something went wrong ! Please try Later.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
@@ -360,8 +387,13 @@ public class EditProfileActivity extends AppCompatActivity {
             StorageReference storageRef = storage.getReference().child("allUsers/"+userId+"/image_cover.jpg");
             UploadTask uploadTask = storageRef.putFile(cfilePath);
             if(!pb){
-                Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                    Toast.makeText(EditProfileActivity.this, "অনুগ্রহ করে কয়েক সেকেন্ড অপেক্ষা করুন",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(EditProfileActivity.this, "Please Wait a few seconds",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -377,12 +409,23 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .update("COVER_IMG", downloadUrl);
                             DBQurey.myProfile.setCoverImg(downloadUrl);
-                            Toast.makeText(EditProfileActivity.this, "Update your cover image",
-                                    Toast.LENGTH_SHORT).show();
+                            if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                Toast.makeText(EditProfileActivity.this, "নআপনার কভার ইমেজ আপডেট করা হয়েছে",
+                                        Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(EditProfileActivity.this, "Update your cover image",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                             if(!pb){
                                 if(all){
-                                    Toast.makeText(EditProfileActivity.this, "Safely update  your all data",
-                                            Toast.LENGTH_SHORT).show();
+                                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                        Toast.makeText(EditProfileActivity.this, "নিরাপদে আপনার ডেটা আপডেট করা হয়েছে",
+                                                Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                     buttonAnim.pauseAnimation();
                                     buttonAnim.setVisibility(View.GONE);
                                     buttonText.setVisibility(View.VISIBLE);
@@ -390,8 +433,13 @@ public class EditProfileActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     EditProfileActivity.this.finish();
                                 }else{
-                                    Toast.makeText(EditProfileActivity.this, "Safely update  your all data",
-                                            Toast.LENGTH_SHORT).show();
+                                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                                        Toast.makeText(EditProfileActivity.this, "নিরাপদে আপনার ডেটা আপডেট করা হয়েছে",
+                                                Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                     buttonAnim.pauseAnimation();
                                     buttonAnim.setVisibility(View.GONE);
                                     buttonText.setVisibility(View.VISIBLE);
@@ -407,8 +455,13 @@ public class EditProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(EditProfileActivity.this, "Something went wrong ! Please try Later.",
-                            Toast.LENGTH_SHORT).show();
+                    if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                        Toast.makeText(EditProfileActivity.this, "কিছু ভুল হয়েছে ! পরে চেষ্টা করুন",
+                                Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(EditProfileActivity.this, "Something went wrong ! Please try Later.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                     // Handle the failure of the upload
                 }
             });
@@ -418,8 +471,13 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         if(!pb || !cb){
             if(all){
-                Toast.makeText(EditProfileActivity.this, "Safely update  your data",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
+                    Toast.makeText(EditProfileActivity.this, "নিরাপদে আপনার ডেটা আপডেট করা হয়েছে",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(EditProfileActivity.this, "Safely update  your data",
+                            Toast.LENGTH_SHORT).show();
+                }
                 buttonAnim.pauseAnimation();
                 buttonAnim.setVisibility(View.GONE);
                 buttonText.setVisibility(View.VISIBLE);
