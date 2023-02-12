@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     ImageSlider imageSlider;
     ImageSlider imageSlider2;
 
-    private LinearLayout exam2, aboutMe, course;
+    private LinearLayout exam2, aboutMe, course, shop,note,cal;
 
     private TextView seeMore1,seeMore2, bExam, bCourse,
             bEvent, bLocation, bRank, bShop, bNote,bAbout,
@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
         context = getActivity();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         exam2 = view.findViewById(R.id.rank);
-        aboutMe = view.findViewById(R.id.about);
+        //aboutMe = view.findViewById(R.id.about);
         course = view.findViewById(R.id.course);
         seeMore1 = view.findViewById(R.id.seeMore1);
         seeMore2 = view.findViewById(R.id.seeMore2);
@@ -68,6 +68,9 @@ public class HomeFragment extends Fragment {
         bnote2 = view.findViewById(R.id.bnote2);
         bNews = view.findViewById(R.id.bNews);
         bHealth = view.findViewById(R.id.bHealth);
+        shop = view.findViewById(R.id.shop);
+        note = view.findViewById(R.id.note);
+        cal = view.findViewById(R.id.cal);
 
         bC1 = view.findViewById(R.id.bC1);
         bC2 = view.findViewById(R.id.bC2);
@@ -132,18 +135,41 @@ public class HomeFragment extends Fragment {
                 openExam();
             }
         });
-        aboutMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAbout();
-            }
-        });
+       // aboutMe.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //openAbout();
+//            }
+//        });
         course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openCourse();
             }
         });
+
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Working on this proccess",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Working on this proccess",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        cal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Working on this proccess",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
         imageSlider = view.findViewById(R.id.image_slider);
         ArrayList<SlideModel> imagelist= new ArrayList<> ();
         imagelist.add(new SlideModel(R.drawable.slider_img, ScaleTypes.CENTER_CROP));

@@ -240,8 +240,8 @@ public class sign_up_page extends AppCompatActivity {
 
             mimeMessage.setSubject("Verification Code");
             String emailText1 = "Contact Us:";
-            String emailText2 = "Developer: MD. RAKIBUL ISLAM";
-            mimeMessage.setText("Hello "+nameStr+", \n\nDon't shear your varification code... \n\nVerification code is : "+code+"\n\n\n"+emailText1+"\n"+emailText2+"\nmd.rakibulislam_1@yahoo.com\n+8801704081993");
+            String emailText2 = "Developed by MD. RAKIBUL ISLAM";
+            mimeMessage.setText("Hello "+nameStr+", \n\nDon't shear your varification code... \n\nVerification code is : "+code+"\n\n\n"+emailText2+"\n\n"+emailText1+"\nmd.rakibulislam_1@yahoo.com\n+8801704081993");
 
             Thread thread = new Thread(new Runnable() {
                 @Override

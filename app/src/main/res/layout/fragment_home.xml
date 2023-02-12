@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:background="@color/white">
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
@@ -182,6 +183,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/shop"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -206,6 +208,7 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/note"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -223,13 +226,13 @@
                             android:id="@+id/bNote"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Note"
+                            android:text="Notes"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/about"
+                        android:id="@+id/cal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -241,13 +244,13 @@
                             android:layout_height="48dp"
                             android:layout_marginTop="8dp"
                             android:padding="6dp"
-                            android:src="@drawable/info_button" />
+                            android:src="@drawable/newspaper" />
 
                         <TextView
                             android:id="@+id/bAbout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="About!"
+                            android:text="News"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />
@@ -598,7 +601,7 @@
                             android:id="@+id/bCal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Calcultor"
+                            android:text="Calculator"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />

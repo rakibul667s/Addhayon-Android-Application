@@ -122,6 +122,7 @@ public class userProfile extends AppCompatActivity {
 
 
 
+
         scoreText = findViewById(R.id.scoreText);
         rankText = findViewById(R.id.rankText);
         contactText = findViewById(R.id.contactText);
