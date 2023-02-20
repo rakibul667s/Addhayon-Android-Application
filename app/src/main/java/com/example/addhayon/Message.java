@@ -4,6 +4,7 @@ public class Message {
     private String messageId, message, senderId, imageUrl;
     private long timestamp;
     private int feeling = -1;
+    private boolean isSeen;
 
     public Message() {
     }
@@ -12,6 +13,14 @@ public class Message {
         this.message = message;
         this.senderId = senderId;
         this.timestamp = timestamp;
+    }
+
+    public boolean isSeen() {
+        return isSeen;
+    }
+
+    public void setSeen(boolean seen) {
+        isSeen = seen;
     }
 
     public String getMessageId() {

@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import java.io.IOException;
 
 public class LoadingPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private RelativeLayout button2;
+    private LinearLayout button2;
     private TextView buttonText;
     private LottieAnimationView buttonAnim;
     private boolean check = false;

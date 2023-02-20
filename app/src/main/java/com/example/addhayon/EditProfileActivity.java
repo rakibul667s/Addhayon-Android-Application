@@ -128,7 +128,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")){
-            name.setHint("আপনার নাম পরিবর্তন কর");
+            name.setHint("আপনার নাম পরিবর্তন করুন");
             bio.setHint("আপনার জীবনী সেট করুন");
             address.setHint("ঠিকানা");
             dateofBirth.setHint("জন্ম তারিখ");
@@ -139,21 +139,21 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
 
-        dateofBirth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                day = calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog = new DatePickerDialog(EditProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        dateofBirth.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-            }
-        });
+//        dateofBirth.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                year = calendar.get(Calendar.YEAR);
+//                month = calendar.get(Calendar.MONTH);
+//                day = calendar.get(Calendar.DAY_OF_MONTH);
+//                datePickerDialog = new DatePickerDialog(EditProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                        dateofBirth.setText(SimpleDateFormat.getDateInstance().format(calendar.getTime()));
+//                    }
+//                }, year, month, day);
+//                datePickerDialog.show();
+//            }
+//        });
 
         profileB.setOnClickListener(new View.OnClickListener() {
             @Override

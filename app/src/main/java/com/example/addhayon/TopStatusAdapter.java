@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.addhayon.databinding.ItemStatusBinding;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import omari.hamza.storyview.StoryView;
 import omari.hamza.storyview.callback.StoryClickListeners;
@@ -50,7 +51,14 @@ public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopS
             public void onClick(View v) {
                 ArrayList<MyStory> myStories = new ArrayList<>();
                 for(Status status : userStatus.getStatuses()) {
-                    myStories.add(new MyStory(status.getImageUrl()));
+                    Date date = new Date();
+                    long diff = date.getTime() - status.getTimeStamp();
+                    long diffSeconds = diff/1000;
+                    long diffMinutes = diff / (60 *1000);
+                    long diffHours = diff / (60*60*1000);
+
+                        myStories.add(new MyStory(status.getImageUrl()));
+
                 }
 
                 new StoryView.Builder(((ChatMainActivity)context).getSupportFragmentManager())

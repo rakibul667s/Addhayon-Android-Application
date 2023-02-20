@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class LeaderBoard extends AppCompatActivity {
     private RecyclerView usersView;
     private RankAdapter adapter;
     private MeowBottomNavigation btm;
+    private LinearLayout ll3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,14 @@ public class LeaderBoard extends AppCompatActivity {
             tRank.setText( "পদমর্যাদা");
             you.setText("আপনি");
         }
+        ll3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LeaderBoard.this, userProfile.class);
+                startActivity(intent);
+                LeaderBoard.this.finish();
+            }
+        });
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2, R.drawable.ic_exam));
@@ -125,6 +136,7 @@ public class LeaderBoard extends AppCompatActivity {
         usersView = findViewById(R.id.users_view);
         tRank = findViewById(R.id.tRank);
         you =findViewById(R.id.you);
+        ll3 = findViewById(R.id.ll3);
     }
     private void calcukateRank(){
         int lowTopScore = g_usersList.get(g_usersList.size()-1).getScore();

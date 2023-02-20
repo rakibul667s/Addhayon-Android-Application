@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class AllUserActivity extends AppCompatActivity {
     ImageView cover_img2;
     CircleImageView pImg;
     private MeowBottomNavigation btm;
+    private LinearLayout rankB;
 
 
 
@@ -51,6 +54,16 @@ public class AllUserActivity extends AppCompatActivity {
         rankText =findViewById(R.id.rankText);
         scoreText=findViewById(R.id.scoreText);
         contactText = findViewById(R.id.contactText);
+        rankB = findViewById(R.id.rankB);
+
+        rankB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AllUserActivity.this, LeaderBoard.class);
+                startActivity(intent);
+                AllUserActivity.this.finish();
+            }
+        });
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")){
             rankText.setText("পদমর্যাদা");

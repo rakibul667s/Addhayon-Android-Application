@@ -64,6 +64,12 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message message = messages.get(position);
+        FirebaseDatabase.getInstance().getReference().child("chats")
+                .child(senderRoom)
+                .child("messages")
+                .child(message.getMessageId())
+                .child("isSeen")
+                .setValue(true);
         int reactions[] = new int[]{
                 R.drawable.ic_fb_like,
                 R.drawable.ic_fb_love,
