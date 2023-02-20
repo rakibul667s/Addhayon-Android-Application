@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -20,6 +21,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.util.ArrayList;
 
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
             bLetest,bExtra, bCal,bnote2, bNews, bHealth,
             bC1,bC2,bC3,bC4,bC5,bC6,
             bP1,bP2,bP3,bP4,bP5,bP6;
+    private String img1,img2,img3,img4,img5;
 
 
     Activity context;
@@ -87,6 +91,19 @@ public class HomeFragment extends Fragment {
         bP5 = view.findViewById(R.id.bP5);
         bP6 = view.findViewById(R.id.bP6);
 
+        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(0)
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+        mFirebaseRemoteConfig.fetchAndActivate().addOnSuccessListener(new OnSuccessListener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean aBoolean) {
+               //img1 = mFirebaseRemoteConfig.getString("img1");
+
+            }
+        });
+
 
 
 
@@ -101,7 +118,7 @@ public class HomeFragment extends Fragment {
           bRank.setText("পদমর্যাদা");
           bShop.setText("দোকান");
           bNote.setText( "বিঃদ্রঃ");
-          bAbout.setText("সম্পর্কিত");
+          bAbout.setText("খবর");
           bLetest.setText("জনপ্রিয় কোর্স");
           bExtra.setText("অতিরিক্ত সুবিধাগুলি");
           bCal.setText("হিসাব");
@@ -172,12 +189,23 @@ public class HomeFragment extends Fragment {
 
         imageSlider = view.findViewById(R.id.image_slider);
         ArrayList<SlideModel> imagelist= new ArrayList<> ();
-        imagelist.add(new SlideModel(R.drawable.slider_img, ScaleTypes.CENTER_CROP));
-        imagelist.add(new SlideModel(R.drawable.slider_img2,ScaleTypes.CENTER_CROP));
-        imagelist.add(new SlideModel(R.drawable.slider_img3,ScaleTypes.CENTER_CROP));
-        imagelist.add(new SlideModel(R.drawable.slider_img4,ScaleTypes.CENTER_CROP));
-        imagelist.add(new SlideModel(R.drawable.slider_img5,ScaleTypes.CENTER_CROP));
-        imageSlider.setImageList(imagelist);
+
+        if(DBQurey.myProfile.getEvent().equals("ok")){
+            imagelist.add(new SlideModel(DBQurey.myProfile.getImg1(), ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(DBQurey.myProfile.getImg2(), ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(DBQurey.myProfile.getImg3(), ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(DBQurey.myProfile.getImg4(), ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(DBQurey.myProfile.getImg5(), ScaleTypes.CENTER_CROP));
+            imageSlider.setImageList(imagelist);
+
+        }else {
+            imagelist.add(new SlideModel(R.drawable.slider_img, ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(R.drawable.slider_img2, ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(R.drawable.slider_img3, ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(R.drawable.slider_img4, ScaleTypes.CENTER_CROP));
+            imagelist.add(new SlideModel(R.drawable.slider_img5, ScaleTypes.CENTER_CROP));
+            imageSlider.setImageList(imagelist);
+        }
 
 
         return  view;

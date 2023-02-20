@@ -39,6 +39,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -121,8 +123,6 @@ public class userProfile extends AppCompatActivity {
 
 
 
-
-
         scoreText = findViewById(R.id.scoreText);
         rankText = findViewById(R.id.rankText);
         contactText = findViewById(R.id.contactText);
@@ -149,6 +149,7 @@ public class userProfile extends AppCompatActivity {
             contactText.setText("Contact us :");
 
         }
+
 
         userAuth = FirebaseAuth.getInstance();
         firebaseUser = userAuth.getCurrentUser();

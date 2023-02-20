@@ -53,7 +53,7 @@ public class DBQurey {
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null");
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null","null","null","null","null","null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
     public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL");
@@ -311,6 +311,19 @@ public class DBQurey {
                         myProfile.setCoverImg(documentSnapshot.getString("COVER_IMG"));
                         myProfile.setLanguage(documentSnapshot.getString("LANGUAGE"));
                         myProfile.setId(documentSnapshot.getString("ID"));
+                        g_firestore.collection("EVENTS").document("EVENT")
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        myProfile.setEvent(documentSnapshot.getString("DAYCHECK"));
+                                        myProfile.setImg1(documentSnapshot.getString("IMG1"));
+                                        myProfile.setImg2(documentSnapshot.getString("IMG2"));
+                                        myProfile.setImg3(documentSnapshot.getString("IMG3"));
+                                        myProfile.setImg4(documentSnapshot.getString("IMG4"));
+                                        myProfile.setImg5(documentSnapshot.getString("IMG5"));
+                                    }
+                                });
 
                         if(documentSnapshot.get("BOOKMARKS") != null){
                             myProfile.setBookmarksCount(documentSnapshot.getLong("BOOKMARKS").intValue());
