@@ -4,16 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.Transition;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.addhayon.Adapters.MessagesAdapter;
 import com.example.addhayon.databinding.ActivityChatBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,6 +64,8 @@ public class ChatActivity extends AppCompatActivity {
     ProgressDialog dialog;
     String sendertUid;
     String receiverUid;
+    ConstraintLayout bg2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +83,22 @@ public class ChatActivity extends AppCompatActivity {
         }
         dialog.setCancelable(false);
 
+       bg2 = findViewById(R.id.bg);
 
+        if(!DBQurey.myProfile.getBg().equals("")){
+            Glide.with(ChatActivity.this)
+                    .load(DBQurey.myProfile.getBg())
+                    .into(new SimpleTarget<Drawable>() {
+                        @Override
+                        public void onResourceReady(@NonNull Drawable resource, @Nullable com.bumptech.glide.request.transition.Transition<? super Drawable> transition) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                bg2.setBackground(resource);
+                            }
+                        }
+
+
+                    });
+        }
 
         //name2 =findViewById(R.id.name);
 
