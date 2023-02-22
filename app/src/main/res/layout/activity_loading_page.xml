@@ -14,7 +14,7 @@
         android:layout_marginEnd="20dp"
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="@dimen/_420sdp"
         android:background="@drawable/gradient2"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="@dimen/_340sdp"
             android:padding="35dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_loadingimg" />
@@ -60,6 +60,8 @@
 
 
     <TextView
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:id="@+id/textView"

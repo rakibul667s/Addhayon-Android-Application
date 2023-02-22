@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
@@ -19,6 +21,7 @@ public class AboutActivity extends AppCompatActivity {
     private TextView details;
     private TextView family;
     private TextView contact;
+    private CircleImageView profile_image;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,6 +37,11 @@ public class AboutActivity extends AppCompatActivity {
         family = findViewById(R.id.family2);
         contact = findViewById(R.id.contact2);
         name = findViewById(R.id.name);
+        profile_image = findViewById(R.id.profile_image);
+
+        Glide.with(AboutActivity.this)
+                .load(DBQurey.myProfile.getDev())
+                .into(profile_image);
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")){
             name.setText("মো: রাকিবুল ইসলাম");

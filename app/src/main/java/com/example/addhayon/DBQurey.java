@@ -53,7 +53,7 @@ public class DBQurey {
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null","null","null","null","null","null","null","null");
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null","null","null","null","null","null","null","null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
     public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL");
@@ -323,6 +323,7 @@ public class DBQurey {
                                         myProfile.setImg4(documentSnapshot.getString("IMG4"));
                                         myProfile.setImg5(documentSnapshot.getString("IMG5"));
                                         myProfile.setBg(documentSnapshot.getString("BG"));
+                                        myProfile.setDev(documentSnapshot.getString("DEV"));
                                     }
                                 });
 

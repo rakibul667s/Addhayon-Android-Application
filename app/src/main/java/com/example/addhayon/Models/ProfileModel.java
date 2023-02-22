@@ -22,13 +22,14 @@ public class ProfileModel {
     private String img4;
     private String img5;
     private String bg;
+    private String dev;
 
 
 
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg) {
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg, String dev) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -48,7 +49,16 @@ public class ProfileModel {
         this.img4 = img4;
         this.img5 = img5;
         this.bg = bg;
+        this.dev = dev;
 
+    }
+
+    public String getDev() {
+        return dev;
+    }
+
+    public void setDev(String dev) {
+        this.dev = dev;
     }
 
     public String getBg() {
