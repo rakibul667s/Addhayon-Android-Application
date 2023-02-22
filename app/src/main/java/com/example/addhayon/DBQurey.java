@@ -53,7 +53,7 @@ public class DBQurey {
     public static boolean isMeOnTopList = false;
     public static int g_selected_test_index = 0;
     public static  List<QuestionModel> g_quesList = new ArrayList<>();
-    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null","null","null","null","null","null","null","null","null");
+    public static ProfileModel myProfile = new ProfileModel("Addhayon", "null","null","null","null","null","null",0,"null","null", "null","null","null","null","null","null","null","null","null","null","null","null","null");
 
     public static ProfileImageModel myImage = new ProfileImageModel("p","c");
     public static RankModel myPerformance = new RankModel("NULL",0,-1,"NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL");
@@ -324,6 +324,16 @@ public class DBQurey {
                                         myProfile.setImg5(documentSnapshot.getString("IMG5"));
                                         myProfile.setBg(documentSnapshot.getString("BG"));
                                         myProfile.setDev(documentSnapshot.getString("DEV"));
+                                    }
+                                });
+                        g_firestore.collection("VERSIONS").document("VERSION")
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        myProfile.setUpcheck(documentSnapshot.getString("UPDATECHECK"));
+                                        myProfile.setUplink(documentSnapshot.getString("UPDATELINK"));
+                                        myProfile.setVname(documentSnapshot.getString("VERSIONNAME"));
                                     }
                                 });
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -46,6 +47,28 @@ public class dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         menuTitle = findViewById(R.id.menuTitle);
+
+        if(DBQurey.myProfile.getVname().equals(String.valueOf(BuildConfig.VERSION_NAME))){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(dashboard.this);
+            builder.setCancelable(true);
+
+            View view = getLayoutInflater().inflate(R.layout.update,null);
+            Button update = view.findViewById(R.id.update);
+            builder.setView(view);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+
+        }else{
+            Toast.makeText(dashboard.this, "Not...............",
+                    Toast.LENGTH_SHORT).show();
+        }
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
             menuTitle.setText("অধ্যয়ন");

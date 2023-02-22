@@ -23,13 +23,16 @@ public class ProfileModel {
     private String img5;
     private String bg;
     private String dev;
+    private String upcheck;
+    private String uplink;
+    private String vname;
 
 
 
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg, String dev) {
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg, String dev,String upcheck,String uplink,String vname) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -50,7 +53,35 @@ public class ProfileModel {
         this.img5 = img5;
         this.bg = bg;
         this.dev = dev;
+        this.upcheck = upcheck;
+        this.uplink = uplink;
+        this.vname = vname;
 
+
+    }
+
+    public String getVname() {
+        return vname;
+    }
+
+    public void setVname(String vname) {
+        this.vname = vname;
+    }
+
+    public String getUpcheck() {
+        return upcheck;
+    }
+
+    public void setUpcheck(String upcheck) {
+        this.upcheck = upcheck;
+    }
+
+    public String getUplink() {
+        return uplink;
+    }
+
+    public void setUplink(String uplink) {
+        this.uplink = uplink;
     }
 
     public String getDev() {
