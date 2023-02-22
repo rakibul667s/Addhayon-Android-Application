@@ -276,8 +276,8 @@ public class sign_up_page extends AppCompatActivity {
 
         View view = getLayoutInflater().inflate(R.layout.tconditons,null);
 
-       Button oklB = view.findViewById(R.id.okB);
-        Button cancellB = view.findViewById(R.id.cancelB);
+       TextView oklB = view.findViewById(R.id.okB);
+        TextView cancellB = view.findViewById(R.id.cancelB);
 
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
