@@ -78,7 +78,7 @@
         android:id="@+id/pra2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="When download are completed. Then check the download file 'Addhayon.apk' and install it."
+        android:text="When download are completed. Then check the download file 'Addhayon.apk' or your device Storage>Download>Addhayon>'Addhayon.apk' and install it."
         android:textSize="16sp"
         android:layout_marginTop="10dp"
         android:textColor="@color/i2"
