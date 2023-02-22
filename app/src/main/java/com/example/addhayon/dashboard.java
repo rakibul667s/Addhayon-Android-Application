@@ -55,7 +55,7 @@ public class dashboard extends AppCompatActivity {
     private static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=1QBMsMy31D9xDeXOiL53L3yLQZ2gz1iHO";
     private long downloadId;
     BroadcastReceiver downloadReceiver;
-    Button update;
+    TextView update;
 
 
 
