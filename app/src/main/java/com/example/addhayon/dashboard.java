@@ -1,17 +1,31 @@
 package com.example.addhayon;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -22,6 +36,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+
+import java.io.File;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -36,6 +52,10 @@ public class dashboard extends AppCompatActivity {
     private FirebaseStorage storage;
     private FirebaseAuth mAuth, auth;
     private TextView menuTitle;
+    private static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=1QBMsMy31D9xDeXOiL53L3yLQZ2gz1iHO";
+    private long downloadId;
+    BroadcastReceiver downloadReceiver;
+    Button update;
 
 
 
@@ -50,25 +70,44 @@ public class dashboard extends AppCompatActivity {
 
         if(DBQurey.myProfile.getVname().equals(String.valueOf(BuildConfig.VERSION_NAME))){
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(dashboard.this);
-            builder.setCancelable(true);
-
-            View view = getLayoutInflater().inflate(R.layout.update,null);
-            Button update = view.findViewById(R.id.update);
-            builder.setView(view);
-            AlertDialog alertDialog = builder.create();
-
-            update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    alertDialog.dismiss();
-                }
-            });
-            alertDialog.show();
 
         }else{
-            Toast.makeText(dashboard.this, "Not...............",
-                    Toast.LENGTH_SHORT).show();
+            if(DBQurey.myProfile.getUpcheck().equals(String.valueOf(BuildConfig.VERSION_CODE))){
+
+            }else {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(dashboard.this);
+                builder.setCancelable(true);
+
+                View view = getLayoutInflater().inflate(R.layout.update, null);
+                update = view.findViewById(R.id.update);
+                TextView Mb = view.findViewById(R.id.Mb);
+                TextView version = view.findViewById(R.id.version);
+                Mb.setText("Download size: " + DBQurey.myProfile.getMb() + " MB");
+                version.setText("Version: " + DBQurey.myProfile.getVname());
+                builder.setView(view);
+                AlertDialog alertDialog = builder.create();
+
+                update.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+                    @Override
+                    public void onClick(View v) {
+                        String url2 = DBQurey.myProfile.getUplink();
+                        alertDialog.dismiss();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            if (ContextCompat.checkSelfPermission(dashboard.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                                download(url2);
+                            } else {
+                                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
+                            }
+                        } else {
+                            download(url2);
+                        }
+
+                    }
+                });
+                alertDialog.show();
+            }
         }
 
         if(DBQurey.myProfile.getLanguage().equals("Bangla")) {
@@ -168,5 +207,40 @@ public class dashboard extends AppCompatActivity {
         startActivity(intent);
         dashboard.this.finish();
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 100){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                update.performClick();
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+    private void download(String link){
+        String filename = URLUtil.guessFileName(link,null,null);
+        String folder = Environment.getExternalStorageDirectory()+"/Download/Addhayon/";
+        File newFile = new File(folder, filename);
+        try {
+
+                DownloadManager.Request request =new DownloadManager.Request(Uri.parse(link));
+                request.allowScanningByMediaScanner();
+                request.setDescription(filename)
+                        .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI)
+                        .setDestinationUri(Uri.fromFile(newFile))
+                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                        .setVisibleInDownloadsUi(true)
+                        .setTitle(getResources().getString(R.string.app_name));
+                DownloadManager manager = (DownloadManager)  getSystemService(DOWNLOAD_SERVICE);
+                assert manager != null;
+                long downloadID = manager.enqueue(request);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

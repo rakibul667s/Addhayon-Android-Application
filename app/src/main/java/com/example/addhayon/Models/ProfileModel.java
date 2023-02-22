@@ -26,13 +26,14 @@ public class ProfileModel {
     private String upcheck;
     private String uplink;
     private String vname;
+    private String mb;
 
 
 
 
 
 
-    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg, String dev,String upcheck,String uplink,String vname) {
+    public ProfileModel(String name, String email, String bio,String address,String dateofBirth,String sclClg,String phn,int bookmarksCount,String profileImg,String coverImg, String language, String id,String event,String img1,String img2,String img3,String img4,String img5, String bg, String dev,String upcheck,String uplink,String vname,String mb) {
         this.name = name;
         this.email = email;
         this.bio =bio;
@@ -56,8 +57,17 @@ public class ProfileModel {
         this.upcheck = upcheck;
         this.uplink = uplink;
         this.vname = vname;
+        this.mb = mb;
 
 
+    }
+
+    public String getMb() {
+        return mb;
+    }
+
+    public void setMb(String mb) {
+        this.mb = mb;
     }
 
     public String getVname() {
