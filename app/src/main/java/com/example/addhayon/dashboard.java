@@ -57,13 +57,14 @@ public class dashboard extends AppCompatActivity {
             Button update = view.findViewById(R.id.update);
             builder.setView(view);
             AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     alertDialog.dismiss();
                 }
             });
+            alertDialog.show();
 
         }else{
             Toast.makeText(dashboard.this, "Not...............",
