@@ -232,7 +232,7 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/cal"
+                        android:id="@+id/news"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -584,6 +584,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/cal"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -601,7 +602,7 @@
                             android:id="@+id/bCal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Calculator"
+                            android:text="Cal"
                             android:textAlignment="center"
                             android:textColor="@color/loginEnd"
                             android:textStyle="bold" />

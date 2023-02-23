@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SeeMoreActivity">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        app:cardBackgroundColor="@color/gradient2StartColor">
+        <TextView
+            android:id="@+id/menuTitle"
+            android:layout_width="158dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/btn_list"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/exam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/exam" />
+
+                <TextView
+                    android:id="@+id/bExam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exam"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/course"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/online_course" />
+
+                <TextView
+                    android:id="@+id/bCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Course"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/calender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/calendar" />
+
+                <TextView
+                    android:id="@+id/bEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Event"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:id="@+id/location"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="3.5dp"
+                    android:src="@drawable/location" />
+
+                <TextView
+                    android:id="@+id/bLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rank"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/results" />
+
+                <TextView
+                    android:id="@+id/bRank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ranking"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="0dp"
+                    android:src="@drawable/shopping_cart" />
+
+                <TextView
+                    android:id="@+id/bShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shop"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/notepad" />
+
+                <TextView
+                    android:id="@+id/bNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Notes"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/news"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/newspaper" />
+
+                <TextView
+                    android:id="@+id/bnews2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="News"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/cal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/calculator" />
+
+                <TextView
+                    android:id="@+id/bCal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cal"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/notepad" />
+
+                <TextView
+                    android:id="@+id/bnote2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Note"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/newspaper" />
+
+                <TextView
+                    android:id="@+id/bNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="News"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.25"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="6dp"
+                    android:src="@drawable/healthcare" />
+
+                <TextView
+                    android:id="@+id/bHealth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Health"
+                    android:textAlignment="center"
+                    android:textColor="@color/loginEnd"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_circleColor="@color/gradient2StartColor"
+        app:mbn_countBackgroundColor="#191818"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_defaultIconColor="@color/gradient2StartColor"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="@color/white"
+        app:mbn_shadowColor="@color/gradient2EndColor" />
+
+</FrameLayout>

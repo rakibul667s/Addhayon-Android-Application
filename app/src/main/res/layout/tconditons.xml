@@ -6,7 +6,7 @@
     android:background="@drawable/gradient3"
     android:backgroundTint="@color/white"
     android:paddingLeft="30dp"
-    android:paddingRight="0dp"
+    android:paddingRight="30dp"
     android:paddingTop="15dp"
     android:paddingBottom="20dp"
     android:layout_margin="32dp">
@@ -36,7 +36,7 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Last update: February 02, 2023"
+                android:text="Last update: February 23, 2023"
                 android:textSize="12sp"
                 android:layout_marginTop="6dp"
                 android:textColor="@color/i2"
@@ -65,13 +65,12 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/c1"/>
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Addhayon provide for any student get online exam, check ranking, purchase course, collected notes or book pdf for our book shop,  live solution for any study related problem, customize standered user profile, see your current location to nearby loacation, time shedule or event and many features include this application. "
                 android:textSize="12sp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="@color/i2"/>
@@ -84,14 +83,13 @@
                 android:layout_marginTop="3dp"
                 android:textColor="@color/teal_700"/>
 
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This Addhayon Application means the software program provided by the Company downloaded by You on any electronic device. Here you can bulid up your learning skills, you can get online exam and see global ranking, any purchase course for learning, important book pdf or notes collected in book shop, exam time shedule, find or near by place, customize your standered profile and communation system. All features suit for student and help us. So, its application named Addhayon."
                 android:textSize="12sp"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -108,14 +106,13 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/c5"/>
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This application mainly hlep for Student.Device means any device that can access the Service such as a computer, a mobilephone."
                 android:textSize="12sp"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -132,14 +129,13 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/c7"/>
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="The application Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users  use of the Service."
                 android:textSize="12sp"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -156,20 +152,19 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/c8"/>
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1. Access to your internet. Beacuse, its all servies provide in database.2. Access location for your nearby place and find location.3. Access your file for setup your profile. "
                 android:textSize="12sp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginTop="0dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/a1"/>
 
-            <me.biubiubiu.justifytext.library.JustifyTextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,7 +172,6 @@
 You agree that the original English text shall prevail in the case of a dispute."
                 android:textSize="12sp"
                 android:layout_marginTop="3dp"
-                android:layout_marginEnd="12dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -194,14 +188,13 @@ You agree that the original English text shall prevail in the case of a dispute.
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/a"/>
-            <TextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/c13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="If you have any questions about these Terms and Conditions, You can contact us:"
                 android:textSize="12sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
                 android:textColor="@color/i2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -261,7 +254,6 @@ You agree that the original English text shall prevail in the case of a dispute.
                    android:text="Ok"
                    android:textStyle="bold"
                    android:textSize="16sp"
-                   android:layout_marginEnd="40dp"
                    android:textColor="@color/white"
                    android:background="@drawable/gradient4"
                    app:layout_constraintRight_toRightOf="parent"

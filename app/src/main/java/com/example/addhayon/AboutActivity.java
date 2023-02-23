@@ -9,6 +9,7 @@ import android.text.Html;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codesgood.views.JustifiedTextView;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -17,7 +18,8 @@ import kotlin.jvm.functions.Function1;
 
 public class AboutActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
-    private TextView bio, name;
+    private TextView name;
+    private JustifiedTextView bio;
     private TextView details;
     private TextView family;
     private TextView contact;

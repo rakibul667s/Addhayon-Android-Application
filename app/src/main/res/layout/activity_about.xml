@@ -84,7 +84,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/bio"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="10dp"

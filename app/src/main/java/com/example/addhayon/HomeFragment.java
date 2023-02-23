@@ -171,22 +171,46 @@ public class HomeFragment extends Fragment {
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Working on this proccess",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(context, "এখনও কাজ চলছে ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "Working on system", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Working on this proccess",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(context, "এখনও কাজ চলছে ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "Working on system", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Working on this proccess",
-                        Toast.LENGTH_SHORT).show();
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    Toast.makeText(context, "এখনও কাজ চলছে ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "Working on system", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        seeMore1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,SeeMoreActivity.class);
+                startActivity(intent);
+            }
+        });
+        seeMore2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,SeeMoreActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -220,10 +244,6 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(context,CourseActivity.class);
         startActivity(intent);
     }
-    private void openAbout(){
-        Intent intent = new Intent(context,AboutActivity.class);
-        startActivity(intent);
-    }
     private void openExam(){
         Intent intent = new Intent(context,LeaderBoard.class);
         startActivity(intent);
@@ -251,6 +271,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,AllExamCatActivity.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout news=(LinearLayout) context.findViewById(R.id.news);
+        news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,NewsActivity.class);
                 startActivity(intent);
             }
         });

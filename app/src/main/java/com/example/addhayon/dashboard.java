@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.codesgood.views.JustifiedTextView;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,7 +56,7 @@ public class dashboard extends AppCompatActivity {
     private static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=1QBMsMy31D9xDeXOiL53L3yLQZ2gz1iHO";
     private long downloadId;
     BroadcastReceiver downloadReceiver;
-    TextView update;
+    TextView update2;
 
 
 
@@ -80,15 +81,33 @@ public class dashboard extends AppCompatActivity {
                 builder.setCancelable(true);
 
                 View view = getLayoutInflater().inflate(R.layout.update, null);
-                update = view.findViewById(R.id.update);
+                update2 = view.findViewById(R.id.update);
                 TextView Mb = view.findViewById(R.id.Mb);
                 TextView version = view.findViewById(R.id.version);
-                Mb.setText("Download size: " + DBQurey.myProfile.getMb() + " MB");
-                version.setText("Version: " + DBQurey.myProfile.getVname());
+                TextView title = view.findViewById(R.id.title);
+                TextView thanks = view.findViewById(R.id.thanks);
+                JustifiedTextView pra1 = view.findViewById(R.id.pra1);
+                JustifiedTextView pra2 = view.findViewById(R.id.pra2);
+
+                if(DBQurey.myProfile.getLanguage().equals("Bangla")){
+                    title.setText("আপডেট অধ্যয়ন");
+                    Mb.setText("ডাউনলোড সাইজ: " + DBQurey.myProfile.getMb() + " এমবি");
+                    version.setText("সংস্করণ: " + DBQurey.myProfile.getVname());
+                    pra1.setText("'অধ্যয়ন' আপনাকে সর্বশেষ সংস্করণে আপডেট করার পরামর্শ দেয়। দয়া করে এই অ্যাপটি আপডেট করুন এবং সর্বশেষ বৈশিষ্ট্যগুলি ব্যবহার করুন।");
+                    pra2.setText("ডাউনলোড শেষ হলে। তারপর ডাউনলোড ফাইল 'Addhayon.apk' বা আপনার ডিভাইস Storage > Download > Addhayon > 'Addhayon.apk' চেক করুন এবং এটি ইনস্টল করুন।");
+                    update2.setText("আপডেট");
+                    thanks.setText("ধন্যবাদ");
+
+                }else{
+                    Mb.setText("Download size: " + DBQurey.myProfile.getMb() + " MB");
+                    version.setText("Version: " + DBQurey.myProfile.getVname());
+                }
+
+
                 builder.setView(view);
                 AlertDialog alertDialog = builder.create();
 
-                update.setOnClickListener(new View.OnClickListener() {
+                update2.setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
                     @Override
                     public void onClick(View v) {
@@ -213,7 +232,7 @@ public class dashboard extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == 100){
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                update.performClick();
+                update2.performClick();
             }
         }
     }
