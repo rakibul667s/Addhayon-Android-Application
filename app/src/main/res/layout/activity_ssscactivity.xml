@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CourseActivity">
+    tools:context=".sSSCActivity">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="Courses"
+            android:text="SCIENCE"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/ssc"
+                    android:id="@+id/bn1st"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:padding="2dp"
@@ -51,7 +51,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="SSC"
+                        android:text="BANGLA 1ST PAPER"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -62,6 +62,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"/>
                 <LinearLayout
+                    android:id="@+id/bn2nd"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:layout_width="match_parent"
@@ -72,7 +73,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="HSC"
+                        android:text="BANGLA 2ND PAPER"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -86,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/en1st"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:padding="2dp"
@@ -96,7 +98,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="BCS"
+                        android:text="ENGLISH 1ST PAPER"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -107,6 +109,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"/>
                 <LinearLayout
+                    android:id="@+id/en2nd"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:layout_width="match_parent"
@@ -117,7 +120,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="IELTS"
+                        android:text="ENGLISH 2ND PAPER"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -131,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/math"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:padding="2dp"
@@ -141,7 +145,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="UNIVERSITY ADMISSION"
+                        android:text="MATH"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -152,6 +156,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"/>
                 <LinearLayout
+                    android:id="@+id/islam"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:layout_width="match_parent"
@@ -162,7 +167,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="MEDICAL ADMISSION"
+                        android:text="ISLAM"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -176,6 +181,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/ict"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:padding="2dp"
@@ -186,8 +192,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="BASIC
-                        COMPUTER"
+                        android:text="ICT"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -198,6 +203,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"/>
                 <LinearLayout
+                    android:id="@+id/gs"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:layout_width="match_parent"
@@ -209,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="WEB DEVELOPMENT"
+                        android:text="GS"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -222,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/phy"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:padding="2dp"
@@ -232,7 +239,7 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="ANDROID DEVELOPMENT"
+                        android:text="PHYSICS"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
@@ -243,6 +250,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"/>
                 <LinearLayout
+                    android:id="@+id/chem"
                     android:layout_weight="1"
                     android:background="@drawable/gradient3"
                     android:layout_width="match_parent"
@@ -253,8 +261,54 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="GRAPHICS
-                         DESIGN"
+                        android:text="CHEMISTRY"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/bio"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient3"
+                    android:padding="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="BIOLOGY"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:id="@+id/hm"
+                    android:layout_weight="1"
+                    android:background="@drawable/gradient3"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="HIGHER MATH"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>

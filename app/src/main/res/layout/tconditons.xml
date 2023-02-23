@@ -214,7 +214,7 @@ You agree that the original English text shall prevail in the case of a dispute.
                 android:id="@+id/c15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="phn no : +8801704081993"
+                android:text="phn no: +8801704081993"
                 android:textSize="12sp"
                 android:layout_marginTop="3dp"
                 android:textColor="@color/i2"

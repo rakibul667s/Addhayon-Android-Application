@@ -112,7 +112,6 @@ public class dashboard extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         String url2 = DBQurey.myProfile.getUplink();
-                        alertDialog.dismiss();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (ContextCompat.checkSelfPermission(dashboard.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                                 download(url2);
@@ -126,6 +125,7 @@ public class dashboard extends AppCompatActivity {
                     }
                 });
                 alertDialog.show();
+                alertDialog.setCancelable(false);
             }
         }
 

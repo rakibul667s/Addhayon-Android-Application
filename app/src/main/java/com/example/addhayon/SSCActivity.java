@@ -9,15 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
-public class CourseActivity extends AppCompatActivity {
-    private TextView w;
+public class SSCActivity extends AppCompatActivity {
     private MeowBottomNavigation btm;
     private LinearLayout ssc;
 
@@ -25,46 +23,34 @@ public class CourseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
-        w = findViewById(R.id.w);
-        ssc = findViewById(R.id.ssc);
-        ssc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseActivity.this, SSCActivity.class);
-                startActivity(intent);
-                CourseActivity.this.finish();
-            }
-        });
-        if(DBQurey.myProfile.getLanguage().equals("Bangla")){
-            w.setText("এই সিস্টেমে এখনও কাজ চলছে");
-        }
+        setContentView(R.layout.activity_sscactivity);
+        ssc =findViewById(R.id.ssc);
 
         btm = findViewById(R.id.bottom_nav);
         btm.add(new MeowBottomNavigation.Model(1,R.drawable.ic_baseline_home));
         btm.add(new MeowBottomNavigation.Model(2,R.drawable.baseline_burst_mode_24));
-        btm.add(new MeowBottomNavigation.Model(3,R.drawable.ic_exam));
-        btm.add(new MeowBottomNavigation.Model(4,R.drawable.ic_baseline_dashborad));
+        btm.add(new MeowBottomNavigation.Model(3,R.drawable.baseline_auto_awesome_motion_24));
+        btm.add(new MeowBottomNavigation.Model(4,R.drawable.ic_exam));
         btm.add(new MeowBottomNavigation.Model(5,R.drawable.ic_baseline_person));
 
 
 
-        btm.show(2,true);
+        btm.show(3,true);
         btm.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
                 switch (model.getId()){
                     case 1:
-                       openHome();
+                        openHome();
                         break;
                     case 2:
                         openCourse();
                         break;
                     case 3:
-                        openExam();
+                        openSSC();
                         break;
                     case 4:
-                        openDashboard();
+                        openExam();
                         break;
                     case 5:
                         openUserProfile();;
@@ -74,36 +60,39 @@ public class CourseActivity extends AppCompatActivity {
                 return null;
             }
         });
+        ssc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SSCActivity.this,sSSCActivity.class);
+                startActivity(intent);
+                SSCActivity.this.finish();
+            }
+        });
     }
     private void openHome(){
         Intent intent = new Intent(this,dashboard.class);
         startActivity(intent);
-        CourseActivity.this.finish();
-    }
-    private  void  replace(Fragment fragment){
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame,fragment);
-        transaction.commit();
+        SSCActivity.this.finish();
     }
 
     public void openUserProfile(){
         Intent intent = new Intent(this, userProfile.class);
         startActivity(intent);
-        CourseActivity.this.finish();
+        SSCActivity.this.finish();
     }
     public void openCourse(){
         Intent intent = new Intent(this,CourseActivity.class);
         startActivity(intent);
-        CourseActivity.this.finish();
+        SSCActivity.this.finish();
     }
     public  void openExam(){
         Intent intent = new Intent(this, AllExamCatActivity.class);
         startActivity(intent);
-        CourseActivity.this.finish();
+        SSCActivity.this.finish();
     }
-    public void openDashboard(){
-        Intent intent = new Intent(this, LeaderBoard.class);
+    public void openSSC(){
+        Intent intent = new Intent(this, SSCActivity.class);
         startActivity(intent);
-        CourseActivity.this.finish();
+        SSCActivity.this.finish();
     }
 }

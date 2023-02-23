@@ -53,8 +53,7 @@ public class LoadingPage extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check = true;
-
+                button2.setEnabled(false);
                 buttonAnim.setVisibility(View.VISIBLE);
                 buttonAnim.playAnimation();
                 buttonText.setVisibility(View.GONE);

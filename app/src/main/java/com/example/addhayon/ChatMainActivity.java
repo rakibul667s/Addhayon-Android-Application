@@ -28,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -54,6 +55,8 @@ public class ChatMainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView titleBar, collection;
     private MeowBottomNavigation btm;
+    DatabaseReference ref;
+    String key;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -61,7 +64,11 @@ public class ChatMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         database = FirebaseDatabase.getInstance();
+
+        ref = FirebaseDatabase.getInstance().getReference().child("stories").child(uid).child("statuses");
+        key = ref.push().getKey();
 
         titleBar = findViewById(R.id.titleBar);
         collection = findViewById(R.id.collection);
@@ -151,7 +158,11 @@ public class ChatMainActivity extends AppCompatActivity {
                         UserStatus status = new UserStatus();
                         status.setName(storySnapshot.child("name").getValue(String.class));
                         status.setProfileImage(storySnapshot.child("profileImage").getValue(String.class));
+                        //s.setImageUrl(storySnapshot.child("profileImage").getValue(String.class));
                         status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
+                        status.setKey(storySnapshot.child("key").getValue(String.class));
+                        //s.setTimeStamp(storySnapshot.child("lastUpdated").getValue(Long.class));
+
 
                         ArrayList<Status> statuses = new ArrayList<>();
                         for(DataSnapshot statusSnapshot : storySnapshot.child("statuses").getChildren()){
@@ -199,6 +210,8 @@ public class ChatMainActivity extends AppCompatActivity {
                         intent.setType("image/*");
                         intent.setAction(Intent.ACTION_GET_CONTENT);
                         startActivityForResult(intent,75);
+
+
                         break;
                     case 4:
                         if(DBQurey.myProfile.getLanguage().equals("Bangla")){
@@ -259,14 +272,18 @@ public class ChatMainActivity extends AppCompatActivity {
                                     userStatus.setName(user.getName());
                                     userStatus.setProfileImage(user.getProfileImg());
                                     userStatus.setLastUpdated(date.getTime());
+                                    userStatus.setKey(key);
 
                                     HashMap<String, Object> obj = new HashMap<>();
                                     obj.put("name",userStatus.getName());
                                     obj.put("profileImage",userStatus.getProfileImage());
                                     obj.put("lastUpdated",userStatus.getLastUpdated());
+                                    obj.put("key",userStatus.getKey());
 
                                     String imageUrl = uri.toString();
                                     Status status = new Status(imageUrl, userStatus.getLastUpdated());
+
+
 
 
                                     database.getReference()
@@ -276,9 +293,12 @@ public class ChatMainActivity extends AppCompatActivity {
                                     database.getReference().child("stories")
                                                     .child(FirebaseAuth.getInstance().getUid())
                                                             .child("statuses")
-                                                                    .push()
+                                                                    .child(key)
                                                                             .setValue(status);
                                     dialog.dismiss();
+                                    Intent intent2 = new Intent(ChatMainActivity.this,ChatMainActivity.class);
+                                    startActivity(intent2);
+                                    ChatMainActivity.this.finish();
                                 }
                             });
 

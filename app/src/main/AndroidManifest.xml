@@ -36,6 +36,15 @@
         android:theme="@style/Theme.addhayon"
         tools:targetApi="31">
         <activity
+            android:name=".videoCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sSSCActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SSCActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewsPageActivity"
             android:exported="false" />
         <activity
