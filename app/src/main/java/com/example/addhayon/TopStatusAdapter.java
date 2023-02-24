@@ -17,8 +17,12 @@ import com.bumptech.glide.Glide;
 import com.example.addhayon.databinding.ItemStatusBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,12 +32,13 @@ import omari.hamza.storyview.callback.StoryClickListeners;
 import omari.hamza.storyview.model.MyStory;
 
 public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopStatusViewHolder> {
-
+    String sl;
     Context context;
     FirebaseDatabase database;
     DatabaseReference reference;
     ArrayList<UserStatus> userStatuses;
-    String sTime;
+    String sTime, sImg,sKey, childKey;
+
 
     public TopStatusAdapter(Context context, ArrayList<UserStatus> userStatuses) {
         this.context = context;
@@ -52,31 +57,31 @@ public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopS
 
         UserStatus userStatus = userStatuses.get(position);
 
-        Status lastStatus = userStatus.getStatuses().get(userStatus.getStatuses().size() - 1);
+        if(userStatus.getStatuses().size() != 0) {
+            Status lastStatus = userStatus.getStatuses().get(userStatus.getStatuses().size() - 1);
+            Glide.with(context).load(lastStatus.getImageUrl()).into(holder.binding.image);
 
-        Glide.with(context).load(lastStatus.getImageUrl()).into(holder.binding.image);
+            holder.binding.circularStatusView.setPortionsCount(userStatus.getStatuses().size());
+        }
 
-        holder.binding.circularStatusView.setPortionsCount(userStatus.getStatuses().size());
+
 
         holder.binding.circularStatusView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 ArrayList<MyStory> myStories = new ArrayList<>();
                 for(Status status : userStatus.getStatuses()) {
                     Date date = new Date();
                     sTime = String.valueOf(status.getTimeStamp());
+                    sImg = String.valueOf(status.getImageUrl());
+                    sKey = String.valueOf(status.getKey());
                     long diff =   date.getTime()-status.getTimeStamp();
 
                     long diffHours = diff / (60*60*1000);
 
-
-
-                            myStories.add(new MyStory(status.getImageUrl()));
-
-
-
-
+                          myStories.add(new MyStory(status.getImageUrl(),status.getDate(),status.getKey()));
 
                 }
 
@@ -97,15 +102,18 @@ public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopS
                             @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
                             @Override
                             public void onTitleIconClickListener(int position) {
-                                //PopupMenu popupMenu = new PopupMenu(context, holder.binding.image);
-//                                PopupMenu popupMenu = new PopupMenu();
-//                                popupMenu.getMenuInflater().inflate(R.menu.view_profile, popupMenu.getMenu());
-//
-//                                popupMenu.show();
-                                //your action
+                                int storyPosition = position;
+
+                                // Get the URL of the story image
+                                sl = myStories.get(storyPosition).getDescription();
+
+
+
+
+                               // sl = userStatus2.getName();
                                 if(userStatus.getName().equals(DBQurey.myProfile.getName())) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                                    builder.setMessage("Are you sure you want to delete this story?");
+                                    builder.setMessage(""+sl);
                                     builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

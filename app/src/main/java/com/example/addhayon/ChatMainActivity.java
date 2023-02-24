@@ -70,6 +70,7 @@ public class ChatMainActivity extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference().child("stories").child(uid).child("statuses");
         key = ref.push().getKey();
 
+
         titleBar = findViewById(R.id.titleBar);
         collection = findViewById(R.id.collection);
 
@@ -160,7 +161,7 @@ public class ChatMainActivity extends AppCompatActivity {
                         status.setProfileImage(storySnapshot.child("profileImage").getValue(String.class));
                         //s.setImageUrl(storySnapshot.child("profileImage").getValue(String.class));
                         status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
-                        status.setKey(storySnapshot.child("key").getValue(String.class));
+                        status.setKey(storySnapshot.child(key).getValue(String.class));
                         //s.setTimeStamp(storySnapshot.child("lastUpdated").getValue(Long.class));
 
 
@@ -274,15 +275,16 @@ public class ChatMainActivity extends AppCompatActivity {
                                     userStatus.setLastUpdated(date.getTime());
                                     userStatus.setKey(key);
 
+                                    String imageUrl = uri.toString();
                                     HashMap<String, Object> obj = new HashMap<>();
                                     obj.put("name",userStatus.getName());
                                     obj.put("profileImage",userStatus.getProfileImage());
                                     obj.put("lastUpdated",userStatus.getLastUpdated());
-                                    obj.put("key",userStatus.getKey());
+                                    obj.put(key,imageUrl);
+                                    Date date1 = null;
 
-                                    String imageUrl = uri.toString();
-                                    Status status = new Status(imageUrl, userStatus.getLastUpdated());
 
+                                    Status status = new Status(imageUrl, userStatus.getLastUpdated(),userStatus.getKey(),date1);
 
 
 
