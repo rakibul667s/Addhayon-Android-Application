@@ -120,14 +120,14 @@
             android:layout_width="match_parent"
             android:text=""
             android:textColor="@color/gradient2StartColor"
-            android:layout_height="20dp" />
+            android:layout_height="22dp" />
 
         <Button
             android:id="@+id/signIn2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="30dp"
             android:background="@drawable/gradient3"
             android:text="Sign up"

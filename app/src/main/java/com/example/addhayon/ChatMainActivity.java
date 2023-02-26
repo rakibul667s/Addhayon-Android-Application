@@ -261,7 +261,7 @@ public class ChatMainActivity extends AppCompatActivity {
                 dialog.show();
                 FirebaseStorage storage = FirebaseStorage.getInstance();
                 Date date = new Date();
-                StorageReference reference = storage.getReference().child(date.getTime()+"");
+                StorageReference reference = storage.getReference().child("stories").child(FirebaseAuth.getInstance().getUid()).child(key);
                 reference.putFile(data.getData()).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
